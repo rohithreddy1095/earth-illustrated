@@ -8,4 +8,4 @@ Every number sits in the material data table with its source and a confidence ra
 
 The whole site is one HTML file (`index.html`); the 3D models use three.js r128 from cdnjs.
 
-The build videos belong to the builders who made them (Auroville Earth Institute, Dezeen, UNESCO and others). They play from youtube-nocookie.com and load only when you tap play; the rest link out to the makers' own pages.
+The animations are drawn for this book from the sources cited beside each one; nothing is loaded from video sites.
