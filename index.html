@@ -602,6 +602,8 @@ svg.chart.drawin{animation:chartIn .6s ease-out both}
 .mk-watch{list-style:none;padding:0;margin:14px 0;display:grid;gap:8px}
 .mk-watch li{padding:8px 12px;border-left:3px solid var(--clay);background:var(--paper);font-size:15px;line-height:1.45}
 .mk-watch b{font-family:var(--f-display)}
+:where(a[data-go]:not([href])){cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+a[role="link"]:not([href]){cursor:pointer}
 </style>
 
 <header class="top">
@@ -5544,14 +5546,26 @@ xpInit('xpArch',{vb:[360,250],label:'Building an arch on a centring',poster:[4,1
 xpInit('xpVault',{vb:[360,300],label:'Building a Nubian vault without formwork',poster:[3,.7],draw:drawVault,scenes:NVSC});
 readout($('vaultOut'),[['Widest span','≈ 3.2 m'],['Bricks, cm','24 × 12 × 4.5'],['Rings lean','≈ 60°']]);
 /* buttons elsewhere in the book that open a film */
-document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-mkgo],[data-xpgo],.xp-cap [data-go]');if(!b)return;e.preventDefault();
-  if(b.dataset.go){goTo(b.dataset.go);return}
+document.addEventListener('click',e=>{const b=e.target.closest&&e.target.closest('[data-mkgo],[data-xpgo]');if(!b)return;e.preventDefault();
   if(b.dataset.xpgo){xpGo(b.dataset.xpgo);return}
   const k=b.dataset.mkgo;if(k==='ram'){const f=$('ramFig').closest('figure');f.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'center'});setTimeout(()=>{const p=$('ramPlay');if(p&&p.getAttribute('aria-pressed')!=='true')p.click()},REDUCED?0:650);return}
   xpGo('mkXp',()=>setMk(k))});
 try{[['Making adobe bricks','Soak, mix, mould, strike off, dry, stack','adobe'],['From soil to compressed earth block','Dig, sieve, mix, drop test, press, cure','cseb'],['Raising a straw-bale wall','Base, bales, pins, top plate, plaster','bale']].forEach(([ti,tx,k])=>addIdx('Animation',ti,tx,()=>xpGo('mkXp',()=>setMk(k)),'walls'));
   [['xpArch','Building an arch on a centring','Piers, centring, voussoirs, keystone, striking','openings'],['xpVault','Building a Nubian vault without formwork','Gable, cord, leaning rings, haunches','openings'],['xpWaters','Three waters around a house','Rain, greywater, toilet, well','water'],['xpRoof','Roof to tank, first flush to recharge pit','Leaf screen, first flush, tank, intake, overflow','water'],['xpTwin','How a twin-pit toilet works','Pour flush, junction, leaching pits, rest, emptying','water'],['xpGrey','Greywater through a planted gravel bed','Settling, gravel, roots, outlet','water']].forEach(([id,ti,tx,sec])=>addIdx('Animation',ti,tx,()=>xpGo(id),sec))}catch(e){}
 
+
+/* ---- in-page links. The viewer that hosts this page can treat href="#…" as a link out of the page,
+   so every in-page link is turned into a script link that scrolls here instead. */
+function inLink(a){const h=a.getAttribute('href');if(!h||h[0]!=='#'||h.length<2)return;if(!a.dataset.go)a.dataset.go=h;a.removeAttribute('href');a.setAttribute('role','link');if(!a.hasAttribute('tabindex'))a.tabIndex=0}
+function inLinks(root){if(!root||root.nodeType!==1&&root!==document)return;if(root.matches&&root.matches('a[href^="#"]'))inLink(root);root.querySelectorAll&&root.querySelectorAll('a[href^="#"]').forEach(inLink)}
+document.addEventListener('click',e=>{if(e.defaultPrevented||e.button)return;const a=e.target.closest&&e.target.closest('a[data-go]:not([href])');if(!a)return;e.preventDefault();goTo(a.dataset.go)});
+document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const a=e.target.closest&&e.target.closest('a[role="link"]:not([href])');if(!a)return;e.preventDefault();a.click()});
+inLinks(document);
+new MutationObserver(ms=>{for(const m of ms)for(const n of m.addedNodes)if(n.nodeType===1&&n.namespaceURI==='http://www.w3.org/1999/xhtml')inLinks(n)}).observe(document.body,{childList:true,subtree:true});
+/* a link to a section (…#water) opens the book at that section */
+function goHash(){const h=decodeURIComponent((location.hash||'').slice(1));if(!h||!/^[\w.~-]+$/.test(h))return;const el=document.getElementById(h);if(el)goTo('#'+h)}
+window.addEventListener('hashchange',goHash);
+if(location.hash.length>1)setTimeout(goHash,REDUCED?0:450);
 /* ================= boot ================= */
 const hosts={vpHouse:initHero,vpSeq:initSeq,vpJar:initJar,vpWall:initWall,vpForm:initForms,vpSun:initSun,vpQuake:initQuake};
 if(GL_OK){
