@@ -664,6 +664,10 @@ a[role="link"]:not([href]){cursor:pointer}
 #ovFig text.halo,#btFig text.halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
 .rules{max-width:900px}
 @media (max-width:600px){#ovOut,#btOut{grid-template-columns:repeat(2,minmax(0,1fr))}}
+/* plumbing and power */
+#thOut,#dfOut,#soOut{grid-template-columns:repeat(2,minmax(0,1fr))}
+#thFig text.halo,#dfFig text.halo,#soFig text.halo{paint-order:stroke;stroke:var(--paper);stroke-width:4px;stroke-linejoin:round}
+@media (min-width:1100px){#dfOut,#soOut{grid-template-columns:repeat(3,minmax(0,1fr))}}
 </style>
 
 <header class="top">
@@ -1242,16 +1246,81 @@ a[role="link"]:not([href]){cursor:pointer}
   <p class="fine">Guidance drawn from the sources above; awaiting builder review. Local rules may ask for more.</p>
 </section>
 
+<section class="block" id="plumbing">
+  <div class="shead"><div class="num">Subject</div><div><h2>Plumbing</h2><p class="sub">Clean water in under pressure, used water out downhill, and none of it inside an earth wall. Height gives the pressure, the fall keeps the drains clear, and a trap and a vent keep the smell out.</p></div></div>
+  <h3 class="sub3" id="pl-flow">Water through the house</h3>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 62 · Water through a house, in and out</span><span>in section</span></div><div id="xpPipes"></div></figure>
+    <div class="wall-desc"><div class="eyebrow">Supply and drains</div><h3>Two systems that never meet</h3>
+      <ul class="wlegend"><li><i style="background:var(--accent)"></i><span><b>Supply:</b> pumped up once, to a tank, then down to every tap by gravity. Pressure comes from height alone.</span></li><li><i style="background:var(--stone)"></i><span><b>Drains:</b> from a trap at every outlet, downhill all the way to the pits and the planted bed, past a chamber at every bend.</span></li><li><i style="background:var(--muted)"></i><span><b>Vent:</b> a pipe from the drains to above the roof, so the traps keep their water.</span></li></ul>
+      <p>Earth walls and water do not mix: keep the pipes where a leak shows, and sleeve the ones that must pass through a wall.</p>
+      <p>Watch the film, or tap a step.</p></div></div>
+  <h3 class="sub3" id="pl-tank">How high should the tank be?</h3>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 63 · A tank on a tower, and the pressure at the shower</span><span>drag the tank up or down</span></div>
+    <div id="thFig" style="padding:8px 8px 0"></div><div class="readout" id="thOut"></div><p class="insight" id="thInsight" aria-live="polite"></p></figure>
+    <div class="wall-desc"><div class="eyebrow">Gravity supply</div><h3>A metre of height, a tenth of a bar</h3>
+      <p>Water pushes down with its own weight: every metre between the water in the tank and a tap adds about 0.1 bar. A shower wants about 5 m of that, 8 m to be good; an instant geyser or a mixer needs 0.3–0.5 bar just to start (<a href="https://www.studiomatrx.org/guides/gravity-fed-plumbing-system-india" target="_blank" rel="noopener">Studio Matrx</a>).</p>
+      <p>How much to store: <a href="https://law.resource.org/pub/in/bis/S03/is.1172.1993.pdf" target="_blank" rel="noopener">IS 1172</a> plans 70–100 litres a person a day for a house without a full flushing system and 150–200 in towns with one, or 135 for small houses; Studio Matrx plans 135 for homes with full plumbing. The figure sizes a day’s store at 135 litres for the people in Your house.</p>
+      <ul class="mk-watch"><li><b>Pipes:</b> 32–40 mm out of the tank, 25 mm along the house, 15–20 mm to each fitting, and 20 mm for a shower on a low tank (Studio Matrx, indicative).</li><li><b>Short of height?</b> Raise the tank on a tower, or put a pressure pump on the shower line.</li></ul>
+      <p class="fine">Figures from Studio Matrx are indicative, not a code <span class="conf low">Low</span>. The figure ignores what pipes and bends take, so read it as the most you can get.</p></div></div>
+  <h3 class="sub3" id="pl-drain">Drains that fall</h3>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 64 · A drain run, in section, from the house to the last chamber</span><span>drag its end; pick the pipe</span></div>
+    <div class="ctl" id="dfCtl"></div><div id="dfFig" style="padding:8px 8px 0"></div>
+    <div class="sliders opsl"><div class="sl"><label for="dfTop"><span>Depth at the house</span><span id="dfTopv"></span></label><input type="range" id="dfTop" min="0.3" max="1" step="0.05" value="0.45"></div></div>
+    <div class="readout" id="dfOut"></div><p class="insight" id="dfInsight" aria-live="polite"></p></figure>
+    <div class="wall-desc"><div class="eyebrow">Building drainage</div><h3>Downhill all the way</h3>
+      <p>A drain has to fall steadily enough to carry the solids with the water: a self-cleansing speed of about 0.75 m/s when half full. IS 1742 asks for at least 1 in 57 for a 100 mm pipe and 1 in 100 for a 150 mm one; builders often lay them at 1 in 40 and 1 in 60 (<a href="https://www.studiomatrx.org/students/interior-services-1-plumbing/building-drainage" target="_blank" rel="noopener">Studio Matrx, after IS 1742</a>; <a href="https://www.studiomatrx.org/guides/external-underground-drainage-india" target="_blank" rel="noopener">external drains</a>).</p>
+      <p>Over a long run the fall adds up, and the last chamber ends up deep. Drag the end of the run to see how deep.</p>
+      <ul class="mk-watch"><li><b>Chambers:</b> at every junction, bend and change of slope or pipe size, and about every 30 m on a straight run, so every length can be rodded.</li><li><b>Their size:</b> 450 × 450 to 600 × 600 mm inside up to about 0.9 m deep; 600 × 600 to 900 × 600 mm to 1.5 m; a manhole beyond that.</li><li><b>Outside the kitchen and bath:</b> a gully trap takes their water into the drain (IS 1742).</li></ul></div></div>
+  <h3 class="sub3" id="pl-rules">Rules for the pipes</h3>
+  <ul class="mk-watch rules">
+   <li><b>Keep water out of the earth:</b> run pipes along internal walls, on the face of a wall or in the floor, where a leak shows. Where one has to cross an earth wall, sleeve it the full width, with no joint inside (<a href="https://cms.lowimpact.org/wp-content/uploads/Fixtures-Fittings-and-Services.pdf" target="_blank" rel="noopener">Straw Works</a>, writing about straw walls; the same holds for earth).</li>
+   <li><b>A trap at every outlet:</b> at least 50 mm of water in a WC or a floor trap, 40 mm in other fittings (IS 5329, via Studio Matrx).</li>
+   <li><b>A vent above the roof:</b> its top at least 150 mm above a roof, 2.1 m above a terrace and 0.9 m above an opening window, and at least 32 mm across (UIPC-I 2017, from the <a href="https://indianplumbing.org/IPA_Old_site/img/activities/IPPL/2021/session_presentations/Vents-11th-Dec-2021.pdf" target="_blank" rel="noopener">Indian Plumbing Association</a>).</li>
+   <li><b>Keep the three waters apart:</b> rain to the tank, kitchen and bath water to the planted bed, the toilet to the pits, and the well clear of them all (<a href="#water">Water and sanitation</a>).</li>
+  </ul>
+  <p class="fine">Indian standards are cited through published summaries, not the standards themselves; awaiting builder review. Local bye-laws can ask for more.</p>
+</section>
+
+<section class="block" id="power">
+  <div class="shead"><div class="num">Subject</div><div><h2>Wiring, earthing and solar</h2><p class="sub">Every cable in a conduit, a breaker that trips before a person is hurt, two good earths, and panels on the south side of the roof. Plan it all before the walls go up.</p></div></div>
+  <h3 class="sub3" id="pw-board">From the meter to the socket</h3>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 65 · From the meter to the socket</span><span>schematic, not to scale</span></div><div id="xpPower"></div></figure>
+    <div class="wall-desc"><div class="eyebrow">The board</div><h3>A breaker for people, a breaker for each circuit</h3>
+      <p>The board holds a main switch, an RCCB that cuts the supply when current leaks to earth, and a miniature circuit breaker for each circuit, matched to its wire.</p>
+      <ul class="mk-watch"><li><b>Wire:</b> CPWD asks for at least 1.5 mm² of copper for lights and 4 mm² for power (<a href="https://dgll.nic.in/sites/default/files/2023-06/CPWD%20%E0%A4%95%E0%A5%87%20General%20Specifications%20for%20Electrical%20Works%20%28Part-1%20Internal%29%202013_compressed.pdf" target="_blank" rel="noopener">CPWD, cl. 3.12</a>). Sockets for small appliances commonly take 2.5 mm², a geyser or an air conditioner 4–6 mm² (<a href="https://www.studiomatrx.org/guides/home-electrical-wiring-guide-india" target="_blank" rel="noopener">Studio Matrx</a>, indicative).</li>
+       <li><b>RCCB:</b> 30 mA to protect people. British rules require one on every socket circuit (<a href="https://professional-electrician.com/?p=45180" target="_blank" rel="noopener">BS 7671, 411.3.3</a>); CPWD puts one beside the incoming breaker of a residential quarter’s board (<a href="https://dgll.nic.in/sites/default/files/2023-06/CPWD%20%E0%A4%95%E0%A5%87%20General%20Specifications%20for%20Electrical%20Works%20%28Part-1%20Internal%29%202013_compressed.pdf" target="_blank" rel="noopener">cl. 3.20</a>); Tamil Nadu made them compulsory on new connections in 2021 (<a href="https://powerline.net.in/2021/07/06/tnerc-makes-installation-of-new-device-mandatory-for-power-connections/" target="_blank" rel="noopener">TNERC</a>). India’s 2010 safety rules asked for one on loads above 5 kW (<a href="https://en.wikipedia.org/wiki/Central_Electricity_Authority_Regulations" target="_blank" rel="noopener">CEA, as summarised by Wikipedia</a>).</li>
+       <li><b>Earth:</b> two separate earth connections, in two or more pits (CEA). A plate of at least 60 × 60 cm, or a 40 mm GI pipe in a treated pit; rods spaced about their driven depth apart. Salt lowers the resistance but brings corrosion, and coke breeze is not recommended (<a href="https://law.resource.org/pub/in/bis/S05/is.3043.1987.pdf" target="_blank" rel="noopener">IS 3043:1987</a>).</li>
+       <li><b>Sockets:</b> three-pin, with the earth pin wired; two-pin sockets are not allowed in CPWD work.</li></ul>
+      <p>Watch the film, or tap a step.</p></div></div>
+  <h3 class="sub3" id="pw-solar">Solar on your roof</h3>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 66 · Panels on the south side of your roof, and the noon sun</span><span>follows Your house; set your monthly units</span></div>
+    <div id="soFig" style="padding:8px 8px 0"></div>
+    <div class="sliders opsl"><div class="sl"><label for="soU"><span>Electricity a month</span><span id="soUv"></span></label><input type="range" id="soU" min="50" max="600" step="10" value="150"></div></div>
+    <div class="readout" id="soOut"></div><p class="insight" id="soInsight" aria-live="polite"></p></figure>
+    <div class="wall-desc"><div class="eyebrow">Rooftop solar</div><h3>Ten square metres a kilowatt</h3>
+      <p>A kilowatt of panels needs about 10 m² of roof with no shade, and makes 4–5.5 units on a clear day (<a href="https://jbvnl.co.in/SOLAR/MNRE FAQ for consumer.pdf" target="_blank" rel="noopener">MNRE</a>). Modules are warranted to give 90 % after 12 years and 80 % after 25, and need cleaning now and then.</p>
+      <p>With net metering, a two-way meter sends what you do not use to the grid and you pay only for the difference. Under PM Surya Ghar, households get ₹30,000 a kW for the first 2 kW and ₹18,000 for the third, at most ₹78,000 (<a href="https://pune.gov.in/scheme/pm-surya-gharmuft-bijli-yojna/" target="_blank" rel="noopener">scheme rates</a>); 0–150 units a month suits 1–2 kW, 150–300 units 2–3 kW (<a href="https://jbvnl.co.in/SOLAR/CFA_structure for PM Suryaghar.pdf" target="_blank" rel="noopener">scheme table</a>).</p>
+      <p>Face the panels south. For the most direct sun in a year, tilt them at about your latitude; most large fixed systems in the US sit at 20–30° (<a href="https://www.eia.gov/TODAYinENERGY/detail.php?id=37372" target="_blank" rel="noopener">EIA</a>). On a sloping roof they take the roof’s pitch.</p></div></div>
+  <h3 class="sub3" id="pw-rules">Rules for the wiring</h3>
+  <ul class="mk-watch rules">
+   <li><b>Plan first:</b> every switch, socket, light and the board, before the walls go up (<a href="https://www.level.org.nz/energy/electrical-design/wiring/wiring-installation/" target="_blank" rel="noopener">Level</a>).</li>
+   <li><b>In an earth wall:</b> cables in PVC conduit to flush boxes made for masonry, with wooden blocks set in for fittings to hold (Level). Rigid PVC conduit to IS 9537 Part 3, cables to IS 694 (Studio Matrx). Cut the chases and fix the conduit before the plaster (stage 11 of <a href="#sequence">Build it</a>).</li>
+   <li><b>Who does it:</b> an authorised electrical contractor, under the supervision of someone who holds a certificate of competency (<a href="https://ksandk.com/md/energy/electrical-installations-cea-regulations-2023/" target="_blank" rel="noopener">CEA Regulations 2023, as summarised by K&amp;S Partners</a>).</li>
+   <li><b>Under thatch:</b> wiring and panels near thatch are a fire risk. Fire safety is not covered yet (<a href="#coverage">Coverage</a>).</li>
+  </ul>
+  <p class="fine">Indian rules are cited through summaries where the text was not to hand; awaiting review by a builder and a licensed electrician.</p>
+</section>
+
 <section class="block" id="repair">
   <div class="shead"><div class="num">Subject</div><div><h2>Repair and maintenance</h2><p class="sub">An earth wall lasts as long as it is kept dry and looked after. Read the damage, plan the year around the monsoon, and patch a hollow the way conservators do.</p></div></div>
   <h3 class="sub3">Read the damage</h3>
-  <figure class="plate"><div class="cap"><span>Fig. 62 · Seven kinds of damage on one earth wall</span><span>tap the numbers</span></div><div id="crFig"></div>
+  <figure class="plate"><div class="cap"><span>Fig. 67 · Seven kinds of damage on one earth wall</span><span>tap the numbers</span></div><div id="crFig"></div>
     <div class="sevkey"><span><i class="svd sv-cosm"></i>Cosmetic</span><span><i class="svd sv-watch"></i>Watch it</span><span><i class="svd sv-soon"></i>Repair soon</span><span><i class="svd sv-struct"></i>Get advice</span></div></figure>
   <h3 class="sub3">A year of upkeep</h3>
-  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 63 · Jobs through a Hyderabad year</span><span>tap or drag a month</span></div><div id="mtFig" style="padding:8px 8px 0"></div></figure>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 68 · Jobs through a Hyderabad year</span><span>tap or drag a month</span></div><div id="mtFig" style="padding:8px 8px 0"></div></figure>
     <div class="wall-desc" id="mtNow" aria-live="polite"></div></div>
   <h3 class="sub3">Patch a hollow, step by step</h3>
-  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 64 · A hollow at the foot of an earth wall, in section</span><span>step <b id="ptN">1</b> of 6</span></div><div id="ptFig" style="padding:8px"></div>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 69 · A hollow at the foot of an earth wall, in section</span><span>step <b id="ptN">1</b> of 6</span></div><div id="ptFig" style="padding:8px"></div>
       <div class="shk-bar"><button class="playbtn" id="ptPrev">← Back</button><button class="playbtn" id="ptNext">Next step →</button></div></figure>
     <ol class="ptlist" id="ptList"></ol></div>
   <details class="notes"><summary>Where this comes from</summary><div><p>Most published repair guidance is for cob in Britain. The defects, hollows and major repairs follow the IHBC guidance note on earth walling (<a href="https://ihbc.org.uk/guidance_notes/docs/Cob_Paper/Defects_1.html" target="_blank" rel="noopener">defects</a>, <a href="https://ihbc.org.uk/guidance_notes/docs/Cob_Paper/page7.html" target="_blank" rel="noopener">surface hollows</a>, <a href="https://ihbc.org.uk/guidance_notes/docs/Cob_Paper/page8.html" target="_blank" rel="noopener">stitching and major repairs</a>); renders, shrinkage cracks, layering and paring follow <a href="https://www.buildingconservation.com/articles/earth/earth_buildings.htm" target="_blank" rel="noopener">Bouwens 1997</a>; paring back and recent movement, <a href="https://mikewye.co.uk/knowledge/how-to-guides/cob-repair/" target="_blank" rel="noopener">Mike Wye</a>. Limewash: <a href="https://lime.org.uk/knowledge-base/limewash---application---application-of-limewash-" target="_blank" rel="noopener">Lime.org.uk</a>. Termites: the <a href="https://www.qbcc.qld.gov.au/sites/default/files/documents/publication-termite-management-systems-homeowners-builders.pdf" target="_blank" rel="noopener">Queensland building regulator</a>, after AS 3660. Lintels and bands: IS 13827 (see Openings, and Structure and earthquakes). The year is set to Hyderabad's rain; move the jobs with your own monsoon.</p></div></details>
@@ -1260,7 +1329,7 @@ a[role="link"]:not([href]){cursor:pointer}
 
 <section class="block" id="tools">
   <div class="shead"><div class="num">Subject</div><div><h2>Tools</h2><p class="sub">The kit for an earth house is mostly hands, feet and simple iron. Pick a technique to see what it needs, and tap a tool for what it does.</p></div></div>
-  <figure class="plate"><div class="cap"><span>Fig. 65 · The tool board</span><span id="tlCount"></span></div>
+  <figure class="plate"><div class="cap"><span>Fig. 70 · The tool board</span><span id="tlCount"></span></div>
     <div class="ctl"><span>Technique</span><div class="row" id="tlChips"></div></div>
     <div class="toolgrid" id="tlGrid"></div>
     <div class="toolcard" id="tlCard" aria-live="polite"></div></figure>
@@ -1272,17 +1341,17 @@ a[role="link"]:not([href]){cursor:pointer}
 <section class="block" id="costing">
   <div class="shead"><div class="num">Subject</div><div><h2>Costing</h2><p class="sub">What the shell of your house takes in earth, stone, lime and working days, priced at Telangana's schedule of rates or at your own. It follows Your house; drag the plan here to try other sizes, and drag your crew's pace.</p></div></div>
   <h3 class="sub3">Size the house</h3>
-  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 66 · The house, outside dimensions</span><span>drag the corner</span></div>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 71 · The house, outside dimensions</span><span>drag the corner</span></div>
       <div class="ctl"><span>Wall</span><div class="row"><button class="chip" data-cqw="cob">Cob 450</button><button class="chip" data-cqw="adobe">Adobe 375</button><button class="chip" data-cqw="rammed">Rammed earth 375</button><button class="chip" data-cqw="cseb">CSEB 240</button></div></div>
       <div id="cqPlan" style="padding:8px"></div><div class="readout" id="cqOut"></div></figure>
     <div class="wall-desc" id="cqList"></div></div>
   <h3 class="sub3">Where the days go</h3>
-  <figure class="plate"><div class="cap"><span>Fig. 67 · Person-days for the shell, by stage</span><span>drag the end of the walls bar</span></div>
+  <figure class="plate"><div class="cap"><span>Fig. 72 · Person-days for the shell, by stage</span><span>drag the end of the walls bar</span></div>
     <div id="cqDays" style="padding:8px 8px 0"></div>
     <div class="cqkey" style="padding:0 14px 10px"><span><i style="background:var(--clay)"></i>mason</span><span><i style="background:var(--clay-2)"></i>helper</span><span><i style="background:var(--accent);opacity:.35"></i>brickwork pace (CPWD)</span></div>
     <div class="readout" id="cqDaysOut"></div><p class="insight" id="cqInsight" aria-live="polite"></p></figure>
   <h3 class="sub3">Your prices</h3>
-  <figure class="plate"><div class="cap"><span>Fig. 68 · The shell, priced</span><span>type your own rates</span></div>
+  <figure class="plate"><div class="cap"><span>Fig. 73 · The shell, priced</span><span>type your own rates</span></div>
     <div class="ctl"><span>Earth</span><div class="row"><label><input type="checkbox" id="cqSite" checked> dug on the site</label><button class="chip" id="cqReset">Reset prices</button></div></div>
     <div class="table-wrap"><table class="spec cqtable" id="cqTable"></table></div>
     <div id="cqBar" style="padding:10px 14px 12px"></div>
@@ -1297,7 +1366,7 @@ a[role="link"]:not([href]){cursor:pointer}
 
 <section class="block" id="choices">
   <div class="shead"><div class="num">Decisions</div><div><h2>Why this, not that</h2><p class="sub">Every earth house is a chain of choices, each right for some soil, climate, budget or crew. The reference house: two rooms, one storey, red loam over murram on the Deccan plateau, about 800 mm of monsoon rain and summer days past 42 °C.</p></div></div>
-  <figure class="plate" style="margin-bottom:10px"><div class="cap"><span>Fig. 69 · The reference house, as eight decisions</span><span>tap the numbers</span></div><div id="decMap"></div></figure>
+  <figure class="plate" style="margin-bottom:10px"><div class="cap"><span>Fig. 74 · The reference house, as eight decisions</span><span>tap the numbers</span></div><div id="decMap"></div></figure>
   <div id="decList"></div>
 </section>
 
@@ -1310,7 +1379,7 @@ a[role="link"]:not([href]){cursor:pointer}
 
 <section class="block" id="library">
   <div class="shead"><div class="num">Reference</div><div><h2>Library</h2><p class="sub">Every source this book draws on, in one place: what kind of source it is, which sections use it, and how many values in the material data table rest on it. Pages opened while researching but left out are here too, each with the reason.</p></div></div>
-  <figure class="plate"><div class="cap"><span>Fig. 70 · The sources, by kind</span><span>counted live · select a kind to filter</span></div><div id="libFig" style="padding:12px 14px 6px"></div><div class="readout" id="libOut"></div></figure>
+  <figure class="plate"><div class="cap"><span>Fig. 75 · The sources, by kind</span><span>counted live · select a kind to filter</span></div><div id="libFig" style="padding:12px 14px 6px"></div><div class="readout" id="libOut"></div></figure>
   <div class="gl-tools lib-tools" style="margin-top:18px"><input type="search" id="libSearch" placeholder="Search, e.g. IS 13827, FAO, lime, Djenné" aria-label="Search the library"><select id="libSec" aria-label="Used in section"></select><div class="chips" id="libSet" role="group" aria-label="Which sources"></div><div class="chips" id="libSort" role="group" aria-label="Order"></div></div>
   <p class="fine" id="libCount" style="margin:0 0 4px"></p>
   <div id="libList"></div>
@@ -1325,7 +1394,7 @@ a[role="link"]:not([href]){cursor:pointer}
 
 <section class="block" id="coverage">
   <div class="shead"><div class="num">Reference</div><div><h2>Coverage</h2><p class="sub">What this book covers, how well each part is sourced, and what is still missing. The page counts itself: the figures, data rows and links below are read from the book as it stands.</p></div></div>
-  <figure class="plate"><div class="cap"><span>Fig. 71 · Every section, audited</span><span>counted live</span></div>
+  <figure class="plate"><div class="cap"><span>Fig. 76 · Every section, audited</span><span>counted live</span></div>
     <div class="table-wrap"><table class="spec covtable" id="covTable"></table></div>
     <div class="readout" id="covOut"></div>
     <p class="insight" id="covInsight" aria-live="polite"></p></figure>
@@ -1593,7 +1662,7 @@ const PARTS={
   plaster:{name:"Lime plaster",s:14,d:"Two or three coats of lime and sand, then limewash. Hard enough to shed rain, open enough to let the wall breathe out its moisture. Cement render would trap it."}
 };
 const PART_ORDER=['found','drain','plinth','dpc','floor','wall','lintel','beam','roof','plaster'];
-const SUBJ=[["Site & climate","Sun, wind, rain and shade.","#sun","3D study"],["Soil","Clay, sand, silt, and how to read them.","#soil","3D study"],["Foundations and plinths","Rubble trench, piles for black cotton soil, rising damp.","#foundations","Subject"],["Openings and arches","Where openings go, lintels, bands, arch thrust.","#openings","Subject"],["Walls","Cob, adobe, rammed earth, CSEB, straw, bamboo.","#walls","3D study"],["Built forms","Bhunga, kath-kuni, tulou, pueblo, domes, stilt houses and more.","#forms","3D gallery"],["Plasters and binders","How clay, lime, gypsum and pozzolans set; coats; additives.","#binders","Subject"],["Roofs","Thatch, tile, living, mud phuska, vaults; pitch and heat.","#roofs","Subject"],["Material data","Every number, its test and its source.","#data","Reference"],["Floors","Earth, lime, IPS, Athangudi, Kota; feel underfoot.","#floors","Subject"],["Timber and bamboo","Treatment, joints, strength, durability.","#timber","Subject"],["Finishes","Limewash, clay paint, casein, oils; breathability.","#finishes","Subject"],["Passive design","Mass, time lag, shade, ventilation.","#heat","Study"],["Structure and earthquakes","Shake a wall, five failures and their fixes, zone rules.","#structure","3D study"],["Building physics","Heat and vapour through walls, comfort, humidity, air.","#physics","Study"],["Water and sanitation","Rain tanks, twin-pit toilets, greywater beds.","#water","Subject"],["Kitchen and hearth","Smoke, stoves, an earth oven, gas safety.","#kitchen","Subject"],["Bathroom","Floor falls, splash linings, solar hot water.","#bath","Subject"],["Repair and maintenance","Read the damage, patch a hollow, a year of upkeep.","#repair","Subject"],["Tools","The kit for each technique, and lime safety.","#tools","Subject"],["Costing","Quantities, person-days and your prices.","#costing","Subject"]];
+const SUBJ=[["Site & climate","Sun, wind, rain and shade.","#sun","3D study"],["Soil","Clay, sand, silt, and how to read them.","#soil","3D study"],["Foundations and plinths","Rubble trench, piles for black cotton soil, rising damp.","#foundations","Subject"],["Openings and arches","Where openings go, lintels, bands, arch thrust.","#openings","Subject"],["Walls","Cob, adobe, rammed earth, CSEB, straw, bamboo.","#walls","3D study"],["Built forms","Bhunga, kath-kuni, tulou, pueblo, domes, stilt houses and more.","#forms","3D gallery"],["Plasters and binders","How clay, lime, gypsum and pozzolans set; coats; additives.","#binders","Subject"],["Roofs","Thatch, tile, living, mud phuska, vaults; pitch and heat.","#roofs","Subject"],["Material data","Every number, its test and its source.","#data","Reference"],["Floors","Earth, lime, IPS, Athangudi, Kota; feel underfoot.","#floors","Subject"],["Timber and bamboo","Treatment, joints, strength, durability.","#timber","Subject"],["Finishes","Limewash, clay paint, casein, oils; breathability.","#finishes","Subject"],["Passive design","Mass, time lag, shade, ventilation.","#heat","Study"],["Structure and earthquakes","Shake a wall, five failures and their fixes, zone rules.","#structure","3D study"],["Building physics","Heat and vapour through walls, comfort, humidity, air.","#physics","Study"],["Water and sanitation","Rain tanks, twin-pit toilets, greywater beds.","#water","Subject"],["Kitchen and hearth","Smoke, stoves, an earth oven, gas safety.","#kitchen","Subject"],["Bathroom","Floor falls, splash linings, solar hot water.","#bath","Subject"],["Plumbing","Tank height, drain falls, traps and vents.","#plumbing","Subject"],["Wiring, earthing and solar","The board, RCCB, earth pits, rooftop solar.","#power","Subject"],["Repair and maintenance","Read the damage, patch a hollow, a year of upkeep.","#repair","Subject"],["Tools","The kit for each technique, and lime safety.","#tools","Subject"],["Costing","Quantities, person-days and your prices.","#costing","Subject"]];
 const STAGES=[
  ["Before the ground is broken","Read the site","Walk it through a monsoon if you can. Note where water runs and pools, where the sun sets in May, and which way the evening breeze comes from.","Turn the long walls to face north and south: walls facing those ways take the least sun, east and west faces the most (Eco-Niwas Samhita; see Sun and shade)."],
  ["Before the ground is broken","Test the soil","Dig past the topsoil, run jar and ribbon tests, make test bricks and leave them in the rain.","Topsoil holds organic matter that rots; build only with the subsoil beneath it."],
@@ -2869,7 +2938,7 @@ function drawDecs(){
 drawDecMap();drawDecs();
 
 
-const GL=[["Adobe", "Walls", "Sun-dried block of earth and straw, laid in earth mortar."], ["Batter", "Walls", "A wall face that leans inward as it rises, thicker at the base."], ["Black cotton soil", "Soil", "Dark, montmorillonite-rich clay of the Deccan that swells when wet and cracks deeply when dry."], ["Bond beam", "Structure", "See ring beam."], ["Capillary break", "Foundation", "A layer at the top of the plinth that stops ground moisture rising into the wall."], ["Chulha", "Kitchen", "An Indian cooking stove of clay, brick or metal, burning wood, dung or crop waste."], ["Clay", "Soil", "Particles below 0.002 mm; the binder in all earth building. Sticky when wet, hard when dry."], ["Cob", "Walls", "Monolithic wall of earth, sand and straw built wet by hand in lifts."], ["Cross-ventilation", "Passive", "Openings on opposite walls so wind pulls air through a room."], ["CSEB", "Walls", "Compressed stabilised earth block, pressed with 5–8 % cement or lime."], ["Daub", "Walls", "Sticky clay and straw pressed into a woven wattle."], ["Decrement", "Passive", "How much a wall shrinks the outdoor temperature swing before it reaches the room."], ["Drop test", "Soil", "A ball of moist soil dropped from shoulder height: it shatters if lean, flattens whole if fat."], ["Earth oven", "Kitchen", "A dome of sand and clay over a brick floor, fired with wood, that bakes in the heat its walls have stored."], ["Eaves", "Roofs", "The overhanging edge of the roof that throws rain clear of the walls."], ["Fall", "Bathroom", "The slope given to a wet floor so water runs to the drain, written as 1 in 60: one unit down for every sixty across."], ["Fat soil", "Soil", "Soil with a high clay content; strong but shrinks and cracks."], ["Floor trap", "Bathroom", "The drain in a bathroom floor, with a bend that holds water to keep smells out; also called a nahani trap."], ["Flue", "Kitchen", "The pipe or channel that carries smoke from a fire out above the roof."], ["Formwork", "Walls", "Temporary shuttering that holds rammed earth while it is compacted."], ["Hydraulic lime", "Binders", "Lime with clay impurities that sets partly with water, faster and harder than air lime."], ["Jar test", "Soil", "Shaking soil and water in a jar to read the sand, silt and clay layers as they settle."], ["Kankar", "Binders", "Lime-rich nodules dug from Indian soils, burned as a traditional source of lime."], ["Lean soil", "Soil", "Sandy soil with little clay; crumbles, needs more clay to bind."], ["Lift", "Walls", "One layer of cob or rammed earth, built and left to firm before the next."], ["Light straw-clay", "Walls", "Straw coated in clay slip and packed into forms; a light, insulating infill."], ["Lime cycle", "Binders", "Limestone burned to quicklime, slaked to putty, then hardening back to limestone in the air."], ["Lime putty", "Binders", "Slaked lime aged under water; the classic binder for plaster and limewash."], ["Limewash", "Finishes", "Thin lime and water paint; renewed every few years, it is the wall's raincoat."], ["Lintel", "Structure", "Beam spanning the top of an opening."], ["Murram", "Soil", "Weathered lateritic gravel and clay found under red soils; good bearing and fill."], ["Nubian vault", "Roofs", "Mud-brick vault laid leaning against an end wall, built without formwork."], ["Overhang", "Roofs", "How far the eaves reach past the wall; 600 mm or more for earth walls."], ["Plinth", "Foundation", "The raised base of the wall, usually stone, that keeps earth above splash-back."], ["Rammed earth", "Walls", "Damp soil compacted in layers inside formwork."], ["Ribbon test", "Soil", "Squeezing moist soil between thumb and finger: a longer ribbon means more clay."], ["Ring beam", "Structure", "Continuous beam on top of all walls, tying them together and holding the roof."], ["Rocket stove", "Kitchen", "A wood stove with a short insulated chimney straight above the fire, so the smoke burns before it reaches the pot."], ["Rubble trench", "Foundation", "Foundation trench packed with stone that drains instead of wicking water."], ["Sand", "Soil", "Particles 0.06–2 mm; the aggregate that gives earth its body and limits shrinkage."], ["Silt", "Soil", "Particles 0.002–0.06 mm; feels floury; weak and moisture-sensitive in walls."], ["Slaking", "Binders", "Adding water to quicklime, which reacts hotly to make hydrated lime or putty."], ["Smoke hood", "Kitchen", "A canopy over a cooking fire that gathers the smoke into a flue."], ["Splash zone", "Bathroom", "The walls and floor that water from a tap or shower reaches; they need a lining water cannot soak into."], ["Straw bale", "Walls", "Compressed bales of straw stacked and plastered; the most insulating natural wall."], ["Tadelakt", "Finishes", "Moroccan lime plaster polished with a stone and sealed with black soap."], ["Thermal mass", "Passive", "Heavy material that stores heat and releases it slowly, evening out day and night."], ["Time lag", "Passive", "The hours between the hottest moment outside and the hottest moment on the inside face of a wall."], ["Water seal", "Bathroom", "The water held in the bend of a trap; at least 50 mm of it keeps drain gases out."]];
+const GL=[["Adobe", "Walls", "Sun-dried block of earth and straw, laid in earth mortar."], ["Batter", "Walls", "A wall face that leans inward as it rises, thicker at the base."], ["Black cotton soil", "Soil", "Dark, montmorillonite-rich clay of the Deccan that swells when wet and cracks deeply when dry."], ["Bond beam", "Structure", "See ring beam."], ["Capillary break", "Foundation", "A layer at the top of the plinth that stops ground moisture rising into the wall."], ["Chulha", "Kitchen", "An Indian cooking stove of clay, brick or metal, burning wood, dung or crop waste."], ["Clay", "Soil", "Particles below 0.002 mm; the binder in all earth building. Sticky when wet, hard when dry."], ["Cob", "Walls", "Monolithic wall of earth, sand and straw built wet by hand in lifts."], ["Conduit", "Wiring", "A pipe that carries cables inside a wall, so they can be pulled out and replaced."], ["Cross-ventilation", "Passive", "Openings on opposite walls so wind pulls air through a room."], ["CSEB", "Walls", "Compressed stabilised earth block, pressed with 5–8 % cement or lime."], ["Daub", "Walls", "Sticky clay and straw pressed into a woven wattle."], ["Decrement", "Passive", "How much a wall shrinks the outdoor temperature swing before it reaches the room."], ["Drop test", "Soil", "A ball of moist soil dropped from shoulder height: it shatters if lean, flattens whole if fat."], ["Earth oven", "Kitchen", "A dome of sand and clay over a brick floor, fired with wood, that bakes in the heat its walls have stored."], ["Earth pit", "Wiring", "A buried plate, pipe or rod, with its connection, that carries fault current safely into the ground."], ["Eaves", "Roofs", "The overhanging edge of the roof that throws rain clear of the walls."], ["Fall", "Bathroom", "The slope given to a wet floor so water runs to the drain, written as 1 in 60: one unit down for every sixty across."], ["Fat soil", "Soil", "Soil with a high clay content; strong but shrinks and cracks."], ["Floor trap", "Bathroom", "The drain in a bathroom floor, with a bend that holds water to keep smells out; also called a nahani trap."], ["Flue", "Kitchen", "The pipe or channel that carries smoke from a fire out above the roof."], ["Formwork", "Walls", "Temporary shuttering that holds rammed earth while it is compacted."], ["Gully trap", "Plumbing", "A trap outside the house that takes kitchen, bath and rain water into the drain."], ["Head", "Plumbing", "The height of the water in a tank above a tap; each metre gives about 0.1 bar of pressure."], ["Hydraulic lime", "Binders", "Lime with clay impurities that sets partly with water, faster and harder than air lime."], ["Inspection chamber", "Plumbing", "A small pit on a drain run, at a junction or bend, where the drain can be seen and rodded."], ["Jar test", "Soil", "Shaking soil and water in a jar to read the sand, silt and clay layers as they settle."], ["Kankar", "Binders", "Lime-rich nodules dug from Indian soils, burned as a traditional source of lime."], ["Lean soil", "Soil", "Sandy soil with little clay; crumbles, needs more clay to bind."], ["Lift", "Walls", "One layer of cob or rammed earth, built and left to firm before the next."], ["Light straw-clay", "Walls", "Straw coated in clay slip and packed into forms; a light, insulating infill."], ["Lime cycle", "Binders", "Limestone burned to quicklime, slaked to putty, then hardening back to limestone in the air."], ["Lime putty", "Binders", "Slaked lime aged under water; the classic binder for plaster and limewash."], ["Limewash", "Finishes", "Thin lime and water paint; renewed every few years, it is the wall's raincoat."], ["Lintel", "Structure", "Beam spanning the top of an opening."], ["MCB", "Wiring", "Miniature circuit breaker: a switch that cuts one circuit when too much current flows."], ["Murram", "Soil", "Weathered lateritic gravel and clay found under red soils; good bearing and fill."], ["Net metering", "Wiring", "A two-way meter: the solar power you send to the grid is set against the power you take from it."], ["Nubian vault", "Roofs", "Mud-brick vault laid leaning against an end wall, built without formwork."], ["Overhang", "Roofs", "How far the eaves reach past the wall; 600 mm or more for earth walls."], ["Plinth", "Foundation", "The raised base of the wall, usually stone, that keeps earth above splash-back."], ["Rammed earth", "Walls", "Damp soil compacted in layers inside formwork."], ["RCCB", "Wiring", "Residual current circuit breaker: cuts the supply when current leaks to earth; 30 mA protects people."], ["Ribbon test", "Soil", "Squeezing moist soil between thumb and finger: a longer ribbon means more clay."], ["Ring beam", "Structure", "Continuous beam on top of all walls, tying them together and holding the roof."], ["Rocket stove", "Kitchen", "A wood stove with a short insulated chimney straight above the fire, so the smoke burns before it reaches the pot."], ["Rubble trench", "Foundation", "Foundation trench packed with stone that drains instead of wicking water."], ["Sand", "Soil", "Particles 0.06–2 mm; the aggregate that gives earth its body and limits shrinkage."], ["Silt", "Soil", "Particles 0.002–0.06 mm; feels floury; weak and moisture-sensitive in walls."], ["Slaking", "Binders", "Adding water to quicklime, which reacts hotly to make hydrated lime or putty."], ["Smoke hood", "Kitchen", "A canopy over a cooking fire that gathers the smoke into a flue."], ["Splash zone", "Bathroom", "The walls and floor that water from a tap or shower reaches; they need a lining water cannot soak into."], ["Straw bale", "Walls", "Compressed bales of straw stacked and plastered; the most insulating natural wall."], ["Tadelakt", "Finishes", "Moroccan lime plaster polished with a stone and sealed with black soap."], ["Thermal mass", "Passive", "Heavy material that stores heat and releases it slowly, evening out day and night."], ["Time lag", "Passive", "The hours between the hottest moment outside and the hottest moment on the inside face of a wall."], ["Vent pipe", "Plumbing", "A pipe from the drains up above the roof that lets air in and drain gases out, so traps keep their water."], ["Water seal", "Bathroom", "The water held in the bend of a trap; at least 50 mm of it keeps drain gases out."]];
 const cats=['All',...new Set(GL.map(g=>g[1]))];let filt='All';const gf=$('glFilters');
 cats.forEach(c=>{const b=document.createElement('button');b.className='chip';b.textContent=c;b.dataset.c=c;b.onclick=()=>setFilter(c);gf.appendChild(b)});
 function setFilter(c){filt=c;gf.querySelectorAll('.chip').forEach(b=>b.setAttribute('aria-pressed',b.dataset.c===filt));renderGl()}
@@ -5003,7 +5072,7 @@ const CHAPTERS=[
  ['Roofs and floors',[['roofs','Roofs','Eight roofs and their heat'],['floors','Floors','Earth to Kota; the feel underfoot']]],
  ['Materials',[['lime','Lime','From stone back to stone'],['binders','Plasters and binders','How binders set; coats; additives'],['finishes','Finishes','Limewash, clay paint, oils'],['timber','Timber and bamboo','Treatment, joints, strength']]],
  ['Comfort',[['sun','Sun and shade','Sun path and eaves'],['heat','Thermal mass','The wall as a clock'],['physics','Building physics','Heat, vapour, humidity, air']]],
- ['Services and upkeep',[['water','Water and sanitation','Rain tanks, toilets, greywater'],['kitchen','Kitchen and hearth','Smoke out; stoves; an earth oven'],['bath','Bathroom','Floor falls, linings, hot water'],['repair','Repair and maintenance','Cracks, damp, a yearly round']]],
+ ['Services and upkeep',[['water','Water and sanitation','Rain tanks, toilets, greywater'],['kitchen','Kitchen and hearth','Smoke out; stoves; an earth oven'],['bath','Bathroom','Floor falls, linings, hot water'],['plumbing','Plumbing','Tank height, drains, traps, vents'],['power','Wiring, earthing and solar','The board, earth pits, rooftop solar'],['repair','Repair and maintenance','Cracks, damp, a yearly round']]],
  ['Tools and money',[['tools','Tools','The kit, technique by technique'],['costing','Costing','Quantities, days and money']]],
  ['Whole houses',[['forms','Built forms','Bhunga, tulou, pueblo and more'],['choices','Why this, not that','Eight decisions for one house']]],
  ['Reference',[['data','Material data','Every number with its source'],['library','Library','Every source, and where it is used'],['glossary','Glossary','The words of the craft'],['coverage','Coverage','What is covered, how sure, what is missing']]]
@@ -5072,6 +5141,8 @@ const TLDR={
  water:[['0.4 L per m²','of roof, at least, to divert as first flush'],['3 m to 500 m','toilet pit to well: Indian standard to WEDC gravel; the ground decides'],['5–10 m² a person','of planted gravel cleans the greywater']],
  kitchen:[['2.9 million deaths','a year from smoky cooking fires, 2021 (WHO)'],['75 % less smoke','under a hood and flue in rural Kenya (ITDG)'],['63 % of the dome','the height of an earth oven’s door (Denzer)']],
  bath:[['1 in 50 to 1 in 80','the fall of a wet floor to its drain (BRANZ, NCC)'],['1.8 m','of impervious lining round a shower or tap (BRANZ)'],['100 L a day','of solar hot water for four or five people (TERI)']],
+ plumbing:[['0.1 bar a metre','of height between the water in the tank and the tap'],['1 in 40','the usual fall of a 100 mm drain; 1 in 57 at the least (IS 1742)'],['50 mm of water','in every WC and floor trap (IS 5329)']],
+ power:[['30 mA','the leak that trips an RCCB, the breaker that protects people'],['Two earth pits','separate earth connections (CEA)'],['10 m² a kW','of shadow-free roof for solar, making 4–5.5 units a clear day (MNRE)']],
  repair:[['Water first','too much water is the main cause of failure in earth walls'],['25 mm layers','to fill a hollow, each left to dry before the next'],['November–February','in Hyderabad: the season to patch and limewash']],
  tools:[['A tarp and your feet','are most of the kit for cob'],['850 blocks a day','from a hand-lever press and a crew of seven'],['Goggles for lime','it burns eyes: flush with plenty of water and get help']],
  costing:[['Labour is the bill','earth from the site costs little; the days are the money'],['₹580 and ₹520','a day for a mason and a helper, Telangana schedule 2022-23'],['Your pace','drag your crew’s daily output and watch the total move']],
@@ -5175,7 +5246,10 @@ const QS=[
  ['What tools do I need?','Pick a technique and its kit lights up.','tools',''],
  ['In what order do I build?','Fourteen stages, from the site to limewash.','sequence',''],
  ['How do I get the smoke out of my kitchen?','A hood and flue cut it by about three quarters; a clean fuel does better.','kitchen','Get the smoke out'],
- ['Can an earth house have a bathroom?','Yes: slope the floor to a trap, and line every wall the water reaches.','bath','Slope the floor, line the splashes']
+ ['Can an earth house have a bathroom?','Yes: slope the floor to a trap, and line every wall the water reaches.','bath','Slope the floor, line the splashes'],
+ ['How high should the water tank be?','Each metre gives 0.1 bar; a shower wants about 5 m.','plumbing','How high should the tank be?'],
+ ['How do I wire an earth house safely?','Conduit in the walls, an RCCB at the board, two earth pits.','power','From the meter to the socket'],
+ ['How much solar do I need?','About 10 m² of roof a kW, 4–5.5 units a clear day.','power','Solar on your roof']
 ];
 function goTopic(sec,h){const s=document.getElementById(sec);if(!s)return;if(h){const t=[...s.querySelectorAll('h3.sub3')].find(x=>x.textContent.trim()===h);if(t){goTo('#'+sec,t);t.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'start'});return}}goTo('#'+sec)}
 function drawQs(){$('qsList').innerHTML=QS.map(([q,a,sec,h],i)=>`<button class="qcard" data-q="${i}"><b>${q}</b><span>${a}</span><small>${SECNAME[sec]||sec}${h?' · '+h:''} →</small></button>`).join('');
@@ -5221,9 +5295,9 @@ try{QS.forEach(([q,a,sec,h])=>addIdx('Question',q,a,()=>goTopic(sec,h),sec));PLA
  if(sv&&CLZ[sv.clim]&&ZRULE[sv.zone]&&typeof sv.lat==='number')setPlace(sv,false);else setPlace({},false);
  let w='place';try{w=localStorage.getItem('ei-way')||'place'}catch(e){}wayTab(['place','question','part','subject'].includes(w)?w:'place')}
 /* ================= coverage ================= */
-const COVMAP={sequence:['Build it'],sun:['Sun and shade'],forms:['Built forms'],soil:['Soil'],lime:['Lime'],heat:['Thermal mass'],binders:['Binders','Plasters'],walls:['Walls'],roofs:['Roofs'],floors:['Floors'],timber:['Timber and bamboo'],finishes:['Finishes'],foundations:['Foundations'],openings:['Openings'],structure:['Structure'],physics:['Building physics'],water:['Water and sanitation'],kitchen:['Kitchen and hearth'],bath:['Bathroom'],repair:['Repair'],tools:['Tools'],costing:['Costing']};
+const COVMAP={sequence:['Build it'],sun:['Sun and shade'],forms:['Built forms'],soil:['Soil'],lime:['Lime'],heat:['Thermal mass'],binders:['Binders','Plasters'],walls:['Walls'],roofs:['Roofs'],floors:['Floors'],timber:['Timber and bamboo'],finishes:['Finishes'],foundations:['Foundations'],openings:['Openings'],structure:['Structure'],physics:['Building physics'],water:['Water and sanitation'],kitchen:['Kitchen and hearth'],bath:['Bathroom'],plumbing:['Plumbing'],power:['Wiring and solar'],repair:['Repair'],tools:['Tools'],costing:['Costing']};
 const COVNEXT=[['India','Rajasthani jhonpa (Barmer)','Kerala laterite and mud house','Spiti flat-roofed mud house (Himachal)','Thathara timber-and-stone house (Chamba)','Koti Banal timber-laced towers (Uttarakhand)'],['Elsewhere','Icelandic turf house','Yaodong cave house (Loess Plateau, China)','Rammed-earth kasbah (Morocco)','Devon cob house (England)','Japanese minka with earth walls','Earthship (New Mexico)']];
-const COVGAP=["Plumbing: supply pipes, the well or borewell, the pump and tank, drains, traps and inspection chambers", "Wiring, earthing and solar power", "Doors and windows: frames, shutters, glass, mesh and grills", "Designing the house: rooms, layout, outdoor rooms, drawings and models", "The whole budget: roof, doors and windows, floors, kitchen, bathroom and services", "Permissions and standards: panchayat approval, and the IS codes for earth and bamboo in one place", "Fire safety, above all for thatch and hearths", "Upper floors, lofts, ceilings and stairs", "Insulation beyond straw: rice husk, hemp-lime", "Composting toilets, septic tanks and biogas", "Indian flat roofs: Madras terrace and jack arch", "Araish and other Indian lime finishes; lac, linseed and beeswax on wood", "Site and landscape: zones, swales, windbreaks, trees and ponds", "Cooling a house you already have", "Daylight and skylights", "Finding builders, materials and training"];
+const COVGAP=["Doors and windows: frames, shutters, glass, mesh and grills", "Designing the house: rooms, layout, outdoor rooms, drawings and models", "The whole budget: roof, doors and windows, floors, kitchen, bathroom and services", "Permissions and standards: panchayat approval, and the IS codes for earth and bamboo in one place", "Fire safety, above all for thatch and hearths", "Upper floors, lofts, ceilings and stairs", "Insulation beyond straw: rice husk, hemp-lime", "Composting toilets, septic tanks and biogas", "Indian flat roofs: Madras terrace and jack arch", "Araish and other Indian lime finishes; lac, linseed and beeswax on wood", "Site and landscape: zones, swales, windbreaks, trees and ponds", "Cooling a house you already have", "Daylight and skylights", "Finding builders, materials and training"];
 /* ================= library ================= */
 function libNorm(u){let s=String(u||'').trim();try{const x=new URL(s);x.hash='';for(const p of ['ya_src','fwd','utm_source','utm_medium','utm_campaign'])x.searchParams.delete(p);if(x.protocol==='http:')x.protocol='https:';x.hostname=x.hostname.replace(/^www\./,'');s=x.href}catch(e){}if(/[^/]\/$/.test(s)&&!/^https?:\/\/[^/]+\/$/.test(s))s=s.slice(0,-1);try{s=decodeURI(s)}catch(e){}return s}
 function libSame(){return[['https://api.jreda.com/all-uploaded-img/Directory/63440d90e72c1.pdf','https://policy.asiapacificenergy.org/sites/default/files/Eco-Niwas%20Samhita%202018%20%28Energy%20Conservation%20Building%20Code%20for%20Residential%20Buildings%29.pdf']]}
@@ -5248,8 +5322,8 @@ function libKind(u,t){const h=libHost(u),p=(()=>{try{return decodeURI(new URL(u)
   if(/climate-zone|readthedocs|iesve/.test(h))return'data';
   if(/wikipedia\.org|fibis|sahapedia|dome\.mit\.edu|akvopedia|britannica|wikivoyage|archnet|infralens|insideinside/.test(h))return'ref';
   if(/kuidfc|cpwd|schedule of rates/.test(s))return'gov';
-  if(/auroville|mikewye|lime\.org|asbp|buildingconservation|ihbc|humanitarianlibrary|library\.ph|core2learn|earthbag|naturalbuildingblog|passipedia|lehmtonerde|paint|guadua|apti|midlandbrick|thatroundhouse|blurringboundaries|calearth|limeworks|secil|nzeb\.in|esurv|eamta|studiomatrx|specifiedby|endeavourcentre|dancingrabbit|keim\.com|heritage-consulting|lowimpact|ideassonline|tatasteel|leinos|colouredearth|bioenergylists|aprovecho|practicalaction/.test(h))return'practice';
-  if(/who\.int|unesco\.org|fao\.org|\.gov$|\.gov\.|\.nic\.in$|council|nps\.gov|citedelarchitecture|niua|odishabamboo/.test(h))return'gov';
+  if(/auroville|mikewye|lime\.org|asbp|buildingconservation|ihbc|humanitarianlibrary|library\.ph|core2learn|earthbag|naturalbuildingblog|passipedia|lehmtonerde|paint|guadua|apti|midlandbrick|thatroundhouse|blurringboundaries|calearth|limeworks|secil|nzeb\.in|esurv|eamta|studiomatrx|specifiedby|endeavourcentre|dancingrabbit|keim\.com|heritage-consulting|lowimpact|ideassonline|tatasteel|leinos|colouredearth|bioenergylists|aprovecho|practicalaction|indianplumbing/.test(h))return'practice';
+  if(/who\.int|jbvnl|unesco\.org|fao\.org|\.gov$|\.gov\.|\.nic\.in$|council|nps\.gov|citedelarchitecture|niua|odishabamboo/.test(h))return'gov';
   if(/globalquakemodel|world-housing|isprs|copernicus|mdpi|scirp|heronjournal|repositor|orca\.|eula\.eu|ees\.ac\.uk|igs\.org|\.ac\.uk$|\.ac\.in$|\.edu$|\.edu\.|isric|branz|biblat|sciencedirect|springer|tandfonline|researchgate|run\.unl|hal\.|core\.ac|pressbooks|escholarship|astron-soc|kglmeridian|knob\.nl|bme\.hu|lib\.cas\.cz|cvut\.cz|sciepub|iieta|ipn\.mx|cambridge\.org|dspace|uevora|arxiv|frontiersin|uclouvain|aau\.dk|kirj\.ee|matec|joais|epub\.|uni-muenchen|redalyc|cirad|lboro|susana|level\.org\.nz/.test(h))return'research';
   if(/\b(is|sp|nbc)\s?\d{2,5}\b|eco-niwas|residential code|\ben\s?459|\bastm\b/.test(s))return'code';
   return'press'}
@@ -5829,7 +5903,7 @@ function drawMHCard(){const el=$('mhCard');if(!el)return;const q=mhQ(),r=mhRoof(
    <div class="pl-tags"><span>${c.n}</span><span>Zone ${z}</span><span>${PLACE.lat.toFixed(1)}° N</span><span>${sn}</span><span>${MH.people} ${MH.people>1?'people':'person'}</span></div>
    <ul class="mh-flags">${fl.map(([t,x])=>`<li class="${t}">${x}</li>`).join('')}</ul>
    <div class="pl-k">Set across the book</div>
-   <ul class="mh-set"><li>${go('#walls','Walls')} ${wl}, ${Math.round(q.t*1000)} mm</li><li>${go('#roofs','Roofs')} ${lcn(r.n)}</li><li>${go('#foundations','Foundations')} the footing width for ${wl}</li><li>${go('#structure','Structure')} zone ${z}</li><li>${go('#sun','Sun and shade')} ${PLACE.lat.toFixed(1)}° N</li><li>${go('#water','Water')} ${MH.people} ${MH.people>1?'people':'person'}, ${Math.round(ra.plan/5)*5} m² of roof</li><li>${go('#bath','Bathroom')} solar hot water for ${MH.people} ${MH.people>1?'people':'person'}</li><li>${go('#costing','Costing')} ${MH.L.toFixed(1)} × ${MH.W.toFixed(1)} m, ${MH.rooms} room${MH.rooms>1?'s':''}</li><li>${go('#sequence','Build it')} every stage, worked out for this house</li></ul>
+   <ul class="mh-set"><li>${go('#walls','Walls')} ${wl}, ${Math.round(q.t*1000)} mm</li><li>${go('#roofs','Roofs')} ${lcn(r.n)}</li><li>${go('#foundations','Foundations')} the footing width for ${wl}</li><li>${go('#structure','Structure')} zone ${z}</li><li>${go('#sun','Sun and shade')} ${PLACE.lat.toFixed(1)}° N</li><li>${go('#water','Water')} ${MH.people} ${MH.people>1?'people':'person'}, ${Math.round(ra.plan/5)*5} m² of roof</li><li>${go('#bath','Bathroom')} solar hot water for ${MH.people} ${MH.people>1?'people':'person'}</li><li>${go('#power','Solar')} panels on your ${lcn(r.n)}${/roof$/i.test(r.n)?'':' roof'}</li><li>${go('#plumbing','Plumbing')} a day’s water: ${MH.people*135} L</li><li>${go('#costing','Costing')} ${MH.L.toFixed(1)} × ${MH.W.toFixed(1)} m, ${MH.rooms} room${MH.rooms>1?'s':''}</li><li>${go('#sequence','Build it')} every stage, worked out for this house</li></ul>
    ${PLACE.name==='Hyderabad'?'':'<p class="fine">The rainfall in Water and sanitation is still Hyderabad’s: size the tank with your own rain figures.</p>'}`;
   const o=mhCost(),st=cqStages(q,o),it=cqItems(q,st.reduce((a,x)=>a+x[1],0),st.reduce((a,x)=>a+x[2],0)),tot=it.reduce((a,x)=>a+x.amt,0),miss=it.some(x=>!x.has);
   readout($('mhOut'),[['Floor inside',f1(q.A)+' m²'],['Earth for the walls',f1(q.mass/1000)+' t'],['Roof',Math.round(ra.slope)+' m²'],['Shell, priced so far',inr(tot),miss?'warn':''],['Build time',Math.round(C.end/7)+' weeks'],['Roof on by',fmtD(C.at(C.roofEnd)),C.wetDays?'warn':'good']])}
@@ -5927,11 +6001,11 @@ const GD=[
    miss:['Leaving the roof until the rains have started.','Short eaves: the wall needs "a good hat" (East Dorset).'],
    read:[['#roofs','Roofs'],['#b-cal','Your calendar']]}},
  q=>({lead:'Chase in conduit and set pipes in sleeves before plastering.',
-  need:['Conduit and sleeves for every run you have drawn'],time:'A few days (our estimate)',low:1,
-  steps:['Draw every switch, socket, light and tap on the plan.','Cut the chases and set the conduits and sleeves now: earth walls are easy to cut now and messy to cut later.','Set the bathroom’s floor trap and the kitchen sink’s waste now, low enough for the floor to fall to them (Bathroom).','Plan the hearth’s hood or chimney before the roof closes over it (Kitchen and hearth).'],
+  need:['Conduit and sleeves for every run you have drawn','Flush boxes made for masonry, and wooden blocks to set in for fixings (Level)'],time:'A few days (our estimate)',low:1,
+  steps:['Draw every switch, socket, light and tap on the plan.','Cut the chases and set the conduits and sleeves now: earth walls are easy to cut now and messy to cut later.','Set the bathroom’s floor trap and the kitchen sink’s waste now, low enough for the floor to fall to them (Bathroom).','Plan the hearth’s hood or chimney before the roof closes over it (Kitchen and hearth).','Lay the drains to their falls, with a chamber at every bend, and dig the two earth pits (Plumbing; Wiring, earthing and solar).'],
   checks:['Every run on the plan is chased and fixed before any plaster goes on.'],
-  miss:['Cutting chases after plastering.'],note:'Wiring and plumbing in earth walls is not yet covered in depth: see Coverage.',
-  read:[['#kitchen','Kitchen and hearth'],['#bath','Bathroom'],['#coverage','Coverage']]}),
+  miss:['Cutting chases after plastering.','Water pipes buried in an earth wall, where a leak goes unseen (Plumbing).','A board with no RCCB, or a single earth (Wiring, earthing and solar).'],
+  read:[['#plumbing','Plumbing'],['#power','Wiring and solar'],['#kitchen','Kitchen and hearth'],['#bath','Bathroom']]}),
  q=>({lead:'Gravel bed, then rammed layers, then a fine finish coat, oiled once dry.',
   need:[`<b>${f1(q.A)} m²</b> of floor`,`A finish coat 12–25 mm thick: about <b>${f1(q.A*.012)}–${f1(q.A*.025)} m³</b> of sand, clay and straw (Floors)`,'Linseed oil for four coats'],
   time:'It dries in about a week in summer, much longer in cold; then four coats of oil, 1–2 days apart (Floors)',
@@ -6267,6 +6341,241 @@ function roomsBoot(){
   /* the data table, library and coverage were drawn before these rows and sources were added */
   try{drawProps();drawLibrary();drawCoverage()}catch(e){console.error(e)}}
 
+/* ================= plumbing; wiring, earthing and solar ================= */
+Object.assign(SRC,{
+ stmgrav:["Studio Matrx: gravity-fed plumbing in Indian homes","https://www.studiomatrx.org/guides/gravity-fed-plumbing-system-india"],
+ stmdrain:["Studio Matrx: building drainage, after IS 1742 and IS 5329","https://www.studiomatrx.org/students/interior-services-1-plumbing/building-drainage"],
+ stmext:["Studio Matrx: external underground drainage","https://www.studiomatrx.org/guides/external-underground-drainage-india"],
+ ipavent:["Indian Plumbing Association (2021): vents, after UIPC-I 2017","https://indianplumbing.org/IPA_Old_site/img/activities/IPPL/2021/session_presentations/Vents-11th-Dec-2021.pdf"],
+ strawworks:["Straw Works (2012): fixtures, fittings and services in straw bale walls","https://cms.lowimpact.org/wp-content/uploads/Fixtures-Fittings-and-Services.pdf"],
+ cpwdel:["CPWD General Specifications for Electrical Works, Part 1 Internal (2013)","https://dgll.nic.in/sites/default/files/2023-06/CPWD%20%E0%A4%95%E0%A5%87%20General%20Specifications%20for%20Electrical%20Works%20%28Part-1%20Internal%29%202013_compressed.pdf"],
+ stmwire:["Studio Matrx: home electrical wiring guide for India","https://www.studiomatrx.org/guides/home-electrical-wiring-guide-india"],
+ bs7671:["Professional Electrician: BS 7671 regulation 411.3.3, RCDs for socket outlets","https://professional-electrician.com/?p=45180"],
+ tnerc:["Powerline (2021): TNERC makes residual current devices mandatory for new connections","https://powerline.net.in/2021/07/06/tnerc-makes-installation-of-new-device-mandatory-for-power-connections/"],
+ ceawiki:["Wikipedia: Central Electricity Authority Regulations (safety, 2010)","https://en.wikipedia.org/wiki/Central_Electricity_Authority_Regulations"],
+ is3043:["IS 3043:1987, code of practice for earthing","https://law.resource.org/pub/in/bis/S05/is.3043.1987.pdf"],
+ mnrefaq:["MNRE: frequently asked questions on grid-connected rooftop solar, for consumers","https://jbvnl.co.in/SOLAR/MNRE FAQ for consumer.pdf"],
+ psgpune:["Pune district: PM Surya Ghar Muft Bijli Yojana","https://pune.gov.in/scheme/pm-surya-gharmuft-bijli-yojna/"],
+ psgcfa:["JBVNL: subsidy structure and suitable capacity under PM Surya Ghar","https://jbvnl.co.in/SOLAR/CFA_structure for PM Suryaghar.pdf"],
+ eiatilt:["US EIA (2018): most fixed-tilt solar systems are tilted 20 to 30 degrees","https://www.eia.gov/TODAYinENERGY/detail.php?id=37372"],
+ levelwire:["Level (BRANZ): wiring installation","https://www.level.org.nz/energy/electrical-design/wiring/wiring-installation/"],
+ is1172:["IS 1172:1993, basic requirements for water supply, drainage and sanitation","https://law.resource.org/pub/in/bis/S03/is.1172.1993.pdf"],
+ ksandk:["K&S Partners: electrical installations under the CEA Regulations, 2023","https://ksandk.com/md/energy/electrical-installations-cea-regulations-2023/"]
+});
+PROPS.push(
+ ["Plumbing","Water pressure","Per metre of height, from the water in the tank down to the tap","about 0.1","bar","Physics: 9.81 kPa a metre of water; Studio Matrx table","stmgrav","High"],
+ ["Plumbing","Shower on a gravity tank","Height of water above the shower: adequate / good","5 / 8","m","Studio Matrx, indicative","stmgrav","Low"],
+ ["Plumbing","Instant geysers and mixers","Pressure they need to start","0.3–0.5","bar","Studio Matrx, indicative","stmgrav","Low"],
+ ["Plumbing","Household water","Planned demand in homes with full plumbing","135","L a person a day","CPHEEO guidance, via Studio Matrx","stmgrav","Medium"],
+ ["Plumbing","Household water, IS 1172","A person a day: house connection without full flushing / towns with full flushing","70–100 / 150–200, or 135 for small houses","L","IS 1172:1993 Table 1; the scan is hard to read","is1172","Medium"],
+ ["Plumbing","Supply pipes (CPVC or uPVC)","Tank outlet / run along the house / each fitting","32–40 / 25 / 15–20","mm","Studio Matrx, indicative","stmgrav","Low"],
+ ["Plumbing","Drain, 100 mm pipe","Fall: the least / rule of thumb","1 in 57 / 1 in 40","","IS 1742 cl. 4.6.1.2, via Studio Matrx","stmdrain","Medium"],
+ ["Plumbing","Drain, 150 mm pipe","Fall: the least / rule of thumb","1 in 100 / 1 in 60","","IS 1742, via Studio Matrx","stmext","Medium"],
+ ["Plumbing","Drains","Self-cleansing speed, half full","0.75","m/s","IS 1742, via Studio Matrx","stmdrain","Medium"],
+ ["Plumbing","Trap water seal","WC and floor trap / other fittings","50 / 40","mm","IS 5329 Table 2, via Studio Matrx","stmdrain","Medium"],
+ ["Plumbing","Inspection chambers","Where / spacing on a straight run","every junction, bend, change of slope or pipe size / about 30 m","","Studio Matrx, after NBC 2016 Part 9","stmext","Low"],
+ ["Plumbing","Inspection chambers","Inside size: up to 0.9 m deep / 0.9–1.5 m / deeper","450 × 450 to 600 × 600 / 600 × 600 to 900 × 600 / a manhole, 900 × 800 or more","mm","Studio Matrx, indicative","stmext","Low"],
+ ["Plumbing","Vent pipe, UIPC-I 2017","Top above a roof / a terrace / an opening window","150 mm / 2.1 m / 0.9 m","","Indian Plumbing Association, 2021","ipavent","Medium"],
+ ["Plumbing","Vent pipe, UIPC-I 2017","Least size","32 mm, and at least half the drain it serves","","Indian Plumbing Association, 2021","ipavent","Medium"],
+ ["Plumbing","Pipe through a straw wall","Sleeve","the full width of the wall, with no joint inside","","Straw Works, 2012","strawworks","Medium"],
+ ["Wiring and solar","Copper wire, CPWD","Lights / power, at the least","1.5 / 4.0","mm²","CPWD Electrical Works Part 1, cl. 3.12","cpwdel","High"],
+ ["Wiring and solar","Copper wire, a typical house","Lights / sockets / kitchen / geyser or air conditioner","1.0–1.5 / 2.5 / 4 / 4–6","mm²","Studio Matrx, indicative: an electrician confirms","stmwire","Low"],
+ ["Wiring and solar","RCD on socket circuits, BS 7671","Trip current, sockets up to 32 A","30","mA","British wiring rules, reg. 411.3.3: a guide where Indian rules are silent","bs7671","High"],
+ ["Wiring and solar","Main board of a residential quarter, CPWD","Protection","an MCB board, with an ELCB beside the incoming MCB","","CPWD Electrical Works Part 1, cl. 3.20","cpwdel","High"],
+ ["Wiring and solar","Residual current device, Tamil Nadu","New single- and three-phase connections","compulsory since 2021","","TNERC distribution code, via Powerline","tnerc","Medium"],
+ ["Wiring and solar","Earthing, CEA rules (2010)","Connections to earth","two separate ones, in two or more earth pits","","CEA safety regulations, as summarised by Wikipedia","ceawiki","Medium"],
+ ["Wiring and solar","Earth leakage device, CEA rules (2010)","Needed for","loads above 5 kW, or above 250 V","","CEA regulation 42, as summarised by Wikipedia","ceawiki","Medium"],
+ ["Wiring and solar","Earth electrode, IS 3043:1987","Plate / pipe","at least 60 × 60 cm, GI 6.3 mm thick / a 40 mm GI pipe in a treated pit","","IS 3043 cl. 9.2 and Amendment 1; the scan is hard to read","is3043","Medium"],
+ ["Wiring and solar","Earth rods, IS 3043:1987","Spacing","about their driven depth; little gained beyond twice it","","IS 3043 cl. 9.2.2","is3043","Medium"],
+ ["Wiring and solar","Rooftop solar, MNRE","1 kW: output on a clear day / shadow-free roof","4–5.5 units / about 10 m²","","MNRE consumer FAQ","mnrefaq","High"],
+ ["Wiring and solar","Solar modules, MNRE","Output warranted after 12 / 25 years","90 / 80","%","MNRE consumer FAQ","mnrefaq","High"],
+ ["Wiring and solar","PM Surya Ghar subsidy","First 2 kW / the 3rd kW / the most","₹30,000 a kW / ₹18,000 / ₹78,000","","Scheme rates, as published by Pune district","psgpune","High"],
+ ["Wiring and solar","PM Surya Ghar sizing","Monthly units 0–150 / 150–300 / over 300","1–2 kW / 2–3 kW / over 3 kW","","Scheme table, as published by JBVNL","psgcfa","High"],
+ ["Wiring and solar","Panel tilt","For the most direct sun in a year / most large fixed systems in the US","about the latitude, facing south / 20–30°","","US EIA, 2018","eiatilt","Medium"],
+ ["Wiring and solar","Wiring in earth walls, Level","Cables / boxes / fixings","in PVC conduit / flush boxes made for masonry / wooden blocks","","Level, BRANZ","levelwire","Medium"]
+);
+
+/* --- water through the house: a film --- */
+function drawPipesXp(i,u,t){
+  let s=`<rect x="0" y="200" width="360" height="60" style="fill:var(--clay-2)" opacity=".28"/><line x1="0" x2="360" y1="200" y2="200" style="stroke:var(--earth)" stroke-width="1.5"/>`;
+  /* bore and pump */
+  s+=`<rect x="24" y="200" width="12" height="60" style="fill:var(--paper);stroke:var(--ink)" stroke-width="1"/><rect x="25" y="236" width="10" height="24" style="fill:var(--accent)" opacity=".6"/><rect x="12" y="182" width="26" height="16" rx="3" style="fill:var(--stone);stroke:var(--ink)" stroke-width="1"/>`;
+  /* the tower and the tank */
+  s+=`<path d="M58 200 V70 M96 200 V70 M58 160 L96 120 M96 160 L58 120" fill="none" style="stroke:var(--ink)" stroke-width="1.6" opacity=".7"/><rect x="52" y="40" width="50" height="30" rx="6" style="fill:var(--stone);stroke:var(--ink)" stroke-width="1.2"/><rect x="54" y="48" width="46" height="20" rx="3" style="fill:var(--accent)" opacity=".45"/>`;
+  /* the house */
+  s+=`<rect x="120" y="180" width="180" height="20" style="fill:var(--stone)" opacity=".7"/><rect x="120" y="104" width="12" height="76" style="fill:var(--clay)"/><rect x="288" y="104" width="12" height="76" style="fill:var(--clay)"/><rect x="206" y="112" width="6" height="68" style="fill:var(--clay)" opacity=".7"/><path d="M110 108 L210 58 L310 108" fill="none" style="stroke:var(--earth)" stroke-width="6"/>`;
+  /* fittings: shower, floor trap, sink and its trap */
+  s+=`<path d="M150 118 V130 M142 130 H158" style="stroke:var(--ink)" stroke-width="2"/><rect x="232" y="148" width="44" height="8" style="fill:var(--stone);stroke:var(--ink)" stroke-width="1"/><path d="M252 156 V164 Q252 172 258 172 Q264 172 264 164" fill="none" style="stroke:var(--ink)" stroke-width="2"/>`;
+  s+=`<path d="M160 180 V188 Q160 194 166 194 Q172 194 172 188 V184" fill="none" style="stroke:var(--ink)" stroke-width="2"/>`;
+  if(i===3){s+=`<rect x="161" y="188" width="10" height="5" style="fill:var(--accent)"/><rect x="253" y="166" width="10" height="5" style="fill:var(--accent)"/>`}
+  /* supply: up from the pump, down from the tank, through a sleeve in the wall */
+  s+=`<path d="M38 190 H64 V70" fill="none" style="stroke:var(--accent)" stroke-width="2.4"/><path d="M90 70 V116 H250 V148 M150 116 V118" fill="none" style="stroke:var(--accent)" stroke-width="2.4"/>`;
+  s+=`<rect x="118" y="111" width="16" height="10" fill="none" style="stroke:var(--ink)" stroke-width="1.2"${i===2?'':' opacity=".55"'}/>`;
+  /* drains, the chamber, the vent */
+  s+=`<path d="M166 194 L320 206 M258 172 V197" fill="none" style="stroke:var(--stone)" stroke-width="4"/><rect x="320" y="198" width="22" height="22" style="fill:var(--paper);stroke:var(--ink)" stroke-width="1.2"/><path d="M342 210 H360" style="stroke:var(--stone)" stroke-width="4"/>`;
+  s+=`<path d="M304 204 V60" style="stroke:var(--stone)" stroke-width="3"/>`;
+  /* flows */
+  if(i===0||i===6)s+=xFlow('M38 190 H64 V70',t,'accent',2.4);
+  if(i>=1&&i!==3)s+=xFlow('M90 70 V116 H250 V148',t,'accent',2.4);
+  if(i===4||i===6)s+=xFlow('M166 194 L320 206 H360',t,'stone',2.6)+xFlow('M258 172 V197',t,'stone',2.6);
+  if(i===5)s+=xFlow('M304 204 V56',t,'muted',2,20,'4 6');
+  if(i===6)s+=xFlow('M342 210 H360',t,'stone',2.6);
+  const L=[];
+  if(i===0)L.push(xCall(30,240,60,236,'bore'),xCall(25,182,20,166,'pump','start'),xCall(77,44,120,30,'tank on a tower'));
+  if(i===1){s+=`<path d="M108 48 V130" style="stroke:var(--ink)" stroke-dasharray="3 3"/><path d="M104 48 H112 M104 130 H112" style="stroke:var(--ink)"/>`;L.push(xLab(106,30,'head: 0.1 bar a metre',{cls:'xs'}),xClock(352,244,'5 m above a shower','end'))}
+  if(i===2)L.push(xCall(126,116,130,74,'sleeve, no joint inside','start'));
+  if(i===3)L.push(xCall(166,191,150,236,'floor trap: 50 mm seal','middle'),xCall(252,168,226,192,'sink trap','end'));
+  if(i===4)L.push(xCall(331,209,300,236,'chamber','middle'),xCall(240,200,200,236,'falls 1 in 40','end'));
+  if(i===5)L.push(xCall(304,62,300,30,'vent: 150 mm above the roof','end'));
+  if(i===6)L.push(xLab(356,242,'to the pits and the bed',{a:'end'}));
+  return s+L.join('')}
+const PPSC=[
+ {t:'From the ground',d:5,cap:'A pump lifts water from the well or bore into a tank set high on a tower or a roof. From there it runs into the house on its own.'},
+ {t:'Height is pressure',d:6,cap:'Each metre between the water in the tank and the tap gives about 0.1 bar. A shower wants that water 5 m above it, and 8 m for a good one; a basin tap gets by on less (Studio Matrx). <a class="golink" href="#pl-tank">Set your tank ↓</a>'},
+ {t:'Pipes you can reach',d:6,cap:'Run the pipes along internal walls or the face of a wall, where a leak shows. Where one has to cross an earth wall, sleeve it the full width, with no joint inside: the advice Straw Works gives for straw walls holds for earth too.'},
+ {t:'A trap at every outlet',d:5,cap:'Every drain starts with a trap: a bend that holds water, so drain air cannot come back into the room. A WC or a floor trap holds at least 50 mm of water, other fittings 40 mm (IS 5329).'},
+ {t:'Downhill to a chamber',d:6,cap:'Drains fall all the way: a 100 mm pipe at least 1 in 57 (IS 1742), 1 in 40 by rule of thumb. An inspection chamber at every junction, bend and change of slope lets every length be rodded. <a class="golink" href="#pl-drain">How deep it gets ↓</a>'},
+ {t:'Let it breathe',d:5,cap:'A vent pipe lets air into the drains, so water rushing down does not suck the traps dry, and lets the drain gases out: at least 150 mm above a roof, 2.1 m above a terrace (UIPC-I 2017).'},
+ {t:'Where it ends',d:4,cap:'Kitchen and bath water to a planted bed, the toilet to twin pits, and the well kept clear of both. <a class="golink" href="#water">Water and sanitation ↑</a>'}];
+
+/* --- how high should the tank be --- */
+const TH={h:4};
+function drawTankH(){const el=$('thFig');if(!el)return;const W=Math.max(300,el.clientWidth||520),Hh=narrowH(W),floor=.45,shw=floor+2,tap=floor+.9,top=floor+2.6;XVW=W;
+  const sc=(Hh-40)/12,gy=Hh-22,Y=m=>gy-m*sc,tx=W*.18,hx0=W*.38,hx1=W*.84;
+  const T=(x,y,tx2,a='start',st='fill:var(--ink);font-weight:600')=>`<text class="halo" x="${xF(x)}" y="${xF(y)}" text-anchor="${a}" style="${st}">${tx2}</text>`;
+  let s=`<rect x="0" y="${gy}" width="${W}" height="22" style="fill:var(--clay-2)" opacity=".28"/><line x1="0" x2="${W}" y1="${gy}" y2="${gy}" style="stroke:var(--earth)" stroke-width="1.5"/>`;
+  for(let m=1;m<=11;m++)s+=`<line x1="${W-38}" x2="${W-30}" y1="${xF(Y(m))}" y2="${xF(Y(m))}" style="stroke:var(--line)"/><text x="${W-26}" y="${xF(Y(m)+4)}" style="fill:var(--muted)">${m} m</text>`;
+  /* the house: plinth, walls, roof, shower and tap */
+  s+=`<rect x="${hx0}" y="${Y(floor)}" width="${hx1-hx0}" height="${floor*sc}" style="fill:var(--stone)" opacity=".7"/><rect x="${hx0}" y="${Y(top)}" width="10" height="${2.6*sc}" style="fill:var(--clay)"/><rect x="${hx1-10}" y="${Y(top)}" width="10" height="${2.6*sc}" style="fill:var(--clay)"/>`;
+  s+=`<path d="M${hx0-10} ${Y(top)} L${(hx0+hx1)/2} ${Y(top+1.4)} L${hx1+10} ${Y(top)}" fill="none" style="stroke:var(--earth)" stroke-width="5"/>`;
+  const sx=hx0+(hx1-hx0)*.3,kx=hx0+(hx1-hx0)*.72;
+  s+=`<path d="M${sx} ${Y(shw)} h-10 M${sx-5} ${Y(shw)} v-8" style="stroke:var(--ink)" stroke-width="2"/><rect x="${kx-16}" y="${Y(tap)}" width="32" height="5" style="fill:var(--stone);stroke:var(--ink)" stroke-width="1"/>`;
+  /* the tower and the tank, water surface at h */
+  const tb=TH.h-.8;s+=`<path d="M${tx-18} ${gy} V${Y(tb)} M${tx+18} ${gy} V${Y(tb)}" style="stroke:var(--ink)" stroke-width="2" opacity=".7"/>`;
+  for(let m=1;m<tb;m+=1.5)s+=`<path d="M${tx-18} ${Y(m)} L${tx+18} ${Y(Math.min(tb,m+1.5))}" style="stroke:var(--ink)" opacity=".4"/>`;
+  s+=`<rect x="${tx-26}" y="${Y(TH.h+.15)}" width="52" height="${.95*sc}" rx="5" style="fill:var(--stone);stroke:var(--ink)" stroke-width="1.2"/><rect x="${tx-24}" y="${Y(TH.h)}" width="48" height="${.78*sc}" rx="3" style="fill:var(--accent)" opacity=".45"/>`;
+  const hz=Math.min(tb,top-.3);s+=`<path d="M${tx+10} ${Y(tb)} V${Y(hz)} H${kx} V${Y(tap)-14} M${sx-5} ${Y(hz)} V${Y(shw)-8}" fill="none" style="stroke:var(--accent)" stroke-width="2.2"/>`;
+  /* heads */
+  const hs=TH.h-shw,ht=TH.h-tap,bar=h=>h*.0981;
+  s+=`<line x1="${tx+40}" x2="${sx+30}" y1="${Y(TH.h)}" y2="${Y(TH.h)}" style="stroke:var(--accent)" stroke-dasharray="4 4"/>`;
+  if(hs>0)s+=`<path d="M${sx+16} ${Y(TH.h)} V${Y(shw)}" style="stroke:var(--ink)" stroke-width="1.4"/><path d="M${sx+12} ${Y(shw)} h8 M${sx+12} ${Y(TH.h)} h8" style="stroke:var(--ink)"/>`+T(sx+22,(Y(TH.h)+Y(shw))/2+4,`${f1(hs)} m`);
+  s+=T(tx,Y(TH.h+.15)-8,'water in the tank','middle','fill:var(--ink)')+T(sx,Y(shw)+16,'shower','middle','fill:var(--ink)')+T(kx,Y(tap)+18,'tap','middle','fill:var(--ink)');
+  s+=handle('thh',tx,Y(TH.h-.4),'Height of the water in the tank',`${f1(TH.h)} m above the ground`,10);
+  TH.geo={gy,sc};
+  el.innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${Hh}" width="100%" role="group" aria-label="A water tank on a tower beside the house: the water is ${f1(TH.h)} m above the ground, ${f1(hs)} m above the shower; drag the tank">${s}</svg>`;
+  const v=hs<=0?['bad','nothing without a pump']:hs<3?['bad','a trickle']:hs<5?['warn','weak']:hs<8?['good','enough']:['good','good'];
+  readout($('thOut'),[['Above the shower',`${f1(Math.max(0,hs))} m`,v[0]],['Pressure there',`${bar(Math.max(0,hs)).toFixed(2)} bar`,v[0]],['At the kitchen tap',`${bar(Math.max(0,ht)).toFixed(2)} bar`],['A day’s water',`${MH.people*135} L for ${MH.people}`]]);
+  $('thInsight').textContent=hs<=0?`The water sits below the shower head: nothing comes out without a pump. Raise the tank, or put it on the roof.`:`With the water ${f1(TH.h)} m above the ground, the shower gets ${f1(hs)} m of head, about ${bar(hs).toFixed(2)} bar: ${v[1]}. ${hs<5?`A shower wants about 5 m (Studio Matrx); raise the water to about ${f1(shw+5)} m, or use a pressure pump. `:''}${bar(hs)<.3?'An instant geyser needs 0.3–0.5 bar to start. ':''}Pipes and bends take some of it on the way, so treat these as the most you can get. A day’s water for ${MH.people} is about ${MH.people*135} L at 135 L a person.`}
+const narrowH=W=>W<520?320:340;
+
+/* --- drains that fall: how deep they get --- */
+const DF={L:12,d:100,top:.45,span:20};
+const DFG={100:{rt:40,mn:57},150:{rt:60,mn:100}};
+function drawDrain(){const el=$('dfFig');if(!el)return;const W=Math.max(300,el.clientWidth||520),Hh=W<520?230:250,g=DFG[DF.d],L=DF.L;XVW=W;
+  const x0=34,x1=W-34,hs=(x1-x0)/DF.span,vs=(Hh-80)/1.9,gy=44,X=m=>x0+m*hs,Y=m=>gy+m*vs;
+  const T=(x,y,tx2,a='start',st='fill:var(--ink);font-weight:600')=>`<text class="halo" x="${xF(x)}" y="${xF(y)}" text-anchor="${a}" style="${st}">${tx2}</text>`;
+  const dRt=DF.top+L/g.rt,dMn=DF.top+L/g.mn,n=Math.max(1,Math.ceil(L/30)),pos=[...Array(n+1)].map((_,k)=>k*L/n);
+  let s=`<rect x="0" y="${gy}" width="${W}" height="${Hh-gy-24}" style="fill:var(--clay-2)" opacity=".28"/><line x1="0" x2="${W}" y1="${gy}" y2="${gy}" style="stroke:var(--earth)" stroke-width="1.5"/>`;
+  s+=`<rect x="0" y="${gy-26}" width="${x0}" height="26" style="fill:var(--clay)" opacity=".8"/>`+T(4,gy-31,'house','start','fill:var(--muted)');
+  pos.forEach((m,k)=>{const dep=DF.top+m/g.rt+.12,w=Math.max(8,.6*hs);s+=`<rect x="${xF(X(m)-w/2)}" y="${gy}" width="${xF(w)}" height="${xF(dep*vs)}" style="fill:var(--paper);stroke:var(--ink)" stroke-width="1.2"/><rect x="${xF(X(m)-w/2-3)}" y="${gy-3}" width="${xF(w+6)}" height="4" style="fill:var(--stone)"/>`});
+  s+=`<line x1="${X(0)}" y1="${Y(DF.top)}" x2="${X(L)}" y2="${Y(dMn)}" style="stroke:var(--muted)" stroke-width="2" stroke-dasharray="6 5"/>`;
+  s+=`<line x1="${X(0)}" y1="${Y(DF.top)}" x2="${X(L)}" y2="${Y(dRt)}" style="stroke:var(--stone)" stroke-width="${DF.d===150?7:5}" stroke-linecap="round"/>`;
+  s+=T(X(0)+8,Y(DF.top)-7,`${Math.round(DF.top*1000)} mm deep`)+T(X(L)+(X(L)>W*.6?-12:12),Y(dRt)+18,`${Math.round(dRt*1000)} mm at 1 in ${g.rt}`,X(L)>W*.6?'end':'start')+T(X(L)+(X(L)>W*.6?-12:12),Y(dMn)-10,`${Math.round(dMn*1000)} mm at 1 in ${g.mn}`,X(L)>W*.6?'end':'start','fill:var(--muted)');
+  s+=T(x0,Hh-8,`${L} m · depths ${Math.round(vs/hs)} × exaggerated`,'start','fill:var(--muted);font-weight:400');
+  s+=handleH('dfl',X(L),gy-14,'Length of the drain run',`${L} m`,9);
+  DF.geo={x0,hs};
+  el.innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${Hh}" width="100%" role="group" aria-label="A ${L} m drain of ${DF.d} mm pipe, in section: it starts ${Math.round(DF.top*1000)} mm deep and falls to ${Math.round(dRt*1000)} mm at 1 in ${g.rt}; ${n+1} inspection chambers; drag the end">${s}</svg>`;
+  const far=dRt,cz=far<=.9?'450 × 450 to 600 × 600 mm':far<=1.5?'600 × 600 to 900 × 600 mm':'a manhole, 900 × 800 mm or more';
+  readout($('dfOut'),[['Fall at 1 in '+g.rt,`${Math.round(L/g.rt*1000)} mm`],['Depth at the end',`${f1(far)} m`,far>1.5?'warn':''],['Least IS 1742 allows',`1 in ${g.mn}: ${Math.round(L/g.mn*1000)} mm`],['Chambers',String(n+1)],['End chamber, inside',cz],['Pipe',`${DF.d} mm`]]);
+  $('dfInsight').textContent=`${L} m of ${DF.d} mm pipe at 1 in ${g.rt} drops ${Math.round(L/g.rt*1000)} mm: from ${Math.round(DF.top*1000)} mm deep at the house to ${Math.round(far*1000)} mm at the end. The flattest IS 1742 allows, 1 in ${g.mn}, drops ${Math.round(L/g.mn*1000)} mm. Put a chamber at each end${n>1?` and every ${f1(L/n)} m between`:''}, and at every bend and junction. Check that the pit or the bed you drain into can sit that deep${far>1.2?': a long run may need a sump and a pump, or a shorter route':''}.`}
+function drawDfCtl(){const el=$('dfCtl');if(!el)return;
+  el.innerHTML=`<span>Pipe</span><div class="row">${[100,150].map(d=>`<button class="chip" data-dfd="${d}" aria-pressed="${d===DF.d}">${d} mm</button>`).join('')}</div>`;
+  el.querySelectorAll('[data-dfd]').forEach(b=>b.onclick=()=>{DF.d=+b.dataset.dfd;drawDfCtl();drawDrain()})}
+
+/* --- from the meter to the socket: a film --- */
+function drawPowerXp(i,u,t){
+  let s=`<rect x="0" y="210" width="360" height="50" style="fill:var(--clay-2)" opacity=".28"/><line x1="0" x2="360" y1="210" y2="210" style="stroke:var(--earth)" stroke-width="1.5"/>`;
+  /* meter */
+  s+=`<path d="M0 40 Q14 44 24 60" fill="none" style="stroke:var(--ink)" stroke-width="2"/><rect x="10" y="60" width="30" height="36" rx="3" style="fill:var(--paper);stroke:var(--ink)" stroke-width="1.2"/><circle cx="25" cy="76" r="7" fill="none" style="stroke:var(--ink)"/><path d="M40 72 H60" style="stroke:var(--ink)" stroke-width="2"/>`;
+  /* the board: main switch, RCCB, four MCBs, earth bar */
+  s+=`<rect x="60" y="40" width="146" height="110" rx="4" style="fill:var(--paper);stroke:var(--ink)" stroke-width="1.4"/>`;
+  const trip=i===1&&u>.55;
+  s+=`<rect x="68" y="56" width="20" height="48" rx="2" style="fill:var(--stone);stroke:var(--ink)"/><rect x="94" y="56" width="30" height="48" rx="2" style="fill:${i===1?'var(--accent)':'var(--stone)'};stroke:var(--ink)" opacity="${i===1?.55:1}"/><rect x="104" y="${trip?82:62}" width="10" height="14" rx="2" style="fill:var(--ink)"/>`;
+  const MC=[['6 A','1.5'],['16 A','2.5'],['20 A','4'],['32 A','6']];
+  MC.forEach(([a,w],k)=>{const x=132+k*17;s+=`<rect x="${x}" y="56" width="13" height="48" rx="2" style="fill:${i===2?'var(--straw)':'var(--stone)'};stroke:var(--ink)"/>`;if(i===2)s+=`<text x="${x+6.5}" y="116" text-anchor="middle" class="xl xs" style="font-size:10px">${a.replace(' A','')}</text>`});
+  s+=`<rect x="70" y="132" width="126" height="6" style="fill:var(--good)" opacity=".8"/>`;
+  /* earth wires and two pits */
+  [92,170].forEach(x=>{s+=`<path d="M${x} 138 V210" style="stroke:var(--good)" stroke-width="2.4"/><rect x="${x-12}" y="206" width="24" height="7" style="fill:var(--stone);stroke:var(--ink)"/><ellipse cx="${x}" cy="238" rx="14" ry="22" style="fill:var(--clay-2)" opacity=".5"/><path d="M${x} 213 V256" style="stroke:var(--ink)" stroke-width="5"/>`});
+  /* the circuit out to an earth wall: conduit in a chase, a flush box on a wooden block */
+  s+=`<rect x="262" y="50" width="40" height="160" style="fill:var(--clay)"/><rect x="262" y="52" width="7" height="88" style="fill:var(--paper)" opacity="${i===4?1:.5}"/><rect x="266" y="126" width="12" height="28" style="fill:var(--earth)"/><rect x="256" y="130" width="14" height="20" style="fill:var(--ink)" opacity=".8"/><rect x="252" y="133" width="6" height="14" style="fill:var(--paper);stroke:var(--ink)" stroke-width=".8"/>`;
+  s+=`<path d="M150 40 V28 H265 V130" fill="none" style="stroke:var(--clay)" stroke-width="2.2"/>`;
+  /* an appliance and a hand on it, for the leak */
+  if(i===1){s+=`<rect x="214" y="170" width="26" height="22" rx="3" style="fill:var(--stone);stroke:var(--ink)"/><path d="M240 178 Q248 168 252 144" fill="none" style="stroke:var(--ink)" stroke-width="1.6"/><circle cx="200" cy="150" r="6" style="fill:var(--ink)" opacity=".75"/><path d="M200 157 V188 M200 188 L194 210 M200 188 L206 210 M200 166 L216 176" fill="none" style="stroke:var(--ink)" stroke-width="4" stroke-linecap="round" opacity=".75"/>`;
+    if(!trip)s+=xFlow('M218 180 L206 172 L200 188 L200 210',t,'bad',2.4,30,'4 5')}
+  /* flows */
+  if(i===0||i===5)s+=xFlow('M0 40 Q14 44 24 60',t,'clay',2)+xFlow('M40 72 H60',t,'clay',2);
+  if(i>=2&&i!==3)s+=xFlow('M150 40 V28 H265 V130',t,'clay',2.2);
+  if(i===3)s+=xFlow('M92 138 V250',t,'good',2.2,18)+xFlow('M170 138 V250',t,'good',2.2,18);
+  const L=[];
+  if(i===0)L.push(xCall(25,62,20,30,'meter','start'),xCall(78,104,40,190,'main switch','start'));
+  if(i===1)L.push(xCall(109,58,120,24,trip?'RCCB tripped':'RCCB, 30 mA','start'));
+  if(i===2)L.push(xLab(132,132,'A',{cls:'xs'}),xCall(160,60,200,22,'a breaker for each circuit','end'));
+  if(i===3)L.push(xCall(92,240,40,236,'earth 1','middle'),xCall(170,240,226,236,'earth 2','middle'));
+  if(i===4)L.push(xCall(265,90,330,40,'conduit in a chase','end'),xCall(272,152,330,186,'wooden block','end'),xCall(256,140,232,120,'flush box','end'));
+  if(i===5)L.push(xLab(352,22,'an authorised contractor',{a:'end'}));
+  return s+L.join('')}
+const PWSC=[
+ {t:'Meter to board',d:5,cap:'Power comes in at the meter, through one main switch, to the board, where it splits into circuits. Plan every switch, socket and light, and where the board goes, before the walls go up (Level).'},
+ {t:'A breaker that saves lives',d:7,cap:'An RCCB weighs the current going out against the current coming back. If some leaks to earth, through a fault or through a person, it cuts the supply. 30 mA is the trip used to protect people. British rules require one on every socket circuit; CPWD puts one beside the incoming breaker of every residential quarter’s board; Tamil Nadu has made them compulsory on new connections since 2021.'},
+ {t:'A breaker for each circuit',d:6,cap:'Each circuit gets its own miniature circuit breaker, matched to its wire. CPWD asks for at least 1.5 mm² of copper for lights and 4 mm² for power; sockets for small appliances commonly take 2.5 mm², a geyser or an air conditioner 4–6 mm² (Studio Matrx; an electrician confirms).'},
+ {t:'Two earth pits',d:6,cap:'Every metal case, and the third pin of every socket, connects to earth. India’s safety rules ask for two separate earth connections, in two or more pits. IS 3043 describes a plate of at least 60 × 60 cm, or a 40 mm GI pipe in a treated pit; rods are spaced about their driven depth apart.'},
+ {t:'Into the earth wall',d:6,cap:'In an earth wall, run every cable in PVC conduit to flush boxes made for masonry, with wooden blocks set in for fittings to hold (Level). Cut the chases and fix the conduit before the plaster goes on.'},
+ {t:'Who does the work',d:4,cap:'Only an authorised electrical contractor may install or change the wiring, working under someone who holds a certificate of competency (CEA Regulations 2023, as summarised by K&S Partners).'}];
+
+/* --- solar on your roof --- */
+const SOL={u:150,tilt:null};
+function drawSolar(){const el=$('soFig');if(!el)return;const W=Math.max(300,el.clientWidth||520),Hh=W<520?250:270,lat=PLACE.lat,r=mhRoof(),ra=mhRoofArea(),pitched=r.kind==='pitch'&&r.pitch,living=r.k==='living',thatch=r.k==='thatch';XVW=W;
+  const rn=lcn(r.n)+(/roof$/i.test(r.n)?'':' roof'),kW=Math.max(1,Math.ceil(SOL.u/120/.5)*.5),area=kW*10,avail=living?0:pitched?ra.slope/2:ra.plan,tilt=pitched?r.pitch:(SOL.tilt==null?Math.round(lat):SOL.tilt),fit=Math.cos((tilt-lat)*Math.PI/180);
+  const sub=Math.min(78000,Math.min(kW,2)*30000+Math.min(Math.max(kW-2,0),1)*18000),lo=Math.round(kW*4*30),hi=Math.round(kW*5.5*30);
+  const T=(x,y,tx2,a='start',st='fill:var(--ink);font-weight:600')=>`<text class="halo" x="${xF(x)}" y="${xF(y)}" text-anchor="${a}" style="${st}">${tx2}</text>`;
+  const gy=Hh-24,hx0=W*.12,hx1=W*.62,wh=70,ry=gy-wh;
+  let s=`<rect x="0" y="${gy}" width="${W}" height="24" style="fill:var(--clay-2)" opacity=".28"/><line x1="0" x2="${W}" y1="${gy}" y2="${gy}" style="stroke:var(--earth)" stroke-width="1.5"/>`;
+  s+=`<rect x="${hx0}" y="${ry}" width="${hx1-hx0}" height="${wh}" style="fill:var(--clay)" opacity=".55"/>`+T(hx0+6,gy-8,'north','start','fill:var(--muted);font-weight:400')+T(hx1-6,gy-8,'south','end','fill:var(--muted);font-weight:400');
+  const deg=Math.PI/180;let px0,py0,len=Math.min(130,(hx1-hx0)*.45);
+  if(pitched){const mid=(hx0+hx1)/2,rise=Math.tan(r.pitch*deg)*(hx1-hx0)/2;s+=`<path d="M${hx0-10} ${ry} L${mid} ${ry-rise} L${hx1+10} ${ry}" fill="none" style="stroke:var(--earth)" stroke-width="6"/>`;
+    const L2=Math.hypot((hx1-hx0)/2,rise);px0=hx1-(hx1-hx0)*.08;py0=ry-(hx1-hx0)*.08*Math.tan(r.pitch*deg);len=Math.min(L2*.8,130)}
+  else{s+=`<rect x="${hx0-8}" y="${ry-7}" width="${hx1-hx0+16}" height="7" style="fill:var(--earth)"/>`;px0=hx1-18;py0=ry-12;if(!living)s+=`<path d="M${px0} ${ry-7} V${py0} M${px0-Math.cos(tilt*deg)*len} ${ry-7} V${py0-Math.sin(tilt*deg)*len}" style="stroke:var(--ink)" stroke-width="2"/>`;else s+=`<path d="M${hx0} ${ry-10} q20 -10 40 0 t40 0 t40 0" fill="none" style="stroke:var(--leaf)" stroke-width="5"/>`}
+  const qx=px0-Math.cos(tilt*deg)*len,qy=py0-Math.sin(tilt*deg)*len;
+  if(!living)s+=`<line x1="${xF(px0)}" y1="${xF(py0)}" x2="${xF(qx)}" y2="${xF(qy)}" style="stroke:var(--ink)" stroke-width="7" stroke-linecap="round"/><line x1="${xF(px0)}" y1="${xF(py0)}" x2="${xF(qx)}" y2="${xF(qy)}" style="stroke:var(--accent)" stroke-width="3" stroke-dasharray="10 3"/>`;
+  /* the noon sun in March and September, and at the solstices */
+  const alt=90-lat,sun=(a,o)=>{const cx=(px0+qx)/2,cy=(py0+qy)/2,d=Math.min(W*.42,230),x=cx+Math.cos(a*deg)*d,y=cy-Math.sin(a*deg)*d;return{x:Math.min(W-14,x),y:Math.max(14,y),o}};
+  [[alt+23.45,.35],[alt-23.45,.35],[alt,1]].forEach(([a,o])=>{const p=sun(a,o);s+=`<line x1="${xF(p.x)}" y1="${xF(p.y)}" x2="${xF((px0+qx)/2)}" y2="${xF((py0+qy)/2)}" style="stroke:var(--straw)" stroke-width="${o<1?1.5:2.5}" opacity="${o}" stroke-dasharray="${o<1?'3 5':'none'}"/><circle cx="${xF(p.x)}" cy="${xF(p.y)}" r="${o<1?6:10}" style="fill:var(--straw)" opacity="${o<1?.5:1}"/>`});
+  const ps=sun(alt,1),lw2=26*6.7,rt=ps.x+16+lw2<W-4;s+=T(rt?ps.x+16:ps.x-16,ps.y+4,'noon, March and September',rt?'start':'end','fill:var(--ink);font-weight:400');
+  if(!pitched&&!living)s+=handle('sot',qx,qy,'Tilt of the panels',`${tilt} degrees`,9);
+  SOL.geo={px0,py0};
+  el.innerHTML=`<svg class="chart" viewBox="0 0 ${W} ${Hh}" width="100%" role="group" aria-label="Solar panels on the south side of a ${rn} at ${tilt} degrees; your latitude is ${lat.toFixed(1)} degrees${!pitched&&!living?'; drag the top of the panels to tilt them':''}">${s}</svg>`;
+  const fits=area<=avail;
+  readout($('soOut'),[['System',`${kW} kW`],['Panels',`about ${area} m²`],['Room on the south side',living?'none: a living roof':`about ${Math.round(avail)} m²`,fits?'good':'bad'],['Clear-day output',`${lo}–${hi} units a month`],['Subsidy',inr(sub)],['Tilt',`${tilt}° · latitude ${lat.toFixed(0)}°`]]);
+  $('soInsight').textContent=`${SOL.u} units a month needs about ${kW} kW, ${area} m² of panels (MNRE: about 10 m² a kW, 4–5.5 units a kW on a clear day; less in the monsoon). ${living?'A living roof cannot take them: put them on a frame on the ground or a shed.':fits?(pitched?`They fit on the south side of your ${rn}, about ${Math.round(avail)} m².`:`They fit on your flat ${rn}, about ${Math.round(avail)} m².`):`Your ${rn} has about ${Math.round(avail)} m²${pitched?' on its south side':''}: not enough, so make the system smaller or add a frame.`}${thatch?' Panels on thatch are a fire risk, and thatch gives them nothing to fix to: use a frame.':''} ${pitched?`On the slope they take the roof’s ${r.pitch}°; a frame at about ${Math.round(lat)}°, your latitude, faces the noon sun squarely in March and September (EIA), and at ${r.pitch}° they catch ${Math.round(fit*100)} % of it then.`:`At ${tilt}° they catch ${Math.round(fit*100)} % of the noon sun in March and September; about ${Math.round(lat)}°, your latitude, catches all of it (EIA).`} Under PM Surya Ghar this size gets ${inr(sub)}.`}
+function soBoot(){const e=$('soU');if(!e)return;const v=$('soUv'),up=()=>{v.textContent=SOL.u+' units'};up();e.addEventListener('input',()=>{SOL.u=+e.value;up();drawSolar()})}
+
+/* --- boot plumbing and power --- */
+function pipesBoot(){
+  xpInit('xpPipes',{vb:[360,260],label:'Water through a house: tank, pipes, traps, drains and vent',poster:[6,.95],draw:drawPipesXp,scenes:PPSC});
+  xpInit('xpPower',{vb:[360,260],label:'From the meter to the socket: board, RCCB, breakers, earth pits and an earth wall',poster:[2,.95],draw:drawPowerXp,scenes:PWSC});
+  drawTankH();drawDfCtl();drawDrain();drawSolar();soBoot();
+  dragZone($('thFig'),(k,x,y)=>{const g=TH.geo;if(!g)return;TH.h=Math.max(2,Math.min(11,Math.round(((g.gy-y)/g.sc+.4)*10)/10));drawTankH()},{onKey:(k,dx,dy)=>{TH.h=Math.max(2,Math.min(11,+(TH.h-dy*.2+dx*.2).toFixed(1)));drawTankH()}});
+  const dfSpan=()=>{DF.span=Math.min(40,Math.max(10,Math.ceil(DF.L*1.5/5)*5))};
+  dragZone($('dfFig'),(k,x)=>{const g=DF.geo;if(!g)return;DF.L=Math.max(3,Math.min(40,DF.span,Math.round((x-g.x0)/g.hs)));drawDrain()},{onEnd:()=>{dfSpan();drawDrain()},onKey:(k,dx,dy)=>{DF.L=Math.max(3,Math.min(40,DF.L+dx-dy));dfSpan();drawDrain()}});
+  dragZone($('soFig'),(k,x,y)=>{const g=SOL.geo;if(!g)return;const a=Math.atan2(g.py0-y,g.px0-x)*180/Math.PI;SOL.tilt=Math.max(0,Math.min(60,Math.round(a)));drawSolar()},{onKey:(k,dx,dy)=>{const r=SOL.tilt==null?Math.round(PLACE.lat):SOL.tilt;SOL.tilt=Math.max(0,Math.min(60,r-dy+dx));drawSolar()}});
+  const dT=$('dfTop');if(dT){const v=$('dfTopv'),up=()=>{v.textContent=Math.round(DF.top*1000)+' mm'};up();dT.addEventListener('input',()=>{DF.top=+dT.value;up();drawDrain()})}
+  [['thFig',drawTankH],['dfFig',drawDrain],['soFig',drawSolar]].forEach(([id,fn])=>{let lw=0;const el=$(id);if(el)new ResizeObserver(()=>{const w=el.clientWidth;if(Math.abs(w-lw)<8)return;lw=w;fn()}).observe(el)});
+  try{const _a=mhApply;mhApply=function(){_a();try{drawTankH();drawSolar()}catch(e){}}}catch(e){}
+  try{const _p=mhOnPlace;mhOnPlace=function(){_p();try{drawSolar()}catch(e){}}}catch(e){}
+  try{addIdx('Animation','Water through a house','Tank, pipes, traps, drains and the vent',()=>xpGo('xpPipes'),'plumbing');addIdx('Animation','From the meter to the socket','Board, RCCB, breakers, earth pits, conduit in an earth wall',()=>xpGo('xpPower'),'power');
+    addIdx('Topic','Tank height and water pressure','Drag the tank: 0.1 bar a metre',()=>goTo('#pl-tank'),'plumbing');addIdx('Topic','Drain falls and inspection chambers','How deep a drain gets over its length',()=>goTo('#pl-drain'),'plumbing');addIdx('Topic','Rooftop solar','Size, roof space, subsidy and tilt',()=>goTo('#pw-solar'),'power')}catch(e){}
+  try{drawProps();drawLibrary();drawCoverage()}catch(e){console.error(e)}}
+
 /* ================= boot ================= */
 const hosts={vpHouse:initHero,vpSeq:initSeq,vpJar:initJar,vpWall:initWall,vpForm:initForms,vpSun:initSun,vpQuake:initQuake};
 if(GL_OK){
@@ -6278,7 +6587,7 @@ if(GL_OK){
 heroText(null);
 let savedWall='cob';try{savedWall=localStorage.getItem('ei-wall')||'cob'}catch(e){}
 setWall(WALLS[savedWall]?savedWall:'cob');setForm('bhunga');
-setStage(bFirst());renderSoil();sunCalc();mhBoot();roomsBoot();
+setStage(bFirst());renderSoil();sunCalc();mhBoot();roomsBoot();pipesBoot();
 </script>
 
 </html>
