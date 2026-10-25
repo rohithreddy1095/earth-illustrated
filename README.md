@@ -7,3 +7,5 @@ An illustrated, interactive reference for building with earth, straw, lime and b
 Every number sits in the material data table with its source and a confidence rating, and the Library section lists every document behind the book, with the sections that use it. The content is awaiting review by practising builders: treat it as a guide, test your own soil, and consult a local engineer and an experienced builder for anything you will live in.
 
 The whole site is one HTML file (`index.html`); the 3D models use three.js r128 from cdnjs.
+
+The build videos belong to the builders who made them (Auroville Earth Institute, Dezeen, UNESCO and others). They play from youtube-nocookie.com and load only when you tap play; the rest link out to the makers' own pages.
