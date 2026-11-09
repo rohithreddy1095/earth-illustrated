@@ -818,6 +818,38 @@ a[role="link"]:not([href]){cursor:pointer}
 .mgf-rate small{grid-column:1/-1;color:var(--muted);font-size:12.5px}
 @media (max-width:820px){.mgf-cards{grid-template-columns:repeat(2,minmax(0,1fr))}.mgf-sb{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:600px){.mgf-top,#mgfOut,#mgfSysOut,#mgfCostOut{grid-template-columns:repeat(2,minmax(0,1fr))}.mgf-cards,.mgf-why,.mgf-rates{grid-template-columns:minmax(0,1fr)}.mgf-step>summary{grid-template-columns:30px minmax(0,1fr);}.mgf-tk{grid-column:2;justify-self:start}}
+/* build it yourself */
+.mgb-lede{max-width:72ch}
+.mgb .vp{height:500px}
+.mgb-date{position:absolute;left:12px;top:10px;z-index:2;font-family:var(--f-mono);font-size:12px;color:var(--ink);background:color-mix(in srgb,var(--paper) 88%,transparent);border:1px solid var(--line);padding:3px 9px;border-radius:999px;pointer-events:none;font-variant-numeric:tabular-nums}
+.mgb .vp .tag{z-index:2}
+#mgbTally{grid-template-columns:repeat(4,minmax(0,1fr))}
+#mgbTally b{font-size:20px}
+.mgb-card{padding:14px 14px 2px;display:grid;gap:8px;border-top:1px solid var(--line);min-height:148px;align-content:start}
+.mgb-card p{margin:0;font-size:16px;max-width:72ch}
+.mgb-card .mgb-also{color:var(--muted);font-size:15px}
+.mgb-card .mgb-also b{color:var(--ink);font-weight:600}
+.mgb-card .mgb-meta{font-family:var(--f-mono);font-size:12px;color:var(--muted);letter-spacing:.02em}
+.mgb-act{display:flex;gap:10px;align-items:stretch;padding:10px 14px 12px}
+.mgb-act .chip{flex:0 0 auto;min-width:46px;border-radius:8px}
+.mgb-act .chip:disabled{opacity:.4;cursor:default}
+.mgb-go{flex:1 1 auto;min-width:0;font:inherit;font-family:var(--f-display);font-size:18px;font-weight:600;line-height:1.2;padding:12px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--paper);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px;text-align:left}
+.mgb-go::after{content:"→";font-family:var(--f-mono);font-weight:400}
+.mgb-go:hover{filter:brightness(1.08)}
+.mgb-go:focus-visible,.mgb-act .chip:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.mgb-time{padding:2px 14px 12px;display:grid;gap:6px}
+.mgb-time input[type=range]{width:100%;accent-color:var(--clay);margin:0}
+.mgb-bar{position:relative;height:14px;border-radius:4px;background:var(--bg);border:1px solid var(--line);overflow:hidden;cursor:pointer}
+.mgb-bar i{position:absolute;top:0;bottom:0;opacity:.22;transition:opacity .25s}
+.mgb-bar i.on{opacity:.95}
+.mgb-bar b{position:absolute;top:0;bottom:0;right:0;background:repeating-linear-gradient(135deg,var(--accent) 0 2px,transparent 2px 6px);opacity:.45;pointer-events:none}
+.mgb-bar em{position:absolute;top:-1px;bottom:-1px;width:2px;margin-left:-1px;background:var(--ink);pointer-events:none}
+.mgb-mon{position:relative;height:15px;font-family:var(--f-mono);font-size:11px;color:var(--muted)}
+.mgb-mon span{position:absolute;top:0;padding-left:3px;border-left:1px solid var(--line);line-height:15px;white-space:nowrap}
+.mgb-mon .mgb-mon-r{border-left:0;padding-left:0;transform:translateX(-100%);color:var(--accent)}
+.mgb .toolbar{justify-content:flex-start}
+.mgb-key{flex:1 1 220px;text-align:right}
+@media (max-width:600px){.mgb .vp{height:400px}#mgbTally{grid-template-columns:repeat(2,minmax(0,1fr))}#mgbTally b{font-size:18px}.mgb-go{font-size:16px;padding:11px 12px}.mgb-card p{font-size:15px}.mgb-key{text-align:left}.mgb-mon .mgb-mon-r{display:none}}
 </style>
 
 <header class="top">
@@ -1926,7 +1958,7 @@ a[role="link"]:not([href]){cursor:pointer}
 </section>
 
 <section class="block" id="farmhouse">
-  <div class="shead"><div class="num">Worked example</div><div><h2>A farmhouse near Suryapet</h2><p class="sub">A one-bedroom house for Mr Green Farms, by Yathavakilla Cheruvu in Suryapet district, Telangana: no cement anywhere, a room in each of three earths, and its own rain, sun and gas. Every quantity is counted and priced, and every step is set in order, from the paperwork to moving in.</p></div></div>
+  <div class="shead"><div class="num">Worked example</div><div><h2>A farmhouse near Suryapet</h2><p class="sub">A one-bedroom house for Mr Green Farms, by Yathavakilla Cheruvu in Suryapet district, Telangana: no cement anywhere, a room in each of three earths, and its own rain, sun and gas. Every quantity is counted and priced, every step is set in order from the paperwork to moving in, and you can build it yourself, job by job, in 3D.</p></div></div>
   <div class="readout mgf-top" id="mgfFacts"></div>
   <h3 class="sub3" id="mg-site">What the land asks</h3>
   <div class="mgf-cards" id="mgfSite"></div>
@@ -1974,18 +2006,30 @@ a[role="link"]:not([href]){cursor:pointer}
    <li><b>Power:</b> about 10 m² of shadow-free ground for each kW of panels (<a href="https://jbvnl.co.in/SOLAR/MNRE FAQ for consumer.pdf" target="_blank" rel="noopener">MNRE</a>). Off-grid systems get no PM Surya Ghar subsidy. If a grid line reaches the farm, a grid-connected system with a battery can qualify, subject to the state regulator (<a href="https://www.cag.org.in/sites/default/files/database/2.%20PM%20Surya%20Ghar%20Scheme-%20A%20consumer%20manual%20%281%29.pdf" target="_blank" rel="noopener">CAG consumer manual</a>). A licensed electrician wires the house (<a href="#power">Wiring, earthing and solar</a>).</li>
   </ul>
 
+  <h3 class="sub3" id="mg-build">Build it yourself</h3>
+  <p class="mgb-lede">Every job in the order it is done, from the first application to moving in. Press the button to do the next one and watch the house go up: the date, the money spent, the person-days and the earth in the walls count up as you go, from the same quantities and rates as the bill below. Drag the slider to jump to any job, or press Play and watch it build itself.</p>
+  <figure class="plate mgb">
+    <div class="cap"><span>Fig. 104 · Build it yourself, job by job</span><span>follows the walls, systems and rates chosen above</span></div>
+    <div class="vp" id="vpMgf"><div class="mgb-date" id="mgbDate" aria-hidden="true"></div></div>
+    <div class="readout" id="mgbTally"></div>
+    <div class="mgb-card" id="mgbCard" aria-live="polite"></div>
+    <div class="mgb-act"><button class="chip" id="mgbBack" type="button" aria-label="Undo the last job">←</button><button class="mgb-go" id="mgbGo" type="button"><span>Apply for permission</span></button><button class="chip" id="mgbPlay" type="button" aria-pressed="false">Play</button></div>
+    <div class="mgb-time"><input type="range" id="mgbRange" min="0" max="70" value="0" step="1" aria-label="Jobs done"><div class="mgb-bar" id="mgbBar" aria-hidden="true"></div><div class="mgb-mon" id="mgbMon" aria-hidden="true"></div></div>
+    <div class="toolbar"><label><input type="checkbox" id="mgbFollow" checked> Follow the work</label><label><input type="checkbox" id="mgbRoof"> Lift off the roof</label><span class="mgb-key">The house is drawn to scale from the plan; where the yards, tank and panels stand is a suggestion. The people show the size of each crew.</span></div>
+  </figure>
+
   <h3 class="sub3" id="mg-steps">From step zero to moving in</h3>
-  <figure class="plate"><div class="cap"><span>Fig. 104 · The calendar, November to June</span><span>build in the dry season; scroll on a phone</span></div>
+  <figure class="plate"><div class="cap"><span>Fig. 105 · The calendar, November to June</span><span>build in the dry season; scroll on a phone</span></div>
     <div class="table-wrap"><div id="mgfGantt"></div></div></figure>
   <div class="mgf-steps" id="mgfSteps"></div>
 
   <h3 class="sub3" id="mg-cost">What it costs</h3>
-  <figure class="plate"><div class="cap"><span>Fig. 105 · Every part priced</span><span>follows the walls and systems chosen above</span></div>
+  <figure class="plate"><div class="cap"><span>Fig. 106 · Every part priced</span><span>follows the walls and systems chosen above</span></div>
     <div class="readout" id="mgfCostOut"></div>
     <div id="mgfStage" class="mgf-stage"></div>
     <div class="table-wrap"><table class="dtable mgf-boq" id="mgfBoq"></table></div>
     <p class="insight" id="mgfCostInsight" aria-live="polite"></p></figure>
-  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 106 · Money out, month by month</span><span>November 2026 to June 2027</span></div><div id="mgfCash" style="padding:8px 8px 0"></div><div class="readout" id="mgfCashOut"></div></figure>
+  <div class="two"><figure class="plate"><div class="cap"><span>Fig. 107 · Money out, month by month</span><span>November 2026 to June 2027</span></div><div id="mgfCash" style="padding:8px 8px 0"></div><div class="readout" id="mgfCashOut"></div></figure>
     <div class="wall-desc"><div class="eyebrow">Where the money goes</div><h3>Labour, the roof, and the systems</h3>
       <p>Earth costs little but the work to shape it, so the walls are mostly wages. The roof, the doors and windows, and the wiring cost what they would on any house. Rain, solar and biogas together add about as much again as the walls.</p>
       <p>The labour rates are Hyderabad’s for October 2026 (<a href="https://infralens.in/prices/hyderabad" target="_blank" rel="noopener">InfraLens</a>); a village crew may cost less. Doors and windows and wiring are priced per sq ft of a standard Hyderabad house (<a href="https://infralens.in/knowledge/construction-cost-hyderabad-2026" target="_blank" rel="noopener">InfraLens</a>). Work rates for digging and masonry come from the state schedule (<a href="https://pub-0eaebe23788c45d09640d811ac674d7a.r2.dev/telangana-ssr-2022-23.pdf" target="_blank" rel="noopener">Telangana SSR 2022-23</a>). Type your own quotes below and every figure follows.</p></div></div>
@@ -2008,7 +2052,7 @@ a[role="link"]:not([href]){cursor:pointer}
 
 <section class="block" id="library">
   <div class="shead"><div class="num">Reference</div><div><h2>Library</h2><p class="sub">Every source this book draws on, in one place: what kind of source it is, which sections use it, and how many values in the material data table rest on it. Pages opened while researching but left out are here too, each with the reason.</p></div></div>
-  <figure class="plate"><div class="cap"><span>Fig. 107 · The sources, by kind</span><span>counted live · select a kind to filter</span></div><div id="libFig" style="padding:12px 14px 6px"></div><div class="readout" id="libOut"></div></figure>
+  <figure class="plate"><div class="cap"><span>Fig. 108 · The sources, by kind</span><span>counted live · select a kind to filter</span></div><div id="libFig" style="padding:12px 14px 6px"></div><div class="readout" id="libOut"></div></figure>
   <div class="gl-tools lib-tools" style="margin-top:18px"><input type="search" id="libSearch" placeholder="Search, e.g. IS 13827, FAO, lime, Djenné" aria-label="Search the library"><select id="libSec" aria-label="Used in section"></select><div class="chips" id="libSet" role="group" aria-label="Which sources"></div><div class="chips" id="libSort" role="group" aria-label="Order"></div></div>
   <p class="fine" id="libCount" style="margin:0 0 4px"></p>
   <div id="libList"></div>
@@ -2023,7 +2067,7 @@ a[role="link"]:not([href]){cursor:pointer}
 
 <section class="block" id="coverage">
   <div class="shead"><div class="num">Reference</div><div><h2>Coverage</h2><p class="sub">What this book covers, how well each part is sourced, and what is still missing. The page counts itself: the figures, data rows and links below are read from the book as it stands.</p></div></div>
-  <figure class="plate"><div class="cap"><span>Fig. 108 · Every section, audited</span><span>counted live</span></div>
+  <figure class="plate"><div class="cap"><span>Fig. 109 · Every section, audited</span><span>counted live</span></div>
     <div class="table-wrap"><table class="spec covtable" id="covTable"></table></div>
     <div class="readout" id="covOut"></div>
     <p class="insight" id="covInsight" aria-live="polite"></p></figure>
@@ -2291,7 +2335,7 @@ const PARTS={
   plaster:{name:"Lime plaster",s:14,d:"Two or three coats of lime and sand, then limewash. Hard enough to shed rain, open enough to let the wall breathe out its moisture. Cement render would trap it."}
 };
 const PART_ORDER=['found','drain','plinth','dpc','floor','wall','lintel','beam','roof','plaster'];
-const SUBJ=[["Site & climate","Sun, wind, rain and shade.","#sun","3D study"],["Designing the house","The day first, outdoor rooms, doors, models.","#design","Subject"],["Permissions and standards","Panchayat approval, farm land, the IS codes.","#permits","Subject"],["Site and landscape","A windbreak, a thirsty tree, a farm pond, zones.","#site","Subject"],["Soil","Clay, sand, silt, and how to read them.","#soil","3D study"],["Foundations and plinths","Rubble trench, piles for black cotton soil, rising damp.","#foundations","Subject"],["Openings and arches","Where openings go, lintels, bands, arch thrust.","#openings","Subject"],["Walls","Cob, adobe, rammed earth, CSEB, straw, bamboo.","#walls","3D study"],["Built forms","Bhunga, kath-kuni, tulou, pueblo, domes, stilt houses and more.","#forms","3D gallery"],["Plasters and binders","How clay, lime, gypsum and pozzolans set; coats; additives.","#binders","Subject"],["Roofs","Thatch, tile, living, mud phuska, vaults; pitch and heat.","#roofs","Subject"],["Indian flat roofs","Madras terrace and jack arch: built, tied and kept.","#flatroof","Subject"],["Material data","Every number, its test and its source.","#data","Reference"],["Floors","Earth, lime, IPS, Athangudi, Kota; feel underfoot.","#floors","Subject"],["Upper floors, lofts and stairs","Room in the roof, a loft on its own feet, a stair that fits.","#upper","Subject"],["Timber and bamboo","Treatment, joints, strength, durability.","#timber","Subject"],["Finishes","Limewash, clay paint, casein, oils; breathability.","#finishes","Subject"],["Polished lime and finishes for wood","Araish, ala-gila, Chettinad, Kerala; lac, linseed, wax.","#polish","Subject"],["Passive design","Mass, time lag, shade, ventilation.","#heat","Study"],["Structure and earthquakes","Shake a wall, five failures and their fixes, zone rules.","#structure","3D study"],["Building physics","Heat and vapour through walls, comfort, humidity, air.","#physics","Study"],["Insulation","Rice husk, coir, hemp-lime: how thick, and where each goes.","#insul","Subject"],["Cooling a house you already have","Cool roofs, ceilings and shade, as measured on Indian homes.","#cool","Subject"],["Daylight and skylights","How much light a room needs, and what a window or a skylight gives it.","#daylight","Subject"],["Water and sanitation","Rain tanks, twin-pit toilets, greywater beds.","#water","Subject"],["Septic tanks, dry toilets and biogas","Tank and soak pit, two vaults, gas from dung.","#sanit","Subject"],["Kitchen and hearth","Smoke, stoves, an earth oven, gas safety.","#kitchen","Subject"],["Bathroom","Floor falls, splash linings, solar hot water.","#bath","Subject"],["Plumbing","Tank height, drain falls, traps and vents.","#plumbing","Subject"],["Wiring, earthing and solar","The board, RCCB, earth pits, rooftop solar.","#power","Subject"],["Doors and windows","Frames in earth walls, sills, mesh, how much window.","#doors","Subject"],["Fire safety","Thatch, chimneys, wiring and a way out.","#fire","Subject"],["Repair and maintenance","Read the damage, patch a hollow, a year of upkeep.","#repair","Subject"],["Tools","The kit for each technique, and lime safety.","#tools","Subject"],["Costing","Quantities, person-days and your prices.","#costing","Subject"],["The whole budget","Every part of the house priced, and cash by month.","#budget","Subject"],["Builders, materials and training","Who teaches natural building, who trains the trades, who builds, near you.","#learn","Subject"],["A farmhouse near Suryapet","A worked example: three earths, no cement, rain, solar and biogas, every part priced.","#farmhouse","Subject"]];
+const SUBJ=[["Site & climate","Sun, wind, rain and shade.","#sun","3D study"],["Designing the house","The day first, outdoor rooms, doors, models.","#design","Subject"],["Permissions and standards","Panchayat approval, farm land, the IS codes.","#permits","Subject"],["Site and landscape","A windbreak, a thirsty tree, a farm pond, zones.","#site","Subject"],["Soil","Clay, sand, silt, and how to read them.","#soil","3D study"],["Foundations and plinths","Rubble trench, piles for black cotton soil, rising damp.","#foundations","Subject"],["Openings and arches","Where openings go, lintels, bands, arch thrust.","#openings","Subject"],["Walls","Cob, adobe, rammed earth, CSEB, straw, bamboo.","#walls","3D study"],["Built forms","Bhunga, kath-kuni, tulou, pueblo, domes, stilt houses and more.","#forms","3D gallery"],["Plasters and binders","How clay, lime, gypsum and pozzolans set; coats; additives.","#binders","Subject"],["Roofs","Thatch, tile, living, mud phuska, vaults; pitch and heat.","#roofs","Subject"],["Indian flat roofs","Madras terrace and jack arch: built, tied and kept.","#flatroof","Subject"],["Material data","Every number, its test and its source.","#data","Reference"],["Floors","Earth, lime, IPS, Athangudi, Kota; feel underfoot.","#floors","Subject"],["Upper floors, lofts and stairs","Room in the roof, a loft on its own feet, a stair that fits.","#upper","Subject"],["Timber and bamboo","Treatment, joints, strength, durability.","#timber","Subject"],["Finishes","Limewash, clay paint, casein, oils; breathability.","#finishes","Subject"],["Polished lime and finishes for wood","Araish, ala-gila, Chettinad, Kerala; lac, linseed, wax.","#polish","Subject"],["Passive design","Mass, time lag, shade, ventilation.","#heat","Study"],["Structure and earthquakes","Shake a wall, five failures and their fixes, zone rules.","#structure","3D study"],["Building physics","Heat and vapour through walls, comfort, humidity, air.","#physics","Study"],["Insulation","Rice husk, coir, hemp-lime: how thick, and where each goes.","#insul","Subject"],["Cooling a house you already have","Cool roofs, ceilings and shade, as measured on Indian homes.","#cool","Subject"],["Daylight and skylights","How much light a room needs, and what a window or a skylight gives it.","#daylight","Subject"],["Water and sanitation","Rain tanks, twin-pit toilets, greywater beds.","#water","Subject"],["Septic tanks, dry toilets and biogas","Tank and soak pit, two vaults, gas from dung.","#sanit","Subject"],["Kitchen and hearth","Smoke, stoves, an earth oven, gas safety.","#kitchen","Subject"],["Bathroom","Floor falls, splash linings, solar hot water.","#bath","Subject"],["Plumbing","Tank height, drain falls, traps and vents.","#plumbing","Subject"],["Wiring, earthing and solar","The board, RCCB, earth pits, rooftop solar.","#power","Subject"],["Doors and windows","Frames in earth walls, sills, mesh, how much window.","#doors","Subject"],["Fire safety","Thatch, chimneys, wiring and a way out.","#fire","Subject"],["Repair and maintenance","Read the damage, patch a hollow, a year of upkeep.","#repair","Subject"],["Tools","The kit for each technique, and lime safety.","#tools","Subject"],["Costing","Quantities, person-days and your prices.","#costing","Subject"],["The whole budget","Every part of the house priced, and cash by month.","#budget","Subject"],["Builders, materials and training","Who teaches natural building, who trains the trades, who builds, near you.","#learn","Subject"],["A farmhouse near Suryapet","A worked example: three earths, no cement, rain, solar and biogas, every part priced, and built job by job in 3D.","#farmhouse","3D study"]];
 const STAGES=[
  ["Before the ground is broken","Read the site","Walk it through a monsoon if you can. Note where water runs and pools, where the sun sets in May, and which way the evening breeze comes from.","Turn the long walls to face north and south: walls facing those ways take the least sun, east and west faces the most (Eco-Niwas Samhita; see Sun and shade)."],
  ["Before the ground is broken","Test the soil","Dig past the topsoil, run jar and ribbon tests, make test bricks and leave them in the rain.","Topsoil holds organic matter that rots; build only with the subsoil beneath it."],
@@ -5930,7 +5974,8 @@ const QS=[
  ['How do I choose a natural builder?','See houses they built and talk to the owners, make a test wall first, and write down the stages and payments.','learn','Choosing who builds'],
  ['Can I build a house with no cement at all?','Yes: stone and lime below, earth walls, timber bands, lime plaster. A worked example near Suryapet.','farmhouse','The plan: a room of each earth'],
  ['What does a natural farmhouse cost in Telangana?','A one-bedroom house near Suryapet, every part priced, with rain, solar and biogas.','farmhouse','What it costs'],
- ['How do I size solar and biogas for a farmhouse?','Set the panels, battery and cattle, and see the year month by month.','farmhouse','Rain, sun and gas']
+ ['How do I size solar and biogas for a farmhouse?','Set the panels, battery and cattle, and see the year month by month.','farmhouse','Rain, sun and gas'],
+ ['What order do you build an earth house in?','Build a farmhouse yourself in 3D, job by job, from the first application to moving in.','farmhouse','Build it yourself']
 ];
 function goTopic(sec,h){const s=document.getElementById(sec);if(!s)return;if(h){const t=[...s.querySelectorAll('h3.sub3')].find(x=>x.textContent.trim()===h);if(t){goTo('#'+sec,t);t.scrollIntoView({behavior:REDUCED?'auto':'smooth',block:'start'});return}}goTo('#'+sec)}
 function drawQs(){$('qsList').innerHTML=QS.map(([q,a,sec,h],i)=>`<button class="qcard" data-q="${i}"><b>${q}</b><span>${a}</span><small>${SECNAME[sec]||sec}${h?' · '+h:''} →</small></button>`).join('');
@@ -8979,7 +9024,7 @@ function mgfSaveRates(){try{localStorage.setItem('ei-mgf-rates',JSON.stringify(M
 const MGFST=[['Step zero','var(--muted)'],['Footing and plinth','var(--stone)'],['Making the earths','var(--straw)'],['Walls and bands','var(--clay)'],['Roof','var(--clay-2)'],['Doors and windows','var(--leaf)'],['Floors','var(--earth)'],['Plaster and lime','var(--pink)'],['Water, toilet, gas, power','var(--accent)'],['Outside','var(--good)']];
 function mgfModel(G,R,o){G=G||mgfGeo();R=R||MGFR;o=o||MGF;const L=[],lab={mason:0,helper:0,carpenter:0,plumber:0},mat={lime:0,sand:0,stone:0,straw:0,timber:0,tiles:0,ridge:0};
   const add=(st,step,item,qty,m,l,extra,sys)=>{let cost=extra||0;if(m)for(const k in m){mat[k]+=m[k];cost+=m[k]*(k==='tiles'?R.tile:k==='ridge'?R.ridge:k==='sand'?R.sand*1.6:R[k])}
-    if(l)for(const k in l){lab[k]+=l[k];cost+=l[k]*R[k]}L.push({st,step,item,qty,cost,sys:!!sys})};
+    if(l)for(const k in l){lab[k]+=l[k];cost+=l[k]*R[k]}L.push({st,step,item,qty,cost,sys:!!sys,lab:l||null,mat:m||null})};
   const crew=(d)=>({mason:d,helper:2*d}),pair=d=>({mason:d,helper:d});
   add(0,0,'Soil tests, trial bricks, blocks and a cob panel','25 kg lime, 6 days',{lime:25},{mason:2,helper:4});
   add(0,0,'Site set-up: tools, moulds, tarpaulins, drums','allowance',null,null,R.setup);
@@ -9308,8 +9353,441 @@ function mgfBoot(){
   try{addIdx('Topic','What the land asks','Rain, heat, soil, earthquakes, wind and sun near Suryapet',()=>goTo('#mg-site'),'farmhouse');addIdx('Topic','The plan: a room of each earth','Cob, adobe and lime blocks in one house, checked against the code',()=>goTo('#mg-plan'),'farmhouse');addIdx('Topic','Three earths, side by side','Cob, adobe and lime-stabilised blocks: thickness, work and cost a m²',()=>goTo('#mg-walls'),'farmhouse');addIdx('Topic','Rain, sun and gas','A rain tank, off-grid solar and biogas, sized month by month',()=>goTo('#mg-systems'),'farmhouse');addIdx('Topic','From step zero to moving in','Ten steps, with checks, from paperwork to the first monsoon',()=>goTo('#mg-steps'),'farmhouse');addIdx('Topic','What it costs','Every part of a cement-free farmhouse priced, and cash by month',()=>goTo('#mg-cost'),'farmhouse')}catch(e){}
   try{drawProps();drawLibrary();drawCoverage()}catch(e){console.error(e)}}
 
+/* ================= build it yourself: the farmhouse in 3D, job by job ================= */
+const MGB={p:0,steps:[],lv:{},tmr:null,follow:true,roof:false,api:null,sig:'',G:null,M:null,ready:false};
+const MGB_D0=Date.UTC(2026,10,1),MGB_DOW=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+const mgbDay=s=>{if(typeof s==='number')return s;const a=s.split('-').map(Number);return Math.round((Date.UTC(a[0],a[1]-1,a[2])-MGB_D0)/864e5)};
+const mgbFmt=(d,w)=>{const t=new Date(MGB_D0+d*864e5);return `${w?MGB_DOW[t.getUTCDay()]+' ':''}${t.getUTCDate()} ${MGFMON[t.getUTCMonth()]} ${t.getUTCFullYear()}`};
+const MGB_INIT={topsoil:1,trenchW:1,trenchM:1,trenchE:1,cobDim:1};
+const MGB_KEYS=[['tests',/^Soil tests/],['setup',/^Site set-up/],['permits',/^Permission and conversion/],['dig',/^Strip the topsoil/],['stone',/^Rubble stone/],['mortar',/^Lime–surkhi mortar/],['masonry',/^Stone masonry/],['slab',/^Stone slab course/],['fill',/^Fill and ram/],['adobeMake',/^Adobe bricks/],['blockLime',/^Lime for the blocks/],['blockPress',/^Pressing the blocks/],['press',/^Block press/],['cobStraw',/^Straw for the cob/],['adobeLay',/^Lay the adobe/],['blockLay',/^Lay the blocks/],['cobBuild',/^Build the cob/],['bands',/^Timber bands/],['roofTimber',/^Roof timber/],['tiles',/^Mangalore tiles/],['ridge',/^Ridge and hip tiles/],['carpentry',/^Carpentry and tiling/],['dw',/^Doors and windows/],['earthFloor',/^Earth floor/],['stoneFloor',/^Stone floor/],['bathLime',/^Bath: polished lime/],['earthPl',/^Earth plaster/],['limeIn',/^Lime plaster inside/],['limeOut',/^Lime plaster outside/],['wash',/^Lime wash/],['plumb',/^Plumbing/],['wiring',/^Wiring/],['gutter',/^Gutters/],['tank',/^Rain tank/],['flush',/^First flush/],['pits',/^Twin leach pits/],['grease',/^Grease trap/],['biogas',/^Biogas plant/],['solar',/^Solar:/],['apron',/^Stone apron/],['trees',/^Shade trees/]];
+
+/* --- where things stand on the farm (metres; x east, y north; origin at the house's south-west corner) --- */
+function mgbSite(G,o){o=o||MGF;const tk=mgfTankCost(o.tank,MGFR),L=G.L,D=G.D;
+  return {T:{x:G.xB0-1.2,y:D+3.4,d:tk.d,h:tk.h,ro:tk.d/2+.3,dep:tk.h+.55},Q:{x:L+3.2,y1:D+1.1,y2:D+3.4},B:{x:L+3.6,y:-1.4},TP:{x0:-2,x1:-1,y0:-4.5,y1:-3.5},
+   n:Math.max(2,Math.round(o.kw/.545))}}
+/* the roof's rafters and battens, in plan */
+function mgbRoof(G){const D=G.D,ym=D/2,ex0=G.ex0,ex1=G.ex1,ey0=G.ey0,ey1=G.ey1,hy0=G.hy0,ra=ex0+(ym-hy0),rb=ex1-(ym-hy0),cs=Math.cos(MGFC.pitch*Math.PI/180),R=[],B=[];
+  for(let x=ex0+.3;x<=ex1-.3+1e-6;x+=.6){const ys=x<ra?hy0+(x-ex0):x>rb?hy0+(ex1-x):ym,yn=x<ra?ey1-(x-ex0):x>rb?ey1-(ex1-x):ym;R.push(['S',x,ey0,x,ys],['N',x,ey1,x,yn])}
+  for(let y=hy0+.3;y<=ey1-.3+1e-6;y+=.6){const k=Math.min(y-hy0,ey1-y);R.push(['W',ex0,y,ex0+k,y],['E',ex1,y,ex1-k,y])}
+  for(let s=.05;;s+=.32){const y=ey0+s*cs;if(y>ym-.05)break;const a=y<hy0?ex0:ex0+(y-hy0),b=y<hy0?ex1:ex1-(y-hy0);if(b-a>.2)B.push(['S',a,y,b,y])}
+  for(let s=.05;;s+=.32){const y=ey1-s*cs;if(y<ym+.05)break;const a=ex0+(ey1-y),b=ex1-(ey1-y);if(b-a>.2)B.push(['N',a,y,b,y])}
+  for(let s=.05;;s+=.32){const x=ex0+s*cs;if(x>ra-.05)break;const a=hy0+(x-ex0),b=ey1-(x-ex0);if(b-a>.2)B.push(['W',x,a,x,b])}
+  for(let s=.05;;s+=.32){const x=ex1-s*cs;if(x<rb+.05)break;const a=hy0+(ex1-x),b=ey1-(ex1-x);if(b-a>.2)B.push(['E',x,a,x,b])}
+  return {ra,rb,ym,R,B}}
+
+/* --- the jobs, in order --- */
+function mgbSteps(G,M,o){o=o||MGF;const X=[],ln={};
+  M.L.forEach(x=>{const k=(MGB_KEYS.find(r=>r[1].test(x.item))||[])[0];if(k)ln[k]=x;else console.warn('mgb: no job for',x.item)});
+  const has={cob:G.V.cob>.01,adobe:G.V.adobe>.01,block:G.V.block>.01},ab=has.adobe||has.block,site=mgbSite(G,o),T=site.T,gs=mgfGas(o),wt=mgfWater(G,o);
+  const nA=has.adobe?Math.ceil(G.V.adobe*83.3*1.05):0,nB=has.block?Math.ceil(G.V.block*222*1.05):0;
+  const S=(d,st,f,crew,btn,n,fx,c,x)=>X.push(Object.assign({d:mgbDay(d),st,f,crew,btn,n,fx:fx||[],c:c||{}},x||{}));
+  let d;
+  /* step zero */
+  S('2026-11-02',0,'board',1,'Apply for permission',`Farm land must be converted to non-agricultural use (${mgfA('nala06','the conversion Act')}), and the gram panchayat approves the building (${mgfA('tspr114','Panchayat Raj Act, s. 114')}). It takes weeks, so test the soil meanwhile.`,[['board',1]],{permits:.5});
+  S('2026-11-09',0,'trial',2,'Dig the test pits',`Down 1.2–1.5 m, keeping the topsoil aside for growing, then a jar test on the subsoil (<a href="#soil">Soil</a>).`,[['testpit',1]],{tests:.3});
+  S('2026-11-14',0,'trial',3,'Make the trial pieces',`From the same soil: ten adobes, twenty blocks at 6 % and 8 % lime under plastic, and a metre of cob.`,[['trials',1]],{tests:.5});
+  S('2026-11-20',0,'store',2,'Order the timber, so it seasons',`Stacked in the shade, off the ground, with spacers so the air moves through. It goes into the bands, the roof, the doors and the windows.`,[['timber',3]],{setup:.2});
+  S('2026-11-25',0,'store',2,'Slake the lime into putty',`Putty matures under water before it is used (${mgfA('is1635','IS 1635')}). Gloves and goggles, always (${mgfA('limesafe','lime.org')}).`,[['limepit',1]],{setup:.2});
+  S('2026-12-07',0,'store',3,'Bring in the stone, sand and straw',`About ${mgfF0(G.stone*1.15)} m³ of rubble stone for the footing and plinth, sand and brick dust for the mortar, and paddy straw for the earths.`,[['stone',1],['sand',1],['surkhi',1],['straw',6]]);
+  S('2026-12-12',0,'trial',2,'Test the trial pieces',`Five adobes dropped from waist height; three crushed by a civil engineering lab, against the 1.2 N/mm² the code asks (${mgfA('is13827p','IS 13827')}). The blocks’ lime comes from the better batch.`,[['trials',2]],{tests:.2});
+  S('2026-12-14',0,'board',1,'Collect the permission',`The land is converted, the plan approved and the trials passed: now the spending on the house can start.`,[['board',2]],{permits:.5});
+  /* making the earths */
+  d=mgbDay('2026-12-15');
+  if(has.adobe){const na=Math.max(2,Math.min(6,Math.ceil(nA/500))),per=Math.ceil(nA/na);
+    S(d,2,'adobe',4,'Dig the soil and soak it with straw',`Subsoil, never topsoil, soaked with chopped straw for at least 12 hours (${mgfA('nmsu521','NMSU')}): enough for ${mgfF0(nA)} adobes.`,[['aSoil',1],['mudpit',1],['straw',4]],{adobeMake:.1,setup:.4});
+    for(let i=1;i<=na;i++){d++;S(d,2,'adobe',4,i===1?'Mould the first day’s adobes':i===na?'Mould the last of the adobes':'Mould another day’s adobes',
+      i===1?`Wooden moulds, 450 × 220 × 100 mm, filled on level ground and lifted off. Two people with a four-brick mould make about 500 a day (${mgfA('ghbadobe','GreenHomeBuilding')}).`:i===2?`Each day’s bricks dry flat for three days, then on edge (${mgfA('nmsu521','NMSU')}), then go into stacks.`:`${mgfF0(Math.min(nA,per*(i-1)))} made so far, of ${mgfF0(nA)}.`,
+      [['aFlat',Math.min(per,nA-per*(i-1))],['aHack',Math.min(nA,per*(i-1))],['aSoil',1-i/na*.9]],{adobeMake:.9/na})}
+    d+=3;S(d,2,'adobe',4,'Stack the adobes to dry',`Handled roughly only after 3–4 weeks (${mgfA('nmsu521','NMSU')}), and covered against rain. Five from each day’s batch should pass the drop test.`,[['aFlat',0],['aHack',nA],['aSoil',0],['mudpit',0]])}
+  if(has.block){const nb=Math.max(1,Math.min(6,Math.ceil(nB/850))),per=Math.ceil(nB/nb);d=Math.max(d+1,mgbDay('2026-12-22'));
+    S(d,2,'block',4,'Sieve the clay and set up the press',`A very clayey subsoil suits lime (${mgfA('averaw','Auroville')}): sieved, mixed dry with 6–7 % lime, then wetted until a squeezed ball just holds.`,[['bSoil',1],['press',1]],{press:1,setup:.2});
+    for(let i=1;i<=nb;i++){d++;S(d,2,'block',12,i===1?'Press the first day’s blocks':i===nb?'Press the last of the blocks':'Press another day’s blocks',
+      i===1?`Twelve people and one press make about 850 a day in this plan. They go under plastic, stacked no more than five high.`:i===2?`No wet curing: six days under plastic sheets. Lime hardens slowly, so they are pressed early (${mgfA('averaw','Auroville')}).`:`${mgfF0(Math.min(nB,per*(i-1)))} pressed so far, of ${mgfF0(nB)}.`,
+      [['bStack',Math.min(nB,per*i)],['plastic',Math.ceil(Math.min(nB,per*i)/850)],['bSoil',1-i/nb*.9]],{blockPress:1/nb,blockLime:1/nb})}}
+  /* footing and plinth */
+  d=Math.max(d+1,mgbDay('2027-01-03'));
+  S(d,1,'house',3,'Peg out the corners',`The long walls run east–west. Profile boards a metre outside each corner hold the strings, so they can come down for digging and go back up.`,[['pegs',1],['strings',1],['press',0],['bSoil',0]]);
+  S(++d,1,'house',2,'Square the corners',`A 3-4-5 triangle of string at each corner, then the check: both diagonals must measure the same, ${Math.hypot(G.L,G.D).toFixed(2)} m.`,[['diag',1]],{},{tag:`both diagonals ${Math.hypot(G.L,G.D).toFixed(2)} m`});
+  S(++d,1,'house',6,'Strip the topsoil',`Topsoil holds organic matter that rots, so nothing is built on it or with it. It goes to a heap, for the garden.`,[['topsoil',0],['topheap',1],['strings',0],['diag',0],['trials',0],['testpit',0]],{dig:.25});
+  const Z=[['W','west'],['M','middle'],['E','east']];
+  Z.forEach(([z,n],i)=>{d+=i?1:2;S(d,1,'house',8,`Dig the ${n} trenches`,[
+     `600 mm deep, more than the 400 mm the code asks (${mgfA('is13827p','IS 13827')}), and 300 mm wider than the wall, down to firm, undisturbed soil.`,
+     `The bottoms kept level. Black clay that cracks as it dries means stop and call an engineer (<a href="#foundations">Foundations</a>).`,
+     `${mgfF1(G.exc)} m³ in all, dug by hand; the earth goes back inside the plinth as fill.`][i],[['trench'+z,0],['spoil'+z,1]],{dig:.25})});
+  Z.forEach(([z,n],i)=>{d+=3;S(d,1,'house',6,`Lay the ${n} footing`,[
+     `Rubble stone in lime–surkhi mortar, 1 lime : 1 brick dust : 2 sand, up to the ground, the lime kept damp and shaded for a week (<a href="#lime">Lime</a>).`,
+     `Every stone bedded full in mortar, with no hollows. No cement goes into this house anywhere.`,
+     `The stone heap shrinks as the trenches fill.`][i],[['foot'+z,1],['stone',1-.19*(i+1)],['sand',1-.07*(i+1)],['surkhi',1-.12*(i+1)]],{stone:.58/3,mortar:.58/3,masonry:.58/3})});
+  Z.forEach(([z,n],i)=>{d+=3;S(d,1,'house',6,`Raise the ${n} plinth`,[
+     `Stone in lime to 450 mm above the ground and 100 mm wider than the wall, so monsoon splash hits stone, never earth.`,
+     `Level all round, and above the highest water the cheruvu has reached: the plinth must stay above flood level (${mgfA('is13827p','IS 13827')}).`,
+     `Sleeves go through it for the water pipe in and the drains out of the bath and kitchen, and the verandah gets its stone edge and post pads.`][i],
+     [['plinth'+z,1],['stone',.43-.14*(i+1)],['sand',.79-.06*(i+1)],['surkhi',.64-.08*(i+1)]].concat(i===2?[['sleeves',1],['kerb',1]]:[]),{stone:.42/3,mortar:.42/3,masonry:.42/3})});
+  S(++d,1,'house',4,'Lay the stone slab course',`Dense stone slab on top of the plinth, unbroken under every earth wall: the damp-proof course, without cement.`,[['slab',1],['pegs',0]],{slab:1});
+  [['Fill and ram the first layer',`The dug earth goes back inside the plinth in 150 mm layers, each one wetted and rammed.`],['Ram the second layer',`${mgfF1(G.fill)} m³ of fill in all, from the trenches.`],['Ram the third layer',`The rest of the dug earth is spread to slope the ground away from the house. The floors go on this fill in May.`]]
+   .forEach(([b,n],i)=>S(++d,1,'house',6,b,n,[['fill',.13*(i+1)],['spoilW',1-(i+1)/3],['spoilM',1-(i+1)/3],['spoilE',1-(i+1)/3]],{fill:1/3}));
+  /* walls and bands */
+  d=Math.max(d+1,mgbDay('2027-02-01'));
+  S(d,3,'house',2,'Stand the door frames',`On the stone course, plumb and braced, with timber anchors to build into the wall.`,[['dframes',1]],{dw:.15});
+  const lay=[];if(has.adobe)lay.push(`Adobe in mud mortar of the same soil: a course of headers, then pairs of stretchers, joints staggered.`);if(has.block)lay.push(`Blocks one and a half thick in lime–earth mortar, 10 mm joints, each block wetted.`);
+  const tankDig=`the masons dig the rain tank, ${mgfF1(T.d)} m across and ${mgfF1(T.dep)} m deep.`,tankUp='the tank’s walls go up in stone and lime–surkhi.',tankTop='the tank’s walls reach the top.',tankPl=`three coats of lime plaster with brick dust inside the tank, kept damp for weeks; lime acts as a disinfectant (${mgfA('dtekund','Down To Earth')}).`;
+  const use=(hA,hB)=>{const a=[];if(has.adobe)a.push(['aHack',Math.round(nA*Math.max(0,1-hA/2.9))]);if(has.block)a.push(['bStack',Math.round(nB*Math.max(0,1-hB/2.9))]);return a};
+  const W=(date,h,c,dim,btn,n,fx,cc,x)=>{const f=[];if(ab&&h!=null)f.push(['hA',h],['hB',h]);if(has.cob&&c!=null)f.push(['hC',c]);if(has.cob&&dim)f.push(['cobDim',dim]);
+    const cost={};if(ab&&h!=null){const p=h-W.h;if(p>0){cost.adobeLay=p/3;cost.blockLay=p/3}W.h=h}if(has.cob&&c!=null){const p=c-W.c;if(p>0){cost.cobBuild=p/3;cost.cobStraw=p/3}W.c=c}
+    S(date,3,'house',9,btn,n,f.concat(ab&&h!=null?use(h,h):[]).concat(fx||[]),Object.assign(cost,cc||{}),x)};W.h=0;W.c=0;
+  const cobLift=`Cob by hand, in lifts of up to 600 mm (${mgfA('edorset','East Dorset')}).`,cover='The cob firms up between lifts: its top is covered every evening, and in rain.';
+  if(has.cob){
+    W('2027-02-03',.6,.6,.68,ab?'Lay the first courses, and the first lift of cob':'Lay the first lift of cob',lay.concat([cobLift]).join(' '),[['plastic',0]]);
+    W('2027-02-06',1.2,null,.86,ab?'Keep laying; set the window frames':'Let the cob stiffen',(ab?'The window frames go in as the wall reaches the sill, 900 mm up. The walls are checked for plumb every three courses. ':'')+cover,ab?[['wframesAB',1]]:[],{dw:.1});
+    W('2027-02-09',1.8,1.2,.68,'Lay the second lift of cob',`The first lift is leather-hard: its faces are trimmed with a spade, then the next goes on.${ab?' The adobe and blocks keep rising.':''}`,[['wframesCob',1]]);
+    W('2027-02-12',2.1,null,.86,ab?'Bring the adobe and blocks to the door heads':'Let the cob stiffen',ab?'They stop at 2.1 m for the lintel band. Where two earths meet, the adobe and blocks are left toothed, every other course standing out, and the cob is worked into the gaps.':'Niches are carved now, while the cob is soft enough to cut. '+cover);
+    W('2027-02-16',null,1.8,.68,'Lay the third lift of cob',`The outside face leans in as it rises: 600 mm thick at the floor, 450 mm at the top, more than the 300 mm the code asks (${mgfA('is13827s','IS 13827')}).`,[['tankDig',1],['tankSpoil',1],['straw',3]],{tank:.15},{also:tankDig});
+    W('2027-02-21',null,2.1,.68,'Lay the fourth lift, to the door heads','Conduits go into the joints as the wall rises: earth walls are easy to cut now and messy to cut later.',[['tankA',1]],{tank:.3},{also:tankUp});
+    S('2027-02-24',3,'house',4,'Lay the lintel band through every wall',`At the door heads, 2.1 m: two 50 × 100 mm timbers in parallel with spacers, halved and nailed at every corner and junction (${mgfA('is13827p','IS 13827')}). It ties the walls together and carries them over the openings.`,[['band1',1],['cobDim',.86],['timber',2]],{bands:.5});
+    W('2027-02-27',2.6,2.6,.68,ab?'Above the band: adobe, blocks and the fifth lift':'Lay the fifth lift of cob','Above the band the wall runs solid all the way round, up to the roof band at 3.0 m.');
+    W('2027-03-02',2.9,null,.86,ab?'Bring the adobe and blocks to the roof band':'Let the cob stiffen',ab?'The adobe and block crews then move to the rain tank. '+cover:cover,[['tankB',1]],{tank:.2},{also:tankTop});
+    W('2027-03-09',null,2.9,.68,'Lay the last lift of cob','Then the cob dries right through. It is slow, and it is not plastered until it has.',[['tankPl',1],['surkhi',0],['straw',2]],{tank:.2},{also:tankPl});
+  }else{
+    W('2027-02-03',.6,null,0,'Lay the first courses',lay.join(' '),[['plastic',0]]);
+    W('2027-02-06',1.2,null,0,'Keep laying; set the window frames','The window frames go in as the wall reaches the sill, 900 mm up.',[['wframesAB',1]],{dw:.1});
+    W('2027-02-09',1.8,null,0,'Keep laying','The walls are checked for plumb every three courses, and conduits go into the joints: earth walls are easy to cut now and messy to cut later.');
+    W('2027-02-12',2.1,null,0,'Bring the walls to the door heads','They stop at 2.1 m for the lintel band.');
+    S('2027-02-15',3,'house',4,'Lay the lintel band through every wall',`At the door heads, 2.1 m: two 50 × 100 mm timbers in parallel with spacers, halved and nailed at every corner and junction (${mgfA('is13827p','IS 13827')}). It ties the walls together and carries them over the openings.`,[['band1',1],['timber',2]],{bands:.5});
+    W('2027-02-18',2.6,null,0,'Above the band','Above the band the wall runs solid all the way round, up to the roof band at 3.0 m.',[['tankDig',1],['tankSpoil',1]],{tank:.15},{also:tankDig});
+    W('2027-02-22',2.9,null,0,'Bring the walls to the roof band','Walls plumb, checked every three courses.',[['tankA',1]],{tank:.3},{also:tankUp});
+  }
+  S(has.cob?'2027-03-13':'2027-02-25',3,'house',4,'Lay the roof band, with a strap for every rafter',`At 3.0 m, unbroken through every corner, with a strap ready for every rafter: Telangana’s wind map runs to 44 m/s (${mgfA('mgfbmw','BMTPC')}).`,[['band2',1],['hA',3],['hB',3],['hC',3],['cobDim',.86],['timber',1]],{bands:.5});
+  /* the roof */
+  const RF=mgbRoof(G);
+  d=Math.max(X[X.length-1].d+1,mgbDay('2027-03-17'));
+  S(d,4,'house',6,'Raise the king posts, ridge and hips',`The timber is treated with borax and boric acid first (<a href="#timber">Timber</a>). The ridge stands on king posts over the two cross walls; the hips run down to the four corners.`,[['roofFrame',1]].concat(has.cob?[]:[['tankB',1]]),Object.assign({roofTimber:.35,carpentry:.15},has.cob?{}:{tank:.2}),has.cob?{}:{also:tankTop});
+  d+=4;S(d,4,'veranda',5,'Set up the verandah posts and beam','Six posts on the stone pads carry a beam under the long south slope, which runs on down over the verandah.',[['veranda',1],['pitsDig',1],['pitSpoil',1]],{roofTimber:.15,carpentry:.1,pits:.3},{also:`the masons dig the twin pits, downhill of any well or borewell and at least 30 m from it (${mgfA('twinpit','Eawag')}).`});
+  d+=4;S(d,4,'house',6,'Fix the rafters, 600 mm apart',`${RF.R.length} rafters, each strapped to the roof band, the short ones running up to the hips.`,[['rafters',1],['timber',0]].concat(has.cob?[]:[['tankPl',1],['surkhi',0]]),Object.assign({roofTimber:.35,carpentry:.2},has.cob?{}:{tank:.2}),has.cob?{}:{also:tankPl});
+  d+=3;S(d,4,'house',6,'Nail the battens at the tile gauge',`Straight and evenly spaced, so every tile hangs true. The tiles arrive: ${mgfF0(G.tiles)} Mangalore tiles and ${G.ridges} ridge tiles.`,[['battens',1],['tilesStore',8],['pitsLine',1]],{roofTimber:.15,carpentry:.15,pits:.5},{also:`the pits are lined with honeycomb brick in lime, the top 300 mm fully mortared (${mgfA('twinpit','Eawag')}).`});
+  d+=3;S(d,4,'house',6,'Tile from the eaves up',`At 30°, above the 22° a Mangalore tile needs (${mgfA('matrx','Studio Matrx')}), with the eave tiles wired down.`,[['tileH',.36],['tilesStore',5]],{tiles:1/3,carpentry:.1});
+  d+=2;S(d,4,'house',6,'Keep tiling','Row by row, each tile hooked over its batten.',[['tileH',.7],['tilesStore',2],['tankCover',1],['flush',1],['tankSpoil',0]],{tiles:1/3,carpentry:.1,tank:.15,flush:.5},{also:'the tank gets its stone-slab cover, a first-flush diverter and a sand filter.'});
+  d+=2;S(d,4,'house',6,'Tile up to the ridge','No tile should rock.',[['tileH',1],['tilesStore',0]],{tiles:1/3,carpentry:.1});
+  d+=3;S(d,4,'house',5,'Bed the ridge and hips in lime','Ridge and hip tiles bedded in lime–surkhi mortar, and every eave, verge and ridge tile wired. The roof is on before May’s storms.',[['ridgeT',1],['pitsCover',1],['pitSpoil',0]],{ridge:1,carpentry:.1,pits:.2},{also:'the pits get their stone covers.'});
+  /* water, toilet, gas and power */
+  d+=3;S(d,8,'tank',3,'Fix the gutters and downpipes',`On every eave, falling to downpipes that feed the tank. The first ${mgfF0(wt.firstFlush)} litres of each rain wash the roof and are diverted away.`,[['gutters',1]],{gutter:1,flush:.5});
+  if(gs.size){d+=6;S(d,8,'bio',3,'Set up the biogas plant',`A ${gs.size} m³ prefabricated plant between the kitchen and the cattle, fed dung and water every day; the slurry goes to the compost.`,[['bio',1]],{biogas:1})}
+  d+=gs.size?8:12;S(d,8,'solar',4,'Put up the solar panels',`${o.kw} kW of panels on a ground frame facing south, clear of shade, with two earth pits (${mgfA('ceawiki','CEA rules')}).`,[['solar',1]],{solar:.7});
+  d+=6;S(d,8,'inside',2,'Wire the house and the battery',`A licensed electrician wires it; the ${o.kwh} kWh battery and the inverter go indoors, in a ventilated corner (<a href="#power">Wiring and solar</a>).`,[['wiring',1]],{wiring:1,solar:.3});
+  d+=3;S(d,8,'pits',2,'Plumb the bath and kitchen',`A pour-flush pan to the twin pits; bath and kitchen water through a grease trap to a soak pit at least 0.9 m wide and 1 m deep below the inlet (${mgfA('is2470b','IS 2470')}).`,[['soak',1]],{plumb:1,grease:1});
+  /* floors, plaster, doors */
+  d=Math.max(d+3,mgbDay('2027-05-06'));
+  S(d,6,'inside',4,'Lay the stone floors','Kitchen, bath and verandah: stone slabs in lime mortar on the rammed fill, the bath floor falling to its trap, and a stone counter in the kitchen.',[['floorStone',1]],{stoneFloor:1});
+  d+=3;S(d,7,'walls',4,'Lime plaster outside: the first coat','Lime and sand, 1 : 3, on the earth walls; on the cob only once it has dried through.',[['plaster',1],['cobDim',1],['sand',.4]],{limeOut:.5});
+  d+=2;S(d,6,'inside',4,'Ram the murram floor',`In the bedroom and living room: 100–150 mm of rammed murram (${mgfA('drabbit','Dancing Rabbit')}).`,[['murram',1]],{earthFloor:.4});
+  d+=3;S(d,7,'inside',4,'Second coat outside; earth plaster inside','Earth plaster on the bedroom and living room walls, from the same soil as the walls.',[['plaster',2],['straw',1],['sand',.25]],{limeOut:.5,earthPl:1});
+  d+=3;S(d,6,'inside',3,'Lay the earth finish',`25 mm of sand, clay and chopped straw, trowelled smooth and left to dry (${mgfA('drabbit','Dancing Rabbit')}).`,[['floorEarth',1],['straw',0]],{earthFloor:.4});
+  d+=3;S(d,7,'inside',3,'Lime plaster in the kitchen and bath','Polished where the shower splashes (<a href="#polish">Polished lime</a>).',[['plaster',3],['sand',.1]],{limeIn:1,bathLime:1});
+  d+=4;S(d,5,'walls',2,'Hang the doors and shutters','Every door and window should close and lock, and the mesh goes on the windows.',[['doors',1]],{dw:.75});
+  d+=3;S(d,6,'inside',2,'Oil the earth floor','Linseed oil, in coats, once the floor is dry.',[['floorOil',1]],{earthFloor:.2});
+  d+=4;S(d,7,'walls',3,'Lime wash, three coats',`Thin coats 12 hours apart, misted for three days after the last (${mgfA('limeapp','lime.org.uk')}).`,[['plaster',4],['limepit',0],['sand',0]],{wash:1});
+  /* outside, then move in */
+  d+=3;S(d,9,'walls',4,'Lay the stone apron','750 mm of stone round the house, with the ground sloped away from it, so rain never stands against the plinth.',[['apron',1]],{apron:1});
+  d+=3;S(d,9,'site',3,'Plant shade trees; dig the recharge pit',`Trees on the west, against the April and May afternoons. The tank’s overflow runs to a recharge pit (${mgfA('cgwb25','CGWB')}).`,[['trees',1],['recharge',1],['topheap',.5]],{trees:1});
+  d+=2;S(d,9,'final',5,'Move in',`Before the monsoon reaches Telangana, in the second week of June (${mgfA('mgfcrida','CRIDA')}).`,[['family',1],['board',0]]);
+  /* money and work, from the bill of quantities: each line shared out over its jobs */
+  const tot={};X.forEach(s=>Object.entries(s.c).forEach(([k,v])=>tot[k]=(tot[k]||0)+v));
+  X.forEach(s=>{let cost=0,pd=0;Object.entries(s.c).forEach(([k,v])=>{const x=ln[k];if(!x||!tot[k])return;const f=v/tot[k];cost+=x.cost*f;if(x.lab)pd+=Object.values(x.lab).reduce((a,b)=>a+b,0)*f});s.cost=cost;s.pd=pd});
+  const miss=Object.keys(ln).filter(k=>!tot[k]);if(miss.length)console.warn('mgb: lines with no job',miss);
+  return X}
+function mgbLevels(X){const lv={},names=new Set(Object.keys(MGB_INIT));X.forEach(s=>s.fx.forEach(f=>names.add(f[0])));
+  names.forEach(n=>{const a=[n in MGB_INIT?MGB_INIT[n]:0];X.forEach((s,i)=>{const f=s.fx.filter(q=>q[0]===n).pop();a.push(f?f[1]:a[i])});lv[n]=a});return lv}
+
+/* --- the 3D scene --- */
+function mgbTextures(){if(TEX.mgAdobe)return;
+  TEX.mgAdobe=canvasTex(256,(g,s)=>{g.fillStyle='#b4b4b4';g.fillRect(0,0,s,s);const ch=s/8;for(let r=0;r<8;r++){const head=r%2===0,u=head?s/4:s/2;for(let x=head?0:-s/4;x<s;x+=u){const v=200+rnd()*50|0;g.fillStyle=`rgb(${v},${v},${v})`;g.fillRect(x+2,r*ch+2,u-4,ch-4)}}for(let i=0;i<1600;i++){const v=150+rnd()*100|0;g.fillStyle=`rgba(${v},${v},${v},.45)`;g.fillRect(rnd()*s,rnd()*s,2,2)}});
+  TEX.mgBlock=canvasTex(256,(g,s)=>{g.fillStyle='#9c9c9c';g.fillRect(0,0,s,s);const n=9,ch=s/n,u=s/3;for(let r=0;r<n;r++){for(let x=r%2?-u/2:0;x<s;x+=u){const v=212+rnd()*34|0;g.fillStyle=`rgb(${v},${v},${v})`;g.fillRect(x+1.5,r*ch+1.5,u-3,ch-3)}}for(let i=0;i<700;i++){const v=170+rnd()*80|0;g.fillStyle=`rgba(${v},${v},${v},.4)`;g.fillRect(rnd()*s,rnd()*s,1.5,1.5)}});
+  TEX.mgPv=canvasTex(128,(g,s)=>{g.fillStyle='#e8e8e8';g.fillRect(0,0,s,s);for(let i=0;i<6;i++)for(let j=0;j<10;j++){g.fillStyle='#8a8a8a';g.fillRect(i*s/6+1,j*s/10+1,s/6-2,s/10-2)}})}
+function mgbMats(st){const m=(t,o)=>st.mat(t,o||{});
+  const K={ground:m('--earth',{map:TEX.earth,dim:.95}),strata:m('--earth',{map:TEX.strata,dim:.8}),top:m('--earth',{map:TEX.earth,dim:.7}),spoil:m('--clay-2',{map:TEX.earth,dim:.95}),
+   stone:m('--stone',{map:TEX.stone}),stoneP:m('--stone',{dim:.92}),slab:m('--stone',{map:TEX.stone,dim:.7}),gravel:m('--stone',{map:TEX.gravel,dim:1.05}),
+   cob:m('--clay',{map:TEX.cob}),adobe:m('--earth',{map:TEX.mgAdobe,dim:1.12}),block:m('--stone',{map:TEX.mgBlock,dim:1.12}),cobFree:m('--clay',{map:TEX.cob}),fill:m('--clay-2',{map:TEX.earth,dim:.78}),
+   brick:m('--earth',{map:TEX.earth,dim:1.08}),brickWet:m('--earth',{map:TEX.earth,dim:.74}),blockU:m('--stone',{map:TEX.earth,dim:1.15}),
+   wood:m('--earth',{map:TEX.wood,dim:.85}),band:m('--warn',{map:TEX.wood,dim:.92}),
+   limeOut:m('--lime',{map:TEX.lime,dim:.9}),limeIn:m('--lime',{map:TEX.lime,dim:.96}),earthPl:m('--straw',{map:TEX.earth,dim:.95}),
+   tile:m('--clay',{map:TEX.tile,dim:.9,roughness:.8}),tileStack:m('--clay',{map:TEX.tile,dim:.8}),ridge:m('--clay',{dim:.78,roughness:.8}),
+   floorE:m('--clay-2',{map:TEX.earth,roughness:.75}),murram:m('--clay-2',{map:TEX.gravel,dim:.85}),floorS:m('--stone',{map:TEX.stone,dim:1.08}),
+   leaf:m('--leaf',{roughness:.85}),trunk:m('--earth',{dim:.6}),ink:m('--ink',{roughness:.7}),pink:m('--pink',{roughness:.6}),
+   plastic:m('--accent',{transparent:true,opacity:.3,roughness:.2,depthWrite:false}),water:m('--accent',{transparent:true,opacity:.45,roughness:.1,depthWrite:false}),
+   mesh:m('--ink',{transparent:true,opacity:.4,depthWrite:false}),pipe:m('--muted',{roughness:.5}),gas:m('--warn',{roughness:.5}),
+   pv:m('--accent',{map:TEX.mgPv,dim:.55,roughness:.35,metalness:.2}),metal:m('--muted',{roughness:.45,metalness:.3}),
+   green:m('--leaf',{dim:.78,roughness:.6}),drum:m('--leaf',{dim:1.05,roughness:.5}),machine:m('--accent',{dim:.75,roughness:.5}),lime:m('--lime',{map:TEX.lime}),
+   board:m('--paper',{roughness:.6}),straw:m('--straw',{map:TEX.straw}),mud:m('--clay',{map:TEX.earth,dim:.55,roughness:.45}),surkhi:m('--clay',{map:TEX.gravel,dim:.85}),
+   battery:m('--ink',{dim:.9,roughness:.5}),planes:{}};
+  ['cob','adobe','block'].forEach(k=>{const pl=new THREE.Plane(new THREE.Vector3(0,-1,0),0);K[k].clippingPlanes=[pl];K[k].clipShadows=true;capify(K[k],0);K.planes[k]=pl});
+  K.tilePlane=new THREE.Plane(new THREE.Vector3(0,-1,0),0);K.tile.clippingPlanes=[K.tilePlane];K.tile.clipShadows=true;
+  return K}
+/* a six-faced solid between a plan rectangle at one height and another at a second height; world-scaled UVs so courses line up */
+function mgbHexa(V,b,t,h0,h1,mat,s,vo){s=s||1;vo=vo||0;
+  const P=[V(b[0],h0,b[2]),V(b[1],h0,b[2]),V(b[1],h0,b[3]),V(b[0],h0,b[3]),V(t[0],h1,t[2]),V(t[1],h1,t[2]),V(t[1],h1,t[3]),V(t[0],h1,t[3])];
+  const C=new THREE.Vector3();P.forEach(p=>C.add(p));C.multiplyScalar(1/8);
+  const F=[[1,2,6,5,0],[0,4,7,3,0],[4,5,6,7,1],[0,3,2,1,1],[0,1,5,4,2],[3,7,6,2,2]],pos=[],nor=[],uv=[],idx=[],g=new THREE.BufferGeometry();
+  F.forEach((f,fi)=>{let q=f.slice(0,4).map(i=>P[i]);const fc=q.reduce((a,p)=>a.add(p),new THREE.Vector3()).multiplyScalar(.25);
+    let n=q[1].clone().sub(q[0]).cross(q[2].clone().sub(q[0]));if(n.lengthSq()<1e-12)n=q[2].clone().sub(q[0]).cross(q[3].clone().sub(q[0]));
+    if(n.dot(fc.clone().sub(C))<0){q=[q[0],q[3],q[2],q[1]];n.negate()}n.normalize();const b0=pos.length/3,ax=f[4];
+    q.forEach(p=>{pos.push(p.x,p.y,p.z);nor.push(n.x,n.y,n.z);uv.push((ax===0?p.z:p.x)/s,(ax===1?p.z:p.y-vo)/s)});
+    idx.push(b0,b0+1,b0+2,b0,b0+2,b0+3);g.addGroup(fi*6,6,fi)});
+  g.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));g.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3));g.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));g.setIndex(idx);
+  const m=new THREE.Mesh(g,mat);m.castShadow=m.receiveShadow=true;return m}
+function mgbMerge(objs,mat){const pos=[],nor=[],uv=[],idx=[];let off=0;objs.forEach(o=>{o.updateMatrix();const g=o.geometry.clone();g.applyMatrix4(o.matrix);const p=g.attributes.position,n=g.attributes.normal,u=g.attributes.uv;
+    for(let i=0;i<p.count;i++){pos.push(p.getX(i),p.getY(i),p.getZ(i));nor.push(n.getX(i),n.getY(i),n.getZ(i));uv.push(u?u.getX(i):0,u?u.getY(i):0)}
+    if(g.index)for(let i=0;i<g.index.count;i++)idx.push(g.index.getX(i)+off);else for(let i=0;i<p.count;i++)idx.push(i+off);off+=p.count;g.dispose();o.geometry.dispose()});
+  const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));geo.setAttribute('normal',new THREE.Float32BufferAttribute(nor,3));geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geo.setIndex(idx);
+  const m=new THREE.Mesh(geo,mat);m.castShadow=m.receiveShadow=true;return m}
+function mgbScene(st,K,G,o){o=o||MGF;
+  const L=G.L,D=G.D,H=MGFC.H,FL=.45,pit=MGFC.pitch*Math.PI/180,tn=Math.tan(pit),site=mgbSite(G,o),T=site.T,Q=site.Q,B=site.B,TP=site.TP,RF=mgbRoof(G);
+  const root=new THREE.Group();st.scene.add(root);const V=(x,h,y)=>new THREE.Vector3(x-L/2,h,D/2-y);
+  const P={},part=(n,kind,obj,opt)=>{P[n]={kind,obj,opt:opt||{}};if(obj&&obj.isObject3D&&!obj.parent)root.add(obj);return obj};
+  const grp=(y)=>{const g=new THREE.Group();if(y)g.position.y=y;return g};
+  const merged=(g,mat)=>{const kids=g.children.slice();kids.forEach(k=>g.remove(k));g.add(mgbMerge(kids,mat));return g};
+  const hx=(x0,x1,y0,y1,h0,h1,mat,s,vo)=>mgbHexa(V,[x0,x1,y0,y1],[x0,x1,y0,y1],h0,h1,mat,s,vo);
+  const sh=m=>{m.castShadow=m.receiveShadow=true;return m};
+  const at=(m,x,h,y)=>{m.position.copy(V(x,h,y));return m};
+  const cone=(r,h,mat)=>{const g=new THREE.ConeGeometry(r,h,28);g.translate(0,h/2,0);return sh(new THREE.Mesh(g,mat))};
+  const heap=(x,y,r,h,mat)=>{const g=grp();g.add(cone(r,h,mat));return at(g,x,0,y)};
+  const cy=(r,h,mat,seg)=>{const g=new THREE.CylinderGeometry(r,r,h,seg||24);g.translate(0,h/2,0);return sh(new THREE.Mesh(g,mat))};
+  const rod=(a,b,r,mat)=>between(cyl(r,1,mat,8),a,b);
+  const beam=(a,b,w,h,mat)=>{const m=sh(new THREE.Mesh(new THREE.BoxGeometry(w,h,a.distanceTo(b)),mat));m.position.copy(a).add(b).multiplyScalar(.5);m.lookAt(b);return m};
+  const line=(pts,h,r,mat)=>{const g=grp();for(let i=1;i<pts.length;i++)g.add(rod(V(pts[i-1][0],h,pts[i-1][1]),V(pts[i][0],h,pts[i][1]),r,mat));return g};
+  const ring=(ri,ro,h,mat)=>{const pr=[[ri,0],[ro,0],[ro,h],[ri,h],[ri,0]].map(p=>new THREE.Vector2(p[0],p[1]));return sh(new THREE.Mesh(new THREE.LatheGeometry(pr,40),mat))};
+  /* the ground: a disc of the farm, cut where trenches and pits will be dug */
+  const DEP=Math.max(3.2,T.dep+.8),shp=new THREE.Shape();shp.absarc(6-L/2,0-D/2,25,0,Math.PI*2,false);
+  const rp=(x0,x1,y0,y1)=>{const p=new THREE.Path();p.moveTo(x0-L/2,y0-D/2);p.lineTo(x1-L/2,y0-D/2);p.lineTo(x1-L/2,y1-D/2);p.lineTo(x0-L/2,y1-D/2);p.lineTo(x0-L/2,y0-D/2);return p};
+  const cp=(x,y,r)=>{const p=new THREE.Path();p.absarc(x-L/2,y-D/2,r,0,Math.PI*2,true);return p};
+  shp.holes.push(rp(-.15,L+.15,-.15,D+.15),cp(T.x,T.y,T.ro),cp(Q.x,Q.y1,.62),cp(Q.x,Q.y2,.62),rp(TP.x0,TP.x1,TP.y0,TP.y1));
+  const gm=new THREE.Mesh(new THREE.ExtrudeGeometry(shp,{depth:DEP,bevelEnabled:false,curveSegments:48}),[K.ground,K.strata]);gm.rotation.x=-Math.PI/2;gm.position.y=-DEP;gm.receiveShadow=true;root.add(gm);
+  root.add(hx(-.15,L+.15,-.15,D+.15,-DEP+.01,-.6,K.ground));G.R.forEach(r=>root.add(hx(r.x0+.15,r.x1-.15,r.y0+.15,r.y1-.15,-.6,0,K.ground)));
+  root.add(hx(TP.x0,TP.x1,TP.y0,TP.y1,-DEP+.01,-1.4,K.ground));
+  [[T.x,T.y,T.ro,T.dep],[Q.x,Q.y1,.62,1.6],[Q.x,Q.y2,.62,1.6]].forEach(([x,y,r,dp])=>root.add(at(cy(r,DEP-dp-.01,K.ground,40),x,-DEP+.01,y)));
+  /* trees already on the farm */
+  const tree=(x,y,s)=>{const g=grp();g.add(cy(.16*s,2.4*s,K.trunk,8));[[0,2.9,0,1.5],[.7,2.5,.3,1.1],[-.6,2.6,-.4,1.15]].forEach(([a,b,c,r])=>{const m=sh(new THREE.Mesh(new THREE.IcosahedronGeometry(r*s,1),K.leaf));m.position.set(a*s,b*s,c*s);g.add(m)});return at(g,x,0,y)};
+  [[-13,4,1.1],[-15,-3,.9],[26.5,3,1],[24,-12.5,1.15],[10,16.5,1],[-6,15,.95]].forEach(([x,y,s])=>root.add(tree(x,y,s)));
+  /* step zero: board, test pit, trials, store */
+  {const g=grp();g.add(at(cy(.05,1.7,K.wood,8),-2.6,0,-8.22));g.add(hx(-3.1,-2.1,-8.27,-8.23,1.05,1.65,K.board));part('board','fn',g,{fn:l=>{g.visible=l>0;K.board.userData.token=l>1?'--good':'--paper';st.setColor(K.board)}})}
+  {const lid=hx(TP.x0,TP.x1,TP.y0,TP.y1,-1.4,0,K.ground),g=grp();root.add(lid);g.add(heap(-.2,-4,.6,.45,K.spoil));const jar=at(cy(.07,.26,K.water,16),-2.6,0,-3.25),soil=at(cy(.062,.1,K.spoil,16),-2.6,0,-3.25);g.add(jar,soil);
+   part('testpit','fn',g,{fn:l=>{lid.visible=!l;g.visible=!!l}})}
+  {const a=grp(),b=grp(),c=grp();for(let i=0;i<10;i++)a.add(hx(-5.8+i*.5,-5.35+i*.5,-3.1,-2.88,0,.1,K.brick));
+   for(let l=0;l<2;l++)for(let r=0;r<2;r++)for(let k=0;k<5;k++)b.add(hx(-.9+k*.3,-.61+k*.3,-3.1+r*.15,-2.96+r*.15,l*.095,l*.095+.09,K.blockU));b.add(hx(-.95,.6,-3.15,-2.75,0,.21,K.plastic));
+   c.add(hx(-4.4,-3.4,-2.35,-1.95,0,.55,K.cobFree));part('trials','fn',grp(),{fn:l=>{a.visible=b.visible=l===1;c.visible=l>0}});root.add(a,b,c)}
+  {const g=grp();for(let l=0;l<3;l++){const k=grp();for(let i=0;i<6;i++)k.add(hx(18.3,21.3,4.2+i*.14,4.33+i*.14,.08+l*.12,.13+l*.12,K.wood));k.add(hx(18.6,18.7,4.15,5.05,.03+l*.12,.08+l*.12,K.wood),hx(20.9,21.0,4.15,5.05,.03+l*.12,.08+l*.12,K.wood));g.add(merged(k,K.wood))}part('timber','count',g)}
+  part('limepit','vis',(()=>{const g=grp();g.add(hx(19.7,21.9,.8,2.0,0,.24,K.stoneP),hx(19.8,21.8,.9,1.9,.24,.255,K.lime));return g})());
+  part('stone','heap',heap(15.3,2.8,1.8,1.1,K.gravel));part('sand','heap',heap(18.4,2.9,1.15,.8,K.spoil));part('surkhi','heap',heap(16.9,.9,.55,.32,K.surkhi));
+  {const g=grp();for(let i=0;i<6;i++)g.add(hx(21.9+(i%3)*.95,22.8+(i%3)*.95,3.0,3.45,Math.floor(i/3)*.45,Math.floor(i/3)*.45+.45,K.straw,.6));part('straw','count',g)}
+  {const g=grp();for(let i=0;i<8;i++)g.add(hx(13.1+i*.55,13.52+i*.55,.55,.85,0,.7,K.tileStack,.4));part('tilesStore','count',g)}
+  /* the adobe yard */
+  const nA=G.V.adobe>.01?Math.ceil(G.V.adobe*83.3*1.05):0,nB=G.V.block>.01?Math.ceil(G.V.block*222*1.05):0,mx=new THREE.Matrix4();
+  if(nA){const na=Math.max(2,Math.min(6,Math.ceil(nA/500))),per=Math.ceil(nA/na),fl=sh(new THREE.InstancedMesh(new THREE.BoxGeometry(.45,.1,.22),K.brickWet,per));
+    for(let i=0;i<per;i++){mx.makeTranslation(...V(13.45+(i%20)*.5,.05,-3.45-Math.floor(i/20)*.26).toArray());fl.setMatrixAt(i,mx)}part('aFlat','count',fl);
+    const hk=sh(new THREE.InstancedMesh(new THREE.BoxGeometry(.45,.22,.1),K.brick,nA));let i=0;for(let h=0;i<nA;h++)for(let l=0;l<8&&i<nA;l++)for(let r=0;r<12&&i<nA;r++)for(let c=0;c<6&&i<nA;c++,i++){mx.makeTranslation(...V(13.8+h*3.3+c*.5,.11+l*.225,-2.75+r*.12).toArray());hk.setMatrixAt(i,mx)}
+    part('aHack','count',hk);part('aSoil','heap',heap(25.4,-6.4,2.0,1.3,K.spoil));part('mudpit','vis',hx(24.0,25.6,-3.6,-2.0,-.01,.05,K.mud))}
+  /* the block yard */
+  if(nB){const pr=grp();pr.add(hx(-7.7,-7.0,4.9,5.4,0,.95,K.machine),hx(-7.85,-6.85,4.85,5.45,.95,1.0,K.metal));pr.add(rod(V(-7.35,.98,5.15),V(-6.2,1.7,5.15),.03,K.metal));pr.add(hx(-9.5,-8.6,5.2,6.1,.5,.53,K.metal));
+    [[-9.45,5.25],[-8.65,5.25],[-9.45,6.05],[-8.65,6.05]].forEach(([x,y])=>pr.add(hx(x-.02,x+.02,y-.02,y+.02,0,.5,K.wood)));part('press','vis',pr);
+    part('bSoil','heap',heap(-10.6,4.4,1.5,1.0,K.spoil));
+    const bs=sh(new THREE.InstancedMesh(new THREE.BoxGeometry(.29,.09,.14),K.blockU,nB)),ns=Math.ceil(nB/850),sheets=[];let i=0;
+    for(let s=0;s<ns;s++){const x0=-12.4+(s%2)*3.6,y0=7.0+Math.floor(s/2)*3.0;for(let l=0;l<5&&i<nB;l++)for(let r=0;r<17&&i<nB;r++)for(let c=0;c<10&&i<nB;c++,i++){mx.makeTranslation(...V(x0+.15+c*.3,.045+l*.095,y0+.07+r*.15).toArray());bs.setMatrixAt(i,mx)}
+      const sht=hx(x0-.05,x0+3.05,y0-.05,y0+2.6,0,.52,K.plastic);sheets.push(sht);root.add(sht)}
+    part('bStack','count',bs);part('plastic','fn',grp(),{fn:l=>sheets.forEach((s,k)=>s.visible=k<l)})}
+  /* setting out */
+  {const pg=grp(),sg=grp(),dg=grp();[[0,0],[L,0],[L,D],[0,D]].forEach(([cx,cy])=>{const sx=cx?1:-1,sy=cy?1:-1,by=cy+sy,bx=cx+sx;
+     pg.add(hx(cx-.5,cx+.5,by-.015,by+.015,.4,.55,K.wood),hx(bx-.015,bx+.015,cy-.5,cy+.5,.4,.55,K.wood));[[cx-.5,by],[cx+.5,by],[bx,cy-.5],[bx,cy+.5]].forEach(([x,y])=>pg.add(hx(x-.025,x+.025,y-.025,y+.025,0,.62,K.wood)))});
+   sg.add(hx(-1,L+1,-.006,.006,.555,.567,K.pink),hx(-1,L+1,D-.006,D+.006,.555,.567,K.pink),hx(-.006,.006,-1,D+1,.555,.567,K.pink),hx(L-.006,L+.006,-1,D+1,.555,.567,K.pink));
+   dg.add(beam(V(0,.6,0),V(L,.6,D),.014,.014,K.pink),beam(V(L,.6,0),V(0,.6,D),.014,.014,K.pink));part('pegs','vis',merged(pg,K.wood));part('strings','vis',merged(sg,K.pink));part('diag','vis',dg)}
+  /* topsoil, trenches, spoil */
+  part('topsoil','fn',hx(-1.2,L+1.2,-2.4,D+1.2,0,.025,K.top),{fn:(l,p,an,go)=>{const m=P.topsoil.obj;if(l){m.visible=true;m.scale.y=1}else if(an&&m.visible)go(.5,t=>{m.scale.y=Math.max(.001,1-t);if(t>=1)m.visible=false});else m.visible=false}});
+  part('topheap','heap',heap(-9.5,-9.6,2.6,1.4,K.top));
+  const SEG={W:[],M:[],E:[]};G.S.forEach(s=>SEG[s.z].push(s));
+  ['W','M','E'].forEach(z=>{const lid=grp(-.6),ft=grp(-.6),pl=grp();SEG[z].forEach(s=>{lid.add(hx(s.x0-.15,s.x1+.15,s.y0-.15,s.y1+.15,0,.6,K.ground));ft.add(hx(s.x0-.15,s.x1+.15,s.y0-.15,s.y1+.15,0,.6,K.stone,1.2));pl.add(hx(s.x0-.05,s.x1+.05,s.y0-.05,s.y1+.05,0,.41,K.stone,1.2))});
+    part('trench'+z,'fn',lid,{fn:(l,p,an,go)=>{if(l){lid.visible=true;lid.scale.y=1}else if(an&&lid.visible)go(.7,t=>{lid.scale.y=Math.max(.001,1-t);if(t>=1)lid.visible=false});else lid.visible=false}});
+    part('foot'+z,'grow',ft);part('plinth'+z,'grow',pl)});
+  part('spoilW','heap',heap(-2.9,2.6,1.8,1.25,K.spoil));part('spoilM','heap',heap(5.0,8.2,1.9,1.3,K.spoil));part('spoilE','heap',heap(13.4,7.6,1.6,1.15,K.spoil));
+  {const g=grp();g.add(hx(-.3,L+.3,-MGFC.V-.15,-MGFC.V+.3,0,.15,K.stone,1.2));for(let i=0;i<6;i++){const px=.1+i*(L-.2)/5;g.add(hx(px-.2,px+.2,-MGFC.V-.13,-MGFC.V+.27,.15,.2,K.slab))}part('kerb','grow',g)}
+  {const g=grp();[[G.xE1-.6,G.D],[G.xE1-.4,0],[G.xB1+.5,0]].forEach(([x,y])=>{const m=rod(V(x,.25,y+(y?.12:-.12)),V(x,.25,y-(y?.6:-.6)),.06,K.pipe);g.add(m)});part('sleeves','vis',g)}
+  {const g=grp();G.S.forEach(s=>g.add(hx(s.x0-.05,s.x1+.05,s.y0-.05,s.y1+.05,.41,.45,K.slab,1.2)));part('slab','vis',g)}
+  {const g=grp();G.R.forEach(r=>g.add(hx(r.x0+.05,r.x1-.05,r.y0+.05,r.y1-.05,0,.39,K.fill)));part('fill','fn',g,{fn:(l,p,an,go)=>{const f=v=>{g.visible=v>.001;g.scale.y=Math.max(.001,v/.39)};go(.7,t=>f(p+(l-p)*t))}})}
+  /* the walls: one solid per stretch of wall between openings, clipped at each earth's height */
+  const walls=grp(),pieces=[];root.add(walls);
+  const roomAt=(x,y)=>{const r=G.R.find(r=>x>r.x0&&x<r.x1&&y>r.y0&&y<r.y1);return r&&r.n},earthRoom=n=>n==='Bedroom'||n==='Living';
+  const SILL={door:0,win:.9,vent:1.65},HEAD=2.1,UVS={adobe:.92,block:.9,cob:1.4};
+  const wallInfo=s=>{const isX=['S','N','K'].includes(s.line),k=MGFK[s.m],bat=s.m==='cob'?k.t0-k.t1:0,u0=isX?s.x0:s.y0,u1=isX?s.x1:s.y1,c0=isX?s.y0:s.x0,c1=isX?s.y1:s.x1,
+    outC0=s.line==='S'||s.line==='W',outC1=s.line==='N'||s.line==='E',inter=!outC0&&!outC1,endO0=!isX&&u0<=1e-6,endO1=!isX&&u1>=D-1e-6;
+    const ins=(z,a,b)=>{const f=bat*z/H;return [outC0?f:inter?f/2:0,outC1?f:inter?f/2:0,a<=u0+1e-6&&endO0?f:0,b>=u1-1e-6&&endO1?f:0]};
+    const rect=(a,b,z)=>{const q=ins(z,a,b),ca=c0+q[0],cb=c1-q[1],ua=a+q[2],ub=b-q[3];return isX?[ua,ub,ca,cb]:[ca,cb,ua,ub]};
+    return {isX,bat,u0,u1,c0,c1,outC0,outC1,inter,endO0,endO1,ins,rect}};
+  G.S.forEach(s=>{const w=wallInfo(s),os=G.O.filter(o=>o.seg===s.id).sort((p,q)=>p.a-q.a),ext=['S','N','E','W'].includes(s.line);
+    const cross=(a,b,side)=>{const um=(a+b)/2,c=side?w.c1+.06:w.c0-.06,x=w.isX?um:c,y=w.isX?c:um,r=roomAt(x,y);return r?(earthRoom(r)?'inE':'inL'):(x<0||x>L||y<0||y>D)?'out':'hid'};
+    const rev=op=>ext?'revO':op&&op.rooms.some(earthRoom)?'revE':'revL';
+    const mk=(a,b,z0,z1,kind,op)=>{const m=mgbHexa(V,w.rect(a,b,z0),w.rect(a,b,z1),FL+z0,FL+z1,K[s.m],UVS[s.m],FL);
+      const R=['hid','hid','hid','hid','hid','hid'],eA=w.isX?1:4,eB=w.isX?0:5,cA=w.isX?4:1,cB=w.isX?5:0;
+      R[cA]=cross(a,b,0);R[cB]=cross(a,b,1);
+      if(kind==='full'){R[eA]=a>w.u0+1e-6?rev(os.find(o=>Math.abs(o.b-a)<1e-6)):w.endO0?'out':'hid';R[eB]=b<w.u1-1e-6?rev(os.find(o=>Math.abs(o.a-b)<1e-6)):w.endO1?'out':'hid'}
+      if(kind==='sill')R[2]=rev(op);if(kind==='head')R[3]=rev(op);
+      m.userData={roles:R,m:s.m};walls.add(m);pieces.push(m)};
+    let cur=w.u0;os.forEach(op=>{if(op.a>cur+1e-6)mk(cur,op.a,0,H,'full');const sl=SILL[op.k];if(sl>0)mk(op.a,op.b,0,sl,'sill',op);mk(op.a,op.b,HEAD,H,'head',op);cur=op.b});
+    if(w.u1>cur+1e-6)mk(cur,w.u1,0,H,'full')});
+  ['adobe','block','cob'].forEach(k=>{const n={adobe:'hA',block:'hB',cob:'hC'}[k];part(n,'clip',null,{plane:K.planes[k],base:FL})});
+  part('cobDim','dim',K.cob);
+  part('plaster','fn',walls,{fn:l=>{K.limeOut.userData.dim=l>=4?1.02:l>=2?.93:.85;st.setColor(K.limeOut);K.limeIn.userData.dim=l>=4?1.02:.95;st.setColor(K.limeIn);
+    pieces.forEach(m=>{const wm=K[m.userData.m];if(!l){m.material=wm;return}m.material=m.userData.roles.map(r=>(r==='out'||r==='revO')&&l>=1?K.limeOut:(r==='inE'||r==='revE')&&l>=2?(l>=4?K.limeIn:K.earthPl):(r==='inL'||r==='revL')&&l>=3?K.limeIn:wm)})}});
+  /* timber bands */
+  const band=z=>{const g=grp();G.S.forEach(s=>{const w=wallInfo(s),q=w.ins(z,w.u0,w.u1),ca=w.c0+q[0],cb=w.c1-q[1],ua=w.u0+q[2],ub=w.u1-q[3],h0=FL+z,h1=FL+z+.1;
+     const add=(a,b,c,dd,hh0,hh1)=>g.add(w.isX?hx(a,b,c,dd,hh0,hh1,K.band):hx(c,dd,a,b,hh0,hh1,K.band));
+     add(ua,ub,ca-.006,ca+.1,h0,h1);add(ua,ub,cb-.1,cb+.006,h0,h1);for(let p=ua+.45;p<ub-.3;p+=.9)add(p-.025,p+.025,ca+.1,cb-.1,h0,h0+.05);
+     if(w.endO0)add(ua-.006,ua+.1,ca,cb,h0,h1);if(w.endO1)add(ub-.1,ub+.006,ca,cb,h0,h1)});return merged(g,K.band)};
+  part('band1','vis',band(2.1));part('band2','vis',band(2.9));
+  /* frames, doors and window mesh */
+  {const df=grp(),wa=grp(),wc=grp(),dr=grp();G.O.forEach(op=>{const s=G.S.find(q=>q.id===op.seg),w=wallInfo(s),cm=(w.c0+w.c1)/2,sl=SILL[op.k],g=op.k==='door'?df:s.m==='cob'?wc:wa;
+     const add=(a,b,h0,h1,mat,c0,c1)=>{c0=c0==null?cm-.05:c0;c1=c1==null?cm+.05:c1;return w.isX?hx(a,b,c0,c1,h0,h1,mat):hx(c0,c1,a,b,h0,h1,mat)};
+     g.add(add(op.a,op.a+.08,FL+sl,FL+HEAD,K.wood),add(op.b-.08,op.b,FL+sl,FL+HEAD,K.wood),add(op.a,op.b,FL+HEAD-.08,FL+HEAD,K.wood));if(sl>0)g.add(add(op.a,op.b,FL+sl,FL+sl+.06,K.wood));
+     if(op.k==='door'){const wd=op.w-.16,leaf=sh(new THREE.Mesh(new THREE.BoxGeometry(wd,2.0,.045),K.wood));leaf.geometry.translate(wd/2,1.0,0);const pv=new THREE.Group();pv.add(leaf);
+       pv.position.copy(w.isX?V(op.a+.08,FL+.01,cm):V(cm,FL+.01,op.a+.08));pv.rotation.y=(w.isX?0:Math.PI/2)+(op.n==='main door'?1.05:0);dr.add(pv)}
+     else dr.add(add(op.a+.08,op.b-.08,FL+sl+.06,FL+HEAD-.08,K.mesh,cm-.004,cm+.004))});
+   part('dframes','vis',merged(df,K.wood));part('wframesAB','vis',wa.children.length?merged(wa,K.wood):wa);part('wframesCob','vis',wc.children.length?merged(wc,K.wood):wc);part('doors','vis',dr)}
+  /* floors */
+  {const st1=grp(),mu=grp(),fe=grp();G.R.forEach(r=>{const e=earthRoom(r.n);(e?mu:st1).add(hx(r.x0+.05,r.x1-.05,r.y0+.05,r.y1-.05,e?.39:.39,e?.43:.45,e?K.murram:K.floorS,1.1));if(e)fe.add(hx(r.x0+.05,r.x1-.05,r.y0+.05,r.y1-.05,.43,.45,K.floorE))});
+   st1.add(hx(0,L,-MGFC.V+.3,-.05,0,.15,K.floorS,1.1));const k=G.R.find(r=>r.n==='Kitchen');if(k){st1.add(hx(k.x0+.05,k.x1-.05,k.y0+.05,k.y0+.62,FL+.8,FL+.85,K.floorS));[k.x0+.2,k.x1-.25].forEach(x=>st1.add(hx(x,x+.06,k.y0+.1,k.y0+.55,FL,FL+.8,K.stoneP)))}
+   part('floorStone','vis',st1);part('murram','vis',mu);part('floorEarth','vis',fe);
+   part('floorOil','fn',grp(),{fn:l=>{K.floorE.userData.dim=l?.8:1;K.floorE.roughness=l?.45:.75;st.setColor(K.floorE)}})}
+  /* the roof */
+  const roofRoot=grp();root.add(roofRoot);const top=FL+H,ym=RF.ym,zS=y=>top+y*tn,zN=y=>top+(D-y)*tn,zW=x=>top+x*tn,zE=x=>top+(L-x)*tn,zR=top+ym*tn,hc=top+G.hy0*tn,ra=RF.ra,rb=RF.rb;
+  const zF={S:(x,y)=>zS(y),N:(x,y)=>zN(y),W:(x,y)=>zW(x),E:(x,y)=>zE(x)};
+  {const g=grp();g.add(beam(V(ra,zR-.1,ym),V(rb,zR-.1,ym),.1,.2,K.wood));[(G.xA0+G.xA1)/2,(G.xB0+G.xB1)/2].forEach(x=>g.add(hx(x-.06,x+.06,ym-.06,ym+.06,top,zR-.2,K.wood)));
+   [[G.ex0,G.hy0,ra],[G.ex0,G.ey1,ra],[G.ex1,G.hy0,rb],[G.ex1,G.ey1,rb]].forEach(([x,y,r])=>g.add(beam(V(x,hc-.09,y),V(r,zR-.09,ym),.075,.175,K.wood)));roofRoot.add(g);part('roofFrame','vis',g)}
+  {const g=grp(),yp=-MGFC.V+.07,zb=zS(yp)-.1-.0625;for(let i=0;i<6;i++){const px=.1+i*(L-.2)/5;g.add(hx(px-.0625,px+.0625,yp-.0625,yp+.0625,.2,zb-.0625,K.wood))}g.add(hx(-.2,L+.2,yp-.0625,yp+.0625,zb-.0625,zb+.0625,K.wood));roofRoot.add(g);part('veranda','vis',g)}
+  {const g=grp();RF.R.forEach(([f,x0,y0,x1,y1])=>g.add(beam(V(x0,zF[f](x0,y0)-.05,y0),V(x1,zF[f](x1,y1)-.05,y1),.05,.1,K.wood)));merged(g,K.wood);roofRoot.add(g);part('rafters','vis',g)}
+  {const g=grp();RF.B.forEach(([f,x0,y0,x1,y1])=>{const len=Math.hypot(x1-x0,y1-y0),xs=f==='S'||f==='N',m=sh(new THREE.Mesh(xs?new THREE.BoxGeometry(len,.025,.05):new THREE.BoxGeometry(.05,.025,len),K.wood));
+     m.position.copy(V((x0+x1)/2,zF[f]((x0+x1)/2,(y0+y1)/2)+.0125,(y0+y1)/2));if(f==='S')m.rotation.x=pit;else if(f==='N')m.rotation.x=-pit;else if(f==='W')m.rotation.z=pit;else m.rotation.z=-pit;g.add(m)});merged(g,K.wood);roofRoot.add(g);part('battens','vis',g)}
+  {const g=grp(),cs=Math.cos(pit),TS=2.56,face=(pts,f,uvf)=>{const pos=[],uv=[];const ps=pts.map(([x,y])=>V(x,zF[f](x,y)+.07,y));for(let i=1;i<ps.length-1;i++)[0,i,i+1].forEach(k=>{pos.push(ps[k].x,ps[k].y,ps[k].z);uv.push(...uvf(pts[k][0],pts[k][1]))});
+     const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(pos,3));geo.setAttribute('uv',new THREE.Float32BufferAttribute(uv,2));geo.computeVertexNormals();
+     if(geo.attributes.normal.getY(0)<0){const p=geo.attributes.position.array,u=geo.attributes.uv.array;for(let i=0;i<p.length;i+=9)for(let k=0;k<3;k++){const t=p[i+3+k];p[i+3+k]=p[i+6+k];p[i+6+k]=t}for(let i=0;i<u.length;i+=6)for(let k=0;k<2;k++){const t=u[i+2+k];u[i+2+k]=u[i+4+k];u[i+4+k]=t}geo.computeVertexNormals()}
+     const m=new THREE.Mesh(geo,K.tile);m.castShadow=m.receiveShadow=true;g.add(m)};
+   face([[G.ex0,G.ey0],[G.ex1,G.ey0],[G.ex1,G.hy0],[rb,ym],[ra,ym],[G.ex0,G.hy0]],'S',(x,y)=>[x/TS,(y-G.ey0)/cs/TS]);
+   face([[G.ex1,G.ey1],[G.ex0,G.ey1],[ra,ym],[rb,ym]],'N',(x,y)=>[x/TS,(G.ey1-y)/cs/TS]);
+   face([[G.ex0,G.hy0],[G.ex0,G.ey1],[ra,ym]],'W',(x,y)=>[y/TS,(x-G.ex0)/cs/TS]);face([[G.ex1,G.ey1],[G.ex1,G.hy0],[rb,ym]],'E',(x,y)=>[y/TS,(G.ex1-x)/cs/TS]);
+   roofRoot.add(g);const h0=zS(G.ey0)+.06,h1=zR+.12;
+   part('tileH','fn',g,{fn:(l,p,an,go)=>{const f=v=>{P.tileH.v=v;g.visible=v>0;K.tilePlane.constant=(v<=0?h0-.2:h0+(h1-h0)*v+(v>=1?.3:0))+roofRoot.position.y};go(1.1,t=>f(p+(l-p)*t))}})}
+  {const g=grp(),r=.1;g.add(rod(V(ra,zR+.1,ym),V(rb,zR+.1,ym),r,K.ridge));[[G.ex0,G.hy0,ra],[G.ex0,G.ey1,ra],[G.ex1,G.hy0,rb],[G.ex1,G.ey1,rb]].forEach(([x,y,q])=>g.add(rod(V(x,hc+.1,y),V(q,zR+.1,ym),r,K.ridge)));
+   [G.ex0,G.ex1].forEach(x=>g.add(rod(V(x,zS(G.ey0)+.1,G.ey0),V(x,zS(G.hy0)+.1,G.hy0),r*.8,K.ridge)));merged(g,K.ridge);roofRoot.add(g);part('ridgeT','vis',g)}
+  {const g=grp(),gr=.07;g.add(rod(V(G.ex0,zS(G.ey0)-.06,G.ey0-.06),V(G.ex1,zS(G.ey0)-.06,G.ey0-.06),gr,K.metal),rod(V(G.ex0,hc-.06,G.ey1+.06),V(G.ex1,hc-.06,G.ey1+.06),gr,K.metal),
+     rod(V(G.ex0-.06,hc-.06,G.hy0),V(G.ex0-.06,hc-.06,G.ey1),gr,K.metal),rod(V(G.ex1+.06,hc-.06,G.hy0),V(G.ex1+.06,hc-.06,G.ey1),gr,K.metal));
+   [[T.x,G.ey1+.06,hc],[G.ex1-.15,G.ey0-.06,zS(G.ey0)],[G.ex0+.15,G.ey0-.06,zS(G.ey0)]].forEach(([x,y,h])=>g.add(rod(V(x,h-.06,y),V(x,.08,y),.05,K.metal)));
+   const pipe=line([[T.x,G.ey1+.06],[T.x,T.y-T.ro]],.07,.05,K.pipe);roofRoot.add(g);root.add(pipe);part('gutters','fn',grp(),{fn:l=>{g.visible=pipe.visible=!!l}})}
+  /* the rain tank */
+  {const lid=at(cy(T.ro,T.dep,K.ground,40),T.x,-T.dep,T.y);root.add(lid);part('tankDig','fn',grp(),{fn:l=>{lid.visible=!l}});part('tankSpoil','heap',heap(T.x+3.1,T.y+.4,1.6,1.1,K.spoil));
+   const yb=-(T.h+.3),hA=.55*(T.h+.6),ga=grp(yb),gb=grp(yb+hA);ga.add(ring(T.d/2,T.ro,hA,K.stoneP));ga.add(at(cy(T.ro,.25,K.stoneP,40),T.x,-.25,T.y));ga.children[0].position.copy(V(T.x,0,T.y));
+   gb.add(ring(T.d/2,T.ro,(.3-yb)-hA,K.stoneP));gb.children[0].position.copy(V(T.x,0,T.y));part('tankA','grow',ga);part('tankB','grow',gb);
+   const pl=sh(new THREE.Mesh(new THREE.CylinderGeometry(T.d/2-.012,T.d/2-.012,.3-yb-.02,40,1,true),K.limeIn));pl.position.copy(V(T.x,(yb+.3)/2,T.y));const pg=grp();pg.add(pl);part('tankPl','vis',pg);
+   const cv=grp();cv.add(at(cy(T.ro+.06,.08,K.stone,40),T.x,.3,T.y),hx(T.x-.3,T.x+.3,T.y-.3,T.y+.3,.38,.42,K.slab));part('tankCover','vis',cv);
+   const ff=grp();ff.add(at(cy(.1,1.1,K.pipe,16),T.x+.35,0,G.ey1+.4),hx(T.x-1.0,T.x-.4,T.y-T.ro-.75,T.y-T.ro-.15,0,.4,K.stoneP));part('flush','vis',ff)}
+  /* the twin pits, soak pit, grease trap */
+  {const lids=[Q.y1,Q.y2].map(y=>{const m=at(cy(.62,1.6,K.ground,32),Q.x,-1.6,y);root.add(m);return m});part('pitsDig','fn',grp(),{fn:l=>lids.forEach(m=>m.visible=!l)});
+   part('pitSpoil','heap',heap(Q.x+1.8,Q.y1+1.15,1.0,.8,K.spoil));const jx=Q.x-1.3,jy=(Q.y1+Q.y2)/2,ln=grp();
+   [Q.y1,Q.y2].forEach(y=>{const r=ring(.5,.62,1.7,K.mud);r.position.copy(V(Q.x,-1.6,y));ln.add(r)});ln.add(hx(jx-.25,jx+.25,jy-.25,jy+.25,0,.22,K.stoneP));
+   ln.add(line([[G.xE1-.5,G.D],[G.xE1-.5,G.D+.5],[jx,jy]],.04,.05,K.pipe),line([[jx,jy],[Q.x-.5,Q.y1]],.04,.05,K.pipe),line([[jx,jy],[Q.x-.5,Q.y2]],.04,.05,K.pipe));part('pitsLine','vis',ln);
+   const cv=grp();[Q.y1,Q.y2].forEach(y=>cv.add(at(cy(.68,.06,K.stone,32),Q.x,.1,y)));cv.add(hx(jx-.3,jx+.3,jy-.3,jy+.3,.22,.27,K.slab));part('pitsCover','vis',cv);
+   const sk=grp(),sx=L+7.2,sy=G.D+.4,gx=L+.95,gy=G.tE+.35;sk.add(hx(sx-.6,sx+.6,sy-.6,sy+.02,0,.08,K.slab),hx(sx-.6,sx+.6,sy+.04,sy+.6,0,.08,K.slab),hx(gx-.3,gx+.3,gy-.3,gy+.3,0,.18,K.stoneP));
+   sk.add(line([[gx,gy],[sx,gy],[sx,sy-.6]],.04,.05,K.pipe));part('soak','vis',sk)}
+  /* biogas, solar, wiring */
+  {const g=grp();g.add(at(cy(.9,1.0,K.green,32),B.x,0,B.y),at(cy(.82,.55,K.drum,32),B.x,1.0,B.y),hx(B.x+1.0,B.x+1.7,B.y-.35,B.y+.35,0,.45,K.stoneP),hx(B.x-1.9,B.x-1.1,B.y-.9,B.y-.1,0,.12,K.mud));
+   g.add(line([[B.x,B.y],[B.x-.95,B.y]],1.45,.025,K.gas),rod(V(B.x-.95,1.45,B.y),V(B.x-.95,.06,B.y),.025,K.gas),line([[B.x-.95,B.y],[L+.12,B.y],[L+.12,.7]],.06,.025,K.gas),rod(V(L+.12,.06,.7),V(L+.12,1.3,.7),.025,K.gas));part('bio','vis',g)}
+  {const g=grp(),n=site.n,pw=1.13,aw=n*pw+(n-1)*.05,sx=-3.2-aw,b=15*Math.PI/180,y0=-6.6,dep=2.3*Math.cos(b),hF=.5,hB=.5+2.3*Math.sin(b);
+   for(let i=0;i<n;i++){const m=sh(new THREE.Mesh(new THREE.BoxGeometry(pw,.035,2.3),K.pv));m.position.copy(V(sx+pw/2+i*(pw+.05),(hF+hB)/2,y0+dep/2));m.rotation.x=b;g.add(m)}
+   g.add(hx(sx,sx+aw,y0+.12,y0+.18,hF-.08,hF-.03,K.metal),hx(sx,sx+aw,y0+dep-.18,y0+dep-.12,hB-.1,hB-.05,K.metal));
+   for(let x=sx+.1;x<=sx+aw;x+=Math.max(1,(aw-.2)/Math.ceil((aw-.2)/1.6))){g.add(hx(x-.03,x+.03,y0+.12,y0+.18,0,hF-.08,K.metal),hx(x-.03,x+.03,y0+dep-.18,y0+dep-.12,0,hB-.1,K.metal))}
+   [[sx-.5,y0-.3],[sx+aw+.5,y0-.3]].forEach(([x,y])=>g.add(at(cy(.06,.2,K.metal,10),x,0,y)));part('solar','vis',g);
+   const w=grp(),lv=G.R.find(r=>r.n==='Living');w.add(line([[-3.2,y0+dep/2],[G.xA1+.3,-2.5],[G.xA1+.3,-.06]],.03,.025,K.pipe));
+   if(lv){w.add(hx(lv.x0+.1,lv.x0+.6,lv.y1-.4,lv.y1-.1,FL,FL+.9,K.battery),hx(lv.x0+.1,lv.x0+.25,lv.y1-.55,lv.y1-.05,FL+1.2,FL+1.7,K.battery))}part('wiring','vis',w)}
+  /* outside */
+  {const g=grp();g.add(hx(-.8,L+.8,D+.05,D+.8,0,.06,K.floorS,1.1),hx(-.8,-.05,-MGFC.V,D+.05,0,.06,K.floorS,1.1),hx(L+.05,L+.8,-MGFC.V,D+.05,0,.06,K.floorS,1.1));part('apron','grow',g)}
+  {const g=grp();[.6,2.6,4.6].forEach(y=>{const t=grp();t.add(cy(.05,1.3,K.trunk,8));const c=sh(new THREE.Mesh(new THREE.IcosahedronGeometry(.5,1),K.leaf));c.position.y=1.5;t.add(c);g.add(at(t,-4.6,0,y))});part('trees','grow',g)}
+  {const g=grp();g.add(hx(T.x-6.2,T.x-4.2,T.y-.5,T.y+.5,-.04,.015,K.gravel),line([[T.x-T.ro,T.y],[T.x-4.2,T.y]],.08,.05,K.pipe));part('recharge','vis',g)}
+  /* where the camera looks, and where the people stand */
+  const FOC={site:[L/2+1,0,0,31,34],house:[L/2,1,D/2-.6,21,38],veranda:[L/2,1,-.8,18,30],walls:[L/2-1.2,1.5,D/2-.8,17.5,12],inside:[L/2,.5,D/2,17,56],final:[L/2-3,1,-.6,26,24],board:[-2.6,.8,-7,12,35],trial:[-3,.3,-3,11,40],store:[18.2,.4,2.6,15,40],adobe:[18.6,.3,-5.4,17,42],block:[-8.4,.4,8.2,15,42],
+   tank:[T.x,.4,T.y-.8,12.5,40],pits:[Q.x+.4,.2,(Q.y1+Q.y2)/2,12,42],bio:[B.x,.6,B.y,11,38],solar:[-5.6,.6,-5.4,12,36]};
+  const spots=(f,n,seed)=>{const out=[];if(f==='house'||f==='veranda'||f==='walls'||f==='inside'||f==='final'){const ring=[];for(let x=.6;x<L;x+=1.25)ring.push([x,-.95]);for(let y=.5;y<D;y+=1.4)ring.push([-.95,y],[L+.95,y]);for(let x=1;x<L;x+=1.6)ring.push([x,D+.95]);
+      for(let i=0;i<n;i++)out.push(ring[(i*7+seed*3)%ring.length])}else{const c=FOC[f]||FOC.house;for(let i=0;i<n;i++){const a=i/n*Math.PI*2+seed*.7,r=1.4+((i*37+seed*13)%10)/10*1.4;out.push([c[0]+Math.cos(a)*r,c[2]+Math.sin(a)*r])}}return out};
+  const tagAt=V(L/2,.9,D/2);
+  return {root,P,pieces,roofRoot,V,FOC,spots,tagAt}}
+function mgbApply(st,pt,l,prev,anim){const o=pt.obj,k=pt.kind,go=(dur,fn)=>{if(anim&&!REDUCED)st.animate(dur,t=>fn(ease(t)));else fn(1)};
+  if(k==='vis'){if(l>0){const was=o.visible;o.visible=true;o.scale.y=1;o.position.y=0;if(anim&&!was){o.position.y=1.2;go(.6,t=>o.position.y=(1-t)*1.2)}}else o.visible=false}
+  else if(k==='grow'){go(.7,t=>{const v=prev+(l-prev)*t;o.visible=v>.002;o.scale.y=Math.max(.002,v)})}
+  else if(k==='heap'){go(.7,t=>{const v=prev+(l-prev)*t;o.visible=v>.004;o.scale.setScalar(Math.max(.01,Math.cbrt(Math.max(0,v))))})}
+  else if(k==='count'){if(o.isInstancedMesh){go(.9,t=>{const v=Math.round(prev+(l-prev)*t);o.count=v;o.visible=v>0})}else o.children.forEach((c,i)=>c.visible=i<l)}
+  else if(k==='clip'){const pl=pt.opt.plane,b=pt.opt.base;go(1.1,t=>{const v=prev+(l-prev)*t;pl.constant=v<=0?b-.02:b+v+(v>=MGFC.H-1e-6?.5:0)})}
+  else if(k==='dim'){go(.6,t=>{o.userData.dim=prev+(l-prev)*t;st.setColor(o)})}
+  else if(k==='fn')pt.opt.fn(l,prev,anim&&!REDUCED,go)}
+function initMgfBuild(host){mgbTextures();
+  const st=new Stage(host,{cam:[-10,14.5,13],target:[0,1,0],shadows:true,minDist:3,maxDist:60,lightPos:[5,14,9],shadowExt:15,hint:'Drag to turn · pinch to zoom'});
+  st.light.shadow.mapSize.set(2048,2048);st.light.shadow.camera.far=80;st.light.shadow.camera.updateProjectionMatrix();
+  const K=mgbMats(st);let S=null,busy=0,t=0,autoUp=false,near=false,dirty=true,roofA=null,camA=null;
+  const run=(old,dur,fn)=>{if(old)st.anims=st.anims.filter(x=>x!==old);const a={t:0,dur,fn};st.anims.push(a);return a};
+  const crew=[],cm=K.ink,shirts=[st.mat('--accent',{dim:.95}),st.mat('--clay',{dim:1}),st.mat('--leaf',{dim:1.05}),st.mat('--straw',{dim:.95})],legG=new THREE.CylinderGeometry(.065,.055,.82,8),bodyG=new THREE.CylinderGeometry(.19,.15,.66,10),armG=new THREE.CylinderGeometry(.05,.045,.6,8),headG=new THREE.SphereGeometry(.12,14,10);
+  for(let i=0;i<12;i++){const g=new THREE.Group(),sm=shirts[i%4],add=(geo,mat,x,y,z,rz)=>{const m=new THREE.Mesh(geo,mat);m.position.set(x,y,z);if(rz)m.rotation.z=rz;m.castShadow=true;g.add(m);return m};
+    add(legG,cm,-.085,.41,0);add(legG,cm,.085,.41,0);add(bodyG,sm,0,1.15,0);add(armG,sm,-.24,1.16,0,.18);add(armG,sm,.24,1.16,0,-.18);add(headG,cm,0,1.62,0);g.rotation.y=i*2.1;g.visible=false;st.scene.add(g);crew.push(g)}
+  const tag=document.createElement('div');tag.className='tag';tag.style.opacity=0;host.appendChild(tag);
+  st.controls.addEventListener('start',()=>{if(MGB.follow){MGB.follow=false;const c=$('mgbFollow');if(c)c.checked=false;if(autoUp){autoUp=false;MGB.roof=true;const r=$('mgbRoof');if(r)r.checked=true}}});
+  st.ticks.push(dt=>{t+=dt;busy=Math.max(0,busy-dt);crew.forEach((g,i)=>{g.position.y=busy>0&&!REDUCED?Math.abs(Math.sin(t*5+i*1.7))*.05:0});
+    if(S&&tag.style.opacity!=='0'){const p=st.project(S.tagAt);tag.style.left=clamp(p.x,70,host.clientWidth-70)+'px';tag.style.top=clamp(p.y,30,host.clientHeight-10)+'px'}});
+  const api={st,scene:()=>S,
+    build(G,o){if(!near){dirty=true;return}dirty=false;if(S){S.root.traverse(x=>{if(x.geometry)x.geometry.dispose()});st.scene.remove(S.root)}S=mgbScene(st,K,G,o);Object.values(S.P).forEach(p=>p.cur=undefined);if(MGB.roof||autoUp){S.roofRoot.position.y=5;S.roofRoot.visible=false;S.roofRoot.userData.off=true}
+      const f=S.FOC.house;st.home.t.copy(S.V(f[0],f[1],f[2]));st.home.p.copy(st.home.t).add(new THREE.Vector3(-10,13.5,13).normalize().multiplyScalar(f[3]*st._f))},
+    set(p,anim){if(!S)return;const lv=MGB.lv;Object.entries(S.P).forEach(([n,pt])=>{const a=lv[n],l=a?a[Math.min(p,a.length-1)]:(n in MGB_INIT?MGB_INIT[n]:0);if(pt.cur===l)return;const first=pt.cur===undefined,prev=first?l:pt.cur;pt.cur=l;mgbApply(st,pt,l,prev,anim&&!first)});
+      const s=p>0?MGB.steps[p-1]:null,nx=MGB.steps[Math.min(p,MGB.steps.length-1)];
+      const who=s||{f:'board',crew:1},spots=S.spots(who.f,Math.min(12,who.crew),p);crew.forEach((g,i)=>{g.visible=i<spots.length;if(g.visible)g.position.copy(S.V(spots[i][0],0,spots[i][1]))});
+      if(anim)busy=1.2;tag.textContent=s&&s.tag?s.tag:'';tag.style.opacity=s&&s.tag?1:0;
+      if(MGB.follow)api.focus(s?s.f:'site',anim)},
+    focus(key,anim){if(!S)return;const f=S.FOC[key]||S.FOC.house,c=st.controls,t1=S.V(f[0],f[1],f[2]),dir=st.camera.position.clone().sub(c.target).normalize();if(f[4]!=null){const az=Math.atan2(dir.x,dir.z),el=f[4]*Math.PI/180;dir.set(Math.sin(az)*Math.cos(el),Math.sin(el),Math.cos(az)*Math.cos(el))}const p1=t1.clone().add(dir.multiplyScalar(f[3]*st._f)),t0=c.target.clone(),p0=st.camera.position.clone();
+      api.lift(key==='inside',anim);const lp=new THREE.Vector3(5,14,9);if(anim&&!REDUCED)camA=run(camA,1.0,k=>{const e=ease(k);c.target.lerpVectors(t0,t1,e);st.camera.position.lerpVectors(p0,p1,e);st.light.target.position.copy(c.target);st.light.position.copy(c.target).add(lp)});
+      else{if(camA){st.anims=st.anims.filter(x=>x!==camA);camA=null}c.target.copy(t1);st.camera.position.copy(p1);st.light.target.position.copy(t1);st.light.position.copy(t1).add(lp)}},
+    lift(auto,anim){autoUp=!!auto&&MGB.follow;api.roof(MGB.roof||autoUp,anim)},
+    roof(on,anim){if(!S)return;const r=S.roofRoot,pt=S.P.tileH;on=!!on;if(on===!!r.userData.off)return;r.userData.off=on;const y0=r.position.y,y1=on?5:0;r.visible=true;
+      const f=k=>{r.position.y=y0+(y1-y0)*k;if(on&&k>=1)r.visible=false;if(pt&&pt.opt.fn)pt.opt.fn(pt.cur||0,pt.cur||0,false,(d,fn)=>fn(1))};if(roofA){st.anims=st.anims.filter(x=>x!==roofA);roofA=null}if(anim===false||REDUCED)f(1);else roofA=run(null,.7,k=>f(ease(k)))}};
+  MGB.api=api;
+  /* the farm is only built once the reader comes near it, to keep the page quick to open */
+  new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;near=true;if(dirty&&MGB.ready&&MGB.G){api.build(MGB.G,MGF);api.set(MGB.p,false)}},{rootMargin:'700px'}).observe(host)}
+
+/* --- the panel under the model --- */
+function mgbSync(force){const G=mgfGeo(),M=mgfModel(G),sig=JSON.stringify([MGF.w,MGF.tank,MGF.kw,MGF.kwh,MGF.cattle,MGF.toilet,MGF.people,MGF.lpd]);MGB.G=G;MGB.M=M;
+  if(force||sig!==MGB.sig){MGB.sig=sig;MGB.steps=mgbSteps(G,M);MGB.lv=mgbLevels(MGB.steps);MGB.p=Math.min(MGB.p,MGB.steps.length);if(MGB.api){MGB.api.build(G,MGF);MGB.api.set(MGB.p,false)}mgbBar()}
+  else{const X=mgbSteps(G,M);X.forEach((s,i)=>{if(MGB.steps[i]){MGB.steps[i].cost=s.cost;MGB.steps[i].pd=s.pd}})}
+  mgbRender()}
+function mgbBar(){const el=$('mgbBar'),mo=$('mgbMon');if(!el)return;const X=MGB.steps,end=mgbDay('2027-06-30'),pc=d=>(d/end*100).toFixed(3)+'%';let prev=0;
+  el.innerHTML=X.map((s,i)=>{const h=`<i data-i="${i}" style="left:${pc(prev)};width:${pc(Math.max(.6,s.d-prev))};background:${MGFST[s.st][1]}"></i>`;prev=s.d;return h}).join('')+`<b style="left:${pc(mgbDay('2027-06-10'))}"></b><em id="mgbNow"></em>`;
+  if(mo)mo.innerHTML=MGFMO.map((m,i)=>`<span style="left:${pc(mgbDay(i<2?`2026-${11+i}-01`:`2027-0${i-1}-01`))}">${m}</span>`).join('')+`<span class="mgb-mon-r" style="left:${pc(mgbDay('2027-06-10'))}">monsoon</span>`}
+function mgbRender(){const X=MGB.steps,N=X.length,p=MGB.p,G=MGB.G,cf=1+MGFR.cont/100,day=p?X[p-1].d:0;if(!N)return;
+  let spent=0,pd=0;for(let i=0;i<p;i++){spent+=X[i].cost;pd+=X[i].pd}spent*=cf;const h=n=>(MGB.lv[n]?MGB.lv[n][p]:0)||0,earth=(G.V.adobe*h('hA')+G.V.block*h('hB')+G.V.cob*h('hC'))/MGFC.H;
+  const ty=$('mgbTally');if(ty)readout(ty,[['Date',mgbFmt(day)],['Spent so far',mgfLakh(spent)],['Person-days',mgfF0(pd)],['Earth in the walls',`${mgfF1(earth)} m³`]]);
+  const dt=$('mgbDate');if(dt)dt.textContent=`${mgbFmt(day,1)} · day ${day}`;
+  const card=$('mgbCard'),go=$('mgbGo');if(card){if(p<N){const s=X[p],dur=s.d-day;
+      card.innerHTML=`<div class="eyebrow">Job ${p+1} of ${N} · ${MGFST[s.st][0]}</div><p>${s.n}</p>${s.also?`<p class="mgb-also"><b>Meanwhile,</b> ${s.also}</p>`:''}<p class="mgb-meta">${dur>0?`${dur} day${dur>1?'s':''}`:'the same day'} · ${s.crew} ${s.crew>1?'people':'person'} · ${mgfInr(Math.round(s.cost*cf/100)*100)}</p>`;
+      if(go)go.innerHTML=`<span>${s.btn}</span>`}
+    else{card.innerHTML=`<div class="eyebrow">Moved in · ${mgbFmt(day,1)}</div><p>${N} jobs over ${day} days, from the first application to moving in, before the rains. ${mgfF0(pd)} person-days of work and ${mgfLakh(spent)} with the contingency; ${mgfF1(G.Vtot)} m³ of earth in the walls, nearly all of it dug on the farm, and no cement anywhere.</p><p class="mgb-meta">Drag the slider to go back to any job, or start again.</p>`;if(go)go.innerHTML='<span>Build it again</span>'}}
+  const rg=$('mgbRange');if(rg){rg.max=N;rg.value=p;rg.setAttribute('aria-valuetext',p?`${p} of ${N} jobs done: ${X[p-1].btn}`:'No jobs done yet')}
+  const bk=$('mgbBack');if(bk)bk.disabled=p===0;
+  const bar=$('mgbBar');if(bar){bar.querySelectorAll('i').forEach((e,i)=>e.classList.toggle('on',i<p));const nw=$('mgbNow');if(nw)nw.style.left=(day/mgbDay('2027-06-30')*100).toFixed(3)+'%'}
+  try{localStorage.setItem('ei-mgb-p',String(p))}catch(e){}}
+function mgbGo(n,anim){const N=MGB.steps.length;n=clamp(n,0,N);if(n===MGB.p)return;MGB.p=n;if(MGB.api)MGB.api.set(n,anim);mgbRender()}
+function mgbStop(){if(MGB.tmr){clearInterval(MGB.tmr);MGB.tmr=null}const b=$('mgbPlay');if(b){b.setAttribute('aria-pressed','false');b.textContent='Play'}}
+function mgbBoot(){if(!$('mgbCard'))return;
+  try{const v=parseInt(localStorage.getItem('ei-mgb-p')||'0',10);if(v>0)MGB.p=v}catch(e){}
+  MGB.ready=true;mgbSync(true);
+  $('mgbGo').onclick=()=>{mgbStop();if(MGB.p>=MGB.steps.length)mgbGo(0,false);else mgbGo(MGB.p+1,true)};
+  $('mgbBack').onclick=()=>{mgbStop();mgbGo(MGB.p-1,false)};
+  $('mgbRange').oninput=e=>{mgbStop();mgbGo(+e.target.value,false)};
+  $('mgbPlay').onclick=e=>{if(MGB.tmr){mgbStop();return}if(MGB.p>=MGB.steps.length)mgbGo(0,false);e.target.setAttribute('aria-pressed','true');e.target.textContent='Pause';mgbGo(MGB.p+1,true);
+    MGB.tmr=setInterval(()=>{if(MGB.p>=MGB.steps.length){mgbStop();return}mgbGo(MGB.p+1,true)},1500)};
+  const fo=$('mgbFollow');if(fo)fo.onchange=()=>{MGB.follow=fo.checked;if(fo.checked&&MGB.api){const X=MGB.steps,s=X[Math.max(0,MGB.p-1)];MGB.api.focus(s?s.f:'house',true)}};
+  const rf=$('mgbRoof');if(rf)rf.onchange=()=>{MGB.roof=rf.checked;if(MGB.api)MGB.api.roof(rf.checked||(MGB.follow&&(MGB.steps[Math.max(0,MGB.p-1)]||{}).f==='inside'))};
+  const bar=$('mgbBar');if(bar)bar.addEventListener('click',e=>{const i=e.target.dataset&&e.target.dataset.i;if(i!=null){mgbStop();mgbGo(+i+1,false)}});
+  const _dc=drawMgfCost;drawMgfCost=function(){_dc.apply(this,arguments);try{if(MGB.ready)mgbSync()}catch(e){console.error(e)}};
+  try{addIdx('Topic','Build it yourself','The farmhouse in 3D, job by job, from the first application to moving in',()=>goTo('#mg-build'),'farmhouse')}catch(e){}}
+
 /* ================= boot ================= */
-const hosts={vpHouse:initHero,vpSeq:initSeq,vpJar:initJar,vpWall:initWall,vpForm:initForms,vpSun:initSun,vpQuake:initQuake};
+const hosts={vpHouse:initHero,vpSeq:initSeq,vpJar:initJar,vpWall:initWall,vpForm:initForms,vpSun:initSun,vpQuake:initQuake,vpMgf:initMgfBuild};
 if(GL_OK){
   makeTextures();
   Object.entries(hosts).forEach(([id,fn])=>{try{fn($(id))}catch(e){console.error(e);$(id).innerHTML='<div class="nogl">This model could not load in your browser.</div>'}});
@@ -9319,7 +9797,7 @@ if(GL_OK){
 heroText(null);
 let savedWall='cob';try{savedWall=localStorage.getItem('ei-wall')||'cob'}catch(e){}
 setWall(WALLS[savedWall]?savedWall:'cob');setForm('bhunga');
-setStage(bFirst());renderSoil();sunCalc();mhBoot();roomsBoot();pipesBoot();doorsBoot();designBoot();budgetBoot();permitsBoot();fireBoot();upperBoot();insulBoot();sanitBoot();flatroofBoot();polishBoot();siteBoot();coolBoot();dayBoot();findBoot();mgfBoot();
+setStage(bFirst());renderSoil();sunCalc();mhBoot();roomsBoot();pipesBoot();doorsBoot();designBoot();budgetBoot();permitsBoot();fireBoot();upperBoot();insulBoot();sanitBoot();flatroofBoot();polishBoot();siteBoot();coolBoot();dayBoot();findBoot();mgfBoot();mgbBoot();
 </script>
 
 </html>
